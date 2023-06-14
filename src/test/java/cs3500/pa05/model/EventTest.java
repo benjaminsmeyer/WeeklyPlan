@@ -36,7 +36,7 @@ class EventTest {
   @Test
   void getDurationTest() {
     assertEquals(2000, event.getDuration());
-    event.setStartTime(3000);
+    event.setDuration(3000);
     assertEquals(3000, event.getDuration());
   }
 
@@ -56,7 +56,7 @@ class EventTest {
   @Test
   void setDurationTest() {
     assertEquals(2000, event.getDuration());
-    event.setStartTime(3000);
+    event.setDuration(3000);
     assertEquals(3000, event.getDuration());
   }
 }
