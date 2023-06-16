@@ -29,6 +29,7 @@ public class Driver extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
+    // Test values to look at the week
     Map<DayOfWeek, Day> days = new HashMap<>();
     List<Activity> testSchedule = new ArrayList<>();
 

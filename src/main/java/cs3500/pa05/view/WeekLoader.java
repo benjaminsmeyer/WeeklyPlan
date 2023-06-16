@@ -15,6 +15,12 @@ public class WeekLoader {
     this.loader.setController(controller);
   }
 
+  /**
+   * Loads the week scene stored in the Resources file
+   *
+   * @return the week stored in the resources file
+   * @throws IllegalStateException if the file does not exist
+   */
   public Scene load() throws IllegalStateException {
     try {
       return this.loader.load();

@@ -9,12 +9,25 @@ public class Day {
   private DayOfWeek dayOfWeek;
 
 
+  /**
+   * Default constructor for day
+   *
+   * @param dayOfWeek the day of the week represented by this day
+   * @param maxEvents the maximum number of events for this day
+   * @param schedule a list of events for the day
+   */
   public Day(DayOfWeek dayOfWeek, int maxEvents, List<Activity> schedule) {
     this.schedule = schedule;
     this.maxEvents = maxEvents;
     this.dayOfWeek = dayOfWeek;
   }
 
+  /**
+   * A convenience constructor for Day. Initializes it with an empty list of activities
+   * and a max number of maxEvents
+   *
+   * @param dayOfWeek the day of the week represented by this day
+   */
   public Day(DayOfWeek dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
     schedule = new ArrayList<>();

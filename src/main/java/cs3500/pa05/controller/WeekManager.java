@@ -46,22 +46,32 @@ public class WeekManager {
     weekView = new WeekView(this);
   }
 
+  /**
+   * Starts the week controller
+   */
   public void run() {
     initWeek();
   }
 
+  /**
+   * Initializes the week by placing all the events in the week and
+   * naming all the days appropriately
+   */
   private void initWeek() {
     List<Day> days = week.getDays();
     setupDayLayout();
 
     for (int i = 0; i < dayLayouts.size(); i ++) {
       List<Activity> schedule = days.get(i).getSchedule();
-      List<Button> scheduleButtons = DayView.renderActivities(schedule);
+      List<VBox> scheduleButtons = DayView.renderActivities(schedule);
 
       dayLayouts.get(i).getChildren().addAll(scheduleButtons);
     }
   }
 
+  /**
+   * Gets values from the FXML for week HBoxes and stores them in a list
+   */
   private void setupDayLayout() {
     dayLayouts = new ArrayList<>();
     dayLayouts.add(dayLayout1);
@@ -73,6 +83,11 @@ public class WeekManager {
     dayLayouts.add(dayLayout7);
   }
 
+  /**
+   * Returns the scene for this week
+   *
+   * @return the Scene representing this week
+   */
   public Scene getScene() {
     return weekView.loadScene();
   }

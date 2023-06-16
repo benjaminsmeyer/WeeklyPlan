@@ -11,11 +11,20 @@ public class Week {
   String label;
   //List<String> categories;
 
+  /**
+   * Default constructor for Week
+   *
+   * @param days the Days of this Week
+   * @param label the name of this Week
+   */
   public Week(Map<DayOfWeek, Day> days, String label) {
     this.days = days;
     this.label = label;
   }
 
+  /**
+   * Convenience constructor for Week. Initializes a week with empty days
+   */
   public Week() {
     days = new HashMap<>();
 
@@ -30,6 +39,11 @@ public class Week {
     this.label = "Week";
   }
 
+  /**
+   * Returns the Days stored in this week
+   *
+   * @return the Days stored in this week
+   */
   public List<Day> getDays() {
     return new ArrayList<>(days.values());
   }

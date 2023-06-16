@@ -13,6 +13,11 @@ public class WeekView {
     this.loader = new WeekLoader(controller);
   }
 
+  /**
+   * Returns the scene stored in the FXML file in resources
+   *
+   * @return the scene stored in the FXML file in resources
+   */
   public Scene loadScene() {
     return loader.load();
   }
