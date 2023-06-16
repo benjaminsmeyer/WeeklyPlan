@@ -47,26 +47,20 @@ public class DayView {
    * @return a VBox representing the given Event
    */
   private static VBox renderEvent(Event event) {
-    VBox buttonBox = new VBox();
-    buttonBox.setPrefWidth(Constants.activityWidth);
 
-    Label name = new Label(event.getName());
-    buttonBox.getChildren().add(name);
-
-    if (!event.getDescription().equals("")) {
-      Label description = new Label(event.getDescription());
-      buttonBox.getChildren().add(description);
-    }
+    String name = event.getName();
 
     String startTime = Utils.timeToString(event.getStartTime());
     String endTime = Utils.timeToString(event.getStartTime() + event.getDuration());
 
-    Label time = new Label(startTime + " - " + endTime);
-    buttonBox.getChildren().add(time);
+    String time = startTime + " - " + endTime;
 
-    buttonBox.setAlignment(Pos.TOP_CENTER);
-
-    return buttonBox;
+    if (!event.getDescription().equals("")) {
+      String description = event.getDescription();
+      return new EventBox(name, description, time);
+    } else {
+      return new EventBox(name, time);
+    }
   }
 
   /**
@@ -76,20 +70,11 @@ public class DayView {
    * @returna VBox representing the given Task
    */
   private static VBox renderTask(Task task) {
-    VBox buttonBox = new VBox();
-    buttonBox.setPrefWidth(Constants.activityWidth);
-
-    CheckBox name = new CheckBox(task.getName());
-    name.setSelected(task.isDone());
-    buttonBox.getChildren().add(name);
-
     if (!task.getDescription().equals("")) {
-      Label description = new Label(task.getDescription());
-      buttonBox.getChildren().add(description);
+      return new TaskBox(task.getName(), task.getDescription(), task.isDone());
+    } else {
+      return new TaskBox(task.getName(), task.isDone());
     }
 
-    buttonBox.setAlignment(Pos.TOP_CENTER);
-
-    return buttonBox;
   }
 }

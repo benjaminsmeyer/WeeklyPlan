@@ -1,9 +1,14 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.Utils;
 import cs3500.pa05.model.Activity;
 import cs3500.pa05.model.Day;
+import cs3500.pa05.model.Task;
 import cs3500.pa05.model.Week;
 import cs3500.pa05.view.DayView;
+import cs3500.pa05.view.NewEventView;
+import cs3500.pa05.view.NewTaskView;
+import cs3500.pa05.view.TaskBox;
 import cs3500.pa05.view.WeekView;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * Manages the week.
@@ -38,12 +44,35 @@ public class WeekManager {
   @FXML
   private VBox dayLayout7;
   private List<VBox> dayLayouts;
+  @FXML
+  private Label dayName1;
+  @FXML
+  private Label dayName2;
+  @FXML
+  private Label dayName3;
+  @FXML
+  private Label dayName4;
+  @FXML
+  private Label dayName5;
+  @FXML
+  private Label dayName6;
+  @FXML
+  private Label dayName7;
+  private List<Label> dayNames;
+  @FXML
+  private Button newEvent;
+  @FXML
+  private Button newTask;
   private WeekView weekView;
+  public static WeekManager weekManager;
 
-  public WeekManager(Week week) {
+  private WeekManager(Week week) {
     this.week = week;
-
     weekView = new WeekView(this);
+  }
+
+  public static void setup(Week week) {
+    weekManager = new WeekManager(week);
   }
 
   /**
@@ -62,11 +91,24 @@ public class WeekManager {
     setupDayLayout();
 
     for (int i = 0; i < dayLayouts.size(); i ++) {
+      dayLayouts.get(i).getChildren().clear();
+
       List<Activity> schedule = days.get(i).getSchedule();
       List<VBox> scheduleButtons = DayView.renderActivities(schedule);
 
+      dayNames.get(i).setText(Utils.dayOfWeekToString(days.get(i).getDayOfWeek()));
+      dayLayouts.get(i).getChildren().add(dayNames.get(i));
       dayLayouts.get(i).getChildren().addAll(scheduleButtons);
+
+      for (Activity a : schedule) {
+        if (a instanceof Task) {
+          tasksLayout.getChildren().add(new TaskBox(a.getName(), ((Task) a).isDone()));
+        }
+      }
     }
+
+    newEvent.setOnAction(e -> openNewEventMenu());
+    newTask.setOnAction(e -> openNewTaskMenu());
   }
 
   /**
@@ -81,8 +123,34 @@ public class WeekManager {
     dayLayouts.add(dayLayout5);
     dayLayouts.add(dayLayout6);
     dayLayouts.add(dayLayout7);
+
+    dayNames = new ArrayList<>();
+    dayNames.add(dayName1);
+    dayNames.add(dayName2);
+    dayNames.add(dayName3);
+    dayNames.add(dayName4);
+    dayNames.add(dayName5);
+    dayNames.add(dayName6);
+    dayNames.add(dayName7);
   }
 
+  private void openNewEventMenu() {
+    NewEventController newEventController = new NewEventController();
+    NewEventView newEventView = new NewEventView(newEventController);
+
+    Stage stage = new Stage();
+    stage.setScene(newEventView.load());
+    stage.show();
+  }
+
+  private void openNewTaskMenu() {
+    NewTaskController newTaskController = new NewTaskController();
+    NewTaskView newTaskView = new NewTaskView(newTaskController);
+
+    Stage stage = new Stage();
+    stage.setScene(newTaskView.load());
+    stage.show();
+  }
   /**
    * Returns the scene for this week
    *
@@ -90,5 +158,10 @@ public class WeekManager {
    */
   public Scene getScene() {
     return weekView.loadScene();
+  }
+
+  public void addActivity(Activity activity) {
+    week.addActivity(activity);
+    initWeek();
   }
 }

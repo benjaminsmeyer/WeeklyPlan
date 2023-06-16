@@ -1,5 +1,7 @@
 package cs3500.pa05;
 
+import cs3500.pa05.model.DayOfWeek;
+
 /**
  * A utilities class
  */
@@ -19,5 +21,10 @@ public class Utils {
     }
 
     return hour + ":" + minutes;
+  }
+
+  public static String dayOfWeekToString(DayOfWeek dayOfWeek) {
+    return dayOfWeek.toString().charAt(0)
+        + dayOfWeek.toString().substring(1).toLowerCase();
   }
 }

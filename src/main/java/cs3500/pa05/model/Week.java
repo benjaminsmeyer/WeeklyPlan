@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Week {
-  Map<DayOfWeek, Day> days;
+  List<Day> days;
   String label;
   //List<String> categories;
 
@@ -17,7 +17,7 @@ public class Week {
    * @param days the Days of this Week
    * @param label the name of this Week
    */
-  public Week(Map<DayOfWeek, Day> days, String label) {
+  public Week(List<Day> days, String label) {
     this.days = days;
     this.label = label;
   }
@@ -26,15 +26,15 @@ public class Week {
    * Convenience constructor for Week. Initializes a week with empty days
    */
   public Week() {
-    days = new HashMap<>();
+    days = new ArrayList<>();
 
-    days.put(DayOfWeek.SUNDAY, new Day(DayOfWeek.SUNDAY));
-    days.put(DayOfWeek.MONDAY, new Day(DayOfWeek.MONDAY));
-    days.put(DayOfWeek.TUESDAY, new Day(DayOfWeek.TUESDAY));
-    days.put(DayOfWeek.WEDNESDAY, new Day(DayOfWeek.WEDNESDAY));
-    days.put(DayOfWeek.THURSDAY, new Day(DayOfWeek.THURSDAY));
-    days.put(DayOfWeek.FRIDAY, new Day(DayOfWeek.FRIDAY));
-    days.put(DayOfWeek.SATURDAY, new Day(DayOfWeek.SATURDAY));
+    days.add(new Day(DayOfWeek.SUNDAY));
+    days.add(new Day(DayOfWeek.MONDAY));
+    days.add(new Day(DayOfWeek.TUESDAY));
+    days.add(new Day(DayOfWeek.WEDNESDAY));
+    days.add(new Day(DayOfWeek.THURSDAY));
+    days.add(new Day(DayOfWeek.FRIDAY));
+    days.add(new Day(DayOfWeek.SATURDAY));
 
     this.label = "Week";
   }
@@ -45,7 +45,15 @@ public class Week {
    * @return the Days stored in this week
    */
   public List<Day> getDays() {
-    return new ArrayList<>(days.values());
+    return days;
+  }
+
+  public void addActivity(Activity activity) {
+    for (Day day : days) {
+      if (activity.getDayOfWeek() == day.getDayOfWeek()) {
+        day.addActivity(activity);
+      }
+    }
   }
 
 }

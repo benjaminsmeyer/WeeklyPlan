@@ -30,8 +30,8 @@ public class Day {
    */
   public Day(DayOfWeek dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
-    schedule = new ArrayList<>();
-    maxEvents = Integer.MAX_VALUE;
+    this.schedule = new ArrayList<>();
+    this.maxEvents = Integer.MAX_VALUE;
   }
 
   public List<Activity> getSchedule()  {
@@ -88,5 +88,9 @@ public class Day {
    */
   public void setMaxEvents(int max) {
     maxEvents = max;
+  }
+
+  public DayOfWeek getDayOfWeek() {
+    return dayOfWeek;
   }
 }
