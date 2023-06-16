@@ -95,12 +95,6 @@ public class NewTaskController {
     }
 
     String descriptionText = description.getText();
-    if (descriptionText.equals("")) {
-      descriptionLabel.setTextFill(Paint.valueOf("red"));
-      validInput = false;
-    } else {
-      descriptionLabel.setTextFill(Paint.valueOf("black"));
-    }
 
     DayOfWeek dayOfWeek = null;
     if (selectedButton != null) {

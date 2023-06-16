@@ -28,6 +28,8 @@ public class WeekManager {
   @FXML
   private Label weekName;
   @FXML
+  private Label tasksName;
+  @FXML
   private VBox tasksLayout;
   @FXML
   private VBox dayLayout1;
@@ -89,6 +91,8 @@ public class WeekManager {
   private void initWeek() {
     List<Day> days = week.getDays();
     setupDayLayout();
+    tasksLayout.getChildren().clear();
+    tasksLayout.getChildren().add(tasksName);
 
     for (int i = 0; i < dayLayouts.size(); i ++) {
       dayLayouts.get(i).getChildren().clear();
