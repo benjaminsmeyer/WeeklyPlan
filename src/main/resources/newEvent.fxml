@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Scene fill="#d7dae5" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane prefHeight="200" prefWidth="200">
+      <children>
+         <VBox prefHeight="369.0" prefWidth="291.0" spacing="10.0" style="-fx-background-color: #D7DAE5;">
+            <children>
+               <Label text="New Event">
+                  <font>
+                     <Font name="SWItal" size="18.0" />
+                  </font>
+               </Label>
+               <Label fx:id="nameLabel" text="Name">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <TextField fx:id="name" promptText="Name (Required)">
+                  <font>
+                     <Font name="Verdana" size="12.0" />
+                  </font>
+               </TextField>
+               <Label fx:id="descriptionLabel" text="Description">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <TextArea fx:id="description" prefHeight="200.0" prefWidth="200.0" promptText="Description (Optional)">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+               </TextArea>
+               <Label fx:id="dayLabel" text="Day(s)">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <HBox prefHeight="100.0" prefWidth="176.0">
+                  <children>
+                     <Button fx:id="sunday" mnemonicParsing="false" text="Sun" />
+                     <Button fx:id="monday" mnemonicParsing="false" text="Mon" />
+                     <Button fx:id="tuesday" mnemonicParsing="false" text="Tue" />
+                     <Button fx:id="wednesday" mnemonicParsing="false" text="Wed" />
+                     <Button fx:id="thursday" mnemonicParsing="false" text="Thu" />
+                     <Button fx:id="friday" mnemonicParsing="false" text="Fri" />
+                     <Button fx:id="saturday" mnemonicParsing="false" text="Sat" />
+                  </children>
+               </HBox>
+               <Label fx:id="timeLabel" text="Time">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <TextField fx:id="hour" prefHeight="25.0" prefWidth="30.0" promptText="12" />
+                     <Label alignment="CENTER" text=":">
+                        <padding>
+                           <Insets left="5.0" right="5.0" />
+                        </padding>
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </Label>
+                     <TextField fx:id="minute" prefHeight="25.0" prefWidth="30.0" promptText="00" />
+                  </children>
+               </HBox>
+               <Label fx:id="durationLabel" text="Duration">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <TextField fx:id="duration" promptText="Minutes (Required)" />
+               <Button fx:id="createEvent" mnemonicParsing="false" text="Create Event" />
+            </children>
+            <padding>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+         </VBox>
+      </children></AnchorPane>
+</Scene>
