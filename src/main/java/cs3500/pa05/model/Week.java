@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -26,17 +27,41 @@ public class Week {
    * Convenience constructor for Week. Initializes a week with empty days
    */
   public Week() {
-    days = new HashMap<>();
-
-    days.put(DayOfWeek.SUNDAY, new Day(DayOfWeek.SUNDAY));
-    days.put(DayOfWeek.MONDAY, new Day(DayOfWeek.MONDAY));
-    days.put(DayOfWeek.TUESDAY, new Day(DayOfWeek.TUESDAY));
-    days.put(DayOfWeek.WEDNESDAY, new Day(DayOfWeek.WEDNESDAY));
-    days.put(DayOfWeek.THURSDAY, new Day(DayOfWeek.THURSDAY));
-    days.put(DayOfWeek.FRIDAY, new Day(DayOfWeek.FRIDAY));
-    days.put(DayOfWeek.SATURDAY, new Day(DayOfWeek.SATURDAY));
+    setWeekStart(DayOfWeek.SUNDAY);
+//    days = new HashMap<>();
+//
+//    days.put(DayOfWeek.SUNDAY, new Day(DayOfWeek.SUNDAY));
+//    days.put(DayOfWeek.MONDAY, new Day(DayOfWeek.MONDAY));
+//    days.put(DayOfWeek.TUESDAY, new Day(DayOfWeek.TUESDAY));
+//    days.put(DayOfWeek.WEDNESDAY, new Day(DayOfWeek.WEDNESDAY));
+//    days.put(DayOfWeek.THURSDAY, new Day(DayOfWeek.THURSDAY));
+//    days.put(DayOfWeek.FRIDAY, new Day(DayOfWeek.FRIDAY));
+//    days.put(DayOfWeek.SATURDAY, new Day(DayOfWeek.SATURDAY));
 
     this.label = "Week";
+  }
+
+  public Week(String label, DayOfWeek startingDay) {
+    setWeekStart(startingDay);
+    this.label = label;
+
+  }
+
+  private void setWeekStart(DayOfWeek startingDay) {
+    days = new HashMap<>();
+    List<DayOfWeek> array = List.of(DayOfWeek.values());
+
+    DayOfWeek[] ordering = new DayOfWeek[array.size()];
+    int indexOfStartingDay = array.indexOf(startingDay);
+
+    for (int i = 0; i < array.size(); i ++) {
+      int newIndexes = i + (array.size() - indexOfStartingDay);
+      ordering[newIndexes % array.size()] = array.get(i);
+    }
+
+    for (DayOfWeek day : ordering) {
+      days.put(day, new Day(day));
+    }
   }
 
   /**
