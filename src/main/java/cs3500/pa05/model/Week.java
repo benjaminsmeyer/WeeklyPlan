@@ -7,13 +7,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Create a week.
+ */
 public class Week {
   Map<DayOfWeek, Day> days;
   String label;
   //List<String> categories;
 
   /**
-   * Default constructor for Week
+   * Default constructor for Week.
    *
    * @param days the Days of this Week
    * @param label the name of this Week
@@ -24,7 +27,7 @@ public class Week {
   }
 
   /**
-   * Convenience constructor for Week. Initializes a week with empty days
+   * Convenience constructor for Week. Initializes a week with empty days.
    */
   public Week() {
     setWeekStart(DayOfWeek.SUNDAY);
@@ -41,12 +44,23 @@ public class Week {
     this.label = "Week";
   }
 
-  public Week(String label, DayOfWeek startingDay) {
+  /**
+   * Convenience constructor for Week. Initializes a week starting
+   * at <code>startingDay</code> with empty days.
+   *
+   * @param startingDay what day the week should start on
+   */
+  public Week(DayOfWeek startingDay) {
     setWeekStart(startingDay);
-    this.label = label;
+    this.label = "Week";
 
   }
 
+  /**
+   * Sets which day of the week, the Week should start on.
+   *
+   * @param startingDay what day the week should start on
+   */
   private void setWeekStart(DayOfWeek startingDay) {
     days = new HashMap<>();
     List<DayOfWeek> array = List.of(DayOfWeek.values());
