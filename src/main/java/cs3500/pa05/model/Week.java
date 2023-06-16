@@ -27,17 +27,33 @@ public class Week {
    */
   public Week() {
     days = new ArrayList<>();
-
-    days.add(new Day(DayOfWeek.SUNDAY));
-    days.add(new Day(DayOfWeek.MONDAY));
-    days.add(new Day(DayOfWeek.TUESDAY));
-    days.add(new Day(DayOfWeek.WEDNESDAY));
-    days.add(new Day(DayOfWeek.THURSDAY));
-    days.add(new Day(DayOfWeek.FRIDAY));
-    days.add(new Day(DayOfWeek.SATURDAY));
+    setWeekStart(DayOfWeek.SUNDAY);
 
     this.label = "Week";
   }
+
+  public Week(DayOfWeek startingDay) {
+    setWeekStart(startingDay);
+    this.label = "Week";
+  }
+
+  private void setWeekStart(DayOfWeek startingDay) {
+    days = new ArrayList<>();
+    List<DayOfWeek> array = List.of(DayOfWeek.values());
+
+    DayOfWeek[] ordering = new DayOfWeek[array.size()];
+    int indexOfStartingDay = array.indexOf(startingDay);
+
+    for (int i = 0; i < array.size(); i ++) {
+      int newIndexes = i + (array.size() - indexOfStartingDay);
+      ordering[newIndexes % array.size()] = array.get(i);
+    }
+
+    for (DayOfWeek day : ordering) {
+      days.add(new Day(day));
+    }
+  }
+
 
   /**
    * Returns the Days stored in this week
