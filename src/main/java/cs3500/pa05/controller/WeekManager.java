@@ -77,6 +77,9 @@ public class WeekManager {
   private TextArea notes;
   @FXML
   private TextArea quotes;
+  @FXML
+  private TextArea overview;
+
 
   private WeekManager(Week week) {
     this.week = week;
@@ -116,9 +119,16 @@ public class WeekManager {
 
     quotes.setWrapText(true);
     notes.setWrapText(true);
+    overview.setWrapText(true);
 
-    quotes.setPromptText(week.getQuotes());
-    notes.setPromptText(week.getNotes());
+    quotes.setText(week.getQuotes());
+    notes.setText(week.getNotes());
+    overview.setEditable(false);
+
+    // Show statistics for the Week in the GUI. At a minimum, include total Events and total Tasks, and percent of tasks completed.
+    String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %d", week.totalWeekEvents(), week.totalWeekTasks(), 10)
+        + "%"; // TODO: Add week.getPercentOfTotalTasksCompleted
+    overview.setText(weeklyStats);
 
     for (int i = 0; i < dayLayouts.size(); i ++) {
       dayLayouts.get(i).getChildren().clear();

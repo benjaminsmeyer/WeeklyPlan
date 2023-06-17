@@ -195,4 +195,20 @@ public class Week {
     this.quotes = quotes;
   }
 
+  public int totalWeekEvents() {
+    int count = 0;
+    for (Day day : days) {
+      count += day.countEvents();
+    }
+    return count;
+  }
+
+  public int totalWeekTasks() {
+    int count = 0;
+    for (Day day : days) {
+      count += day.countTasks();
+    }
+    return count;
+  }
+
 }
