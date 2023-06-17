@@ -74,6 +74,7 @@ public class EventBox extends VBox {
     setAlignment(Pos.TOP_CENTER);
     setMaxWidth(Constants.activityWidth);
 
+    setSpacing(10);
     setOnMouseClicked(e -> editEvent());
     Utils.setButtonCursorStatus(this);
   }

@@ -63,6 +63,7 @@ public class TaskBox extends VBox {
       getChildren().add(completeLabel);
     }
 
+    setSpacing(10);
     Utils.setButtonCursorStatus(this);
     setOnMouseClicked(e -> editTask());
     setPadding(new Insets(5, 5, 5, 5));

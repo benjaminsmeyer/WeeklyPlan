@@ -34,7 +34,7 @@ public class Week {
     this.name = "Week";
   }
 
-  private void setWeekStart(DayOfWeek startingDay) {
+  public void setWeekStart(DayOfWeek startingDay) {
     days = new ArrayList<>();
     List<DayOfWeek> array = List.of(DayOfWeek.values());
 
@@ -49,6 +49,10 @@ public class Week {
     for (DayOfWeek day : ordering) {
       days.add(new Day(day));
     }
+  }
+
+  public DayOfWeek getStartOfWeek() {
+    return days.get(0).getDayOfWeek();
   }
 
 

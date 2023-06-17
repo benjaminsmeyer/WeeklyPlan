@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +16,7 @@
       <children>
          <VBox prefHeight="156.0" prefWidth="291.0" spacing="10.0" style="-fx-background-color: #D7DAE5;">
             <children>
-               <Label fx:id="windowLabel" text="Update Week Name">
+               <Label fx:id="windowLabel" text="Week Settings">
                   <font>
                      <Font name="SWItal" size="18.0" />
                   </font>
@@ -30,7 +31,71 @@
                      <Font name="Verdana" size="12.0" />
                   </font>
                </TextField>
-               <Button fx:id="saveButton" mnemonicParsing="false" text="Save Name">
+               <Label fx:id="maxEventsLabel" text="Max Events Per Day">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <TextField fx:id="maxEventsField" promptText="∞">
+                  <font>
+                     <Font name="Verdana" size="12.0" />
+                  </font>
+               </TextField>
+               <Label fx:id="maxTasksLabel" text="Max Tasks Per Day">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <TextField fx:id="maxTasksField" promptText="∞">
+                  <font>
+                     <Font name="Verdana" size="12.0" />
+                  </font>
+               </TextField>
+               <Label fx:id="dayLabel" text="First Day of Week">
+                  <padding>
+                     <Insets bottom="-10.0" />
+                  </padding>
+               </Label>
+               <HBox prefHeight="100.0" prefWidth="176.0">
+                  <children>
+                     <Button fx:id="sunday" mnemonicParsing="false" text="Sun">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <Button fx:id="monday" mnemonicParsing="false" text="Mon">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <Button fx:id="tuesday" mnemonicParsing="false" text="Tue">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <Button fx:id="wednesday" mnemonicParsing="false" text="Wed">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <Button fx:id="thursday" mnemonicParsing="false" text="Thu">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <Button fx:id="friday" mnemonicParsing="false" text="Fri">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <Button fx:id="saturday" mnemonicParsing="false" text="Sat">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                  </children>
+               </HBox>
+               <Button fx:id="saveButton" mnemonicParsing="false" text="Save Settings">
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
