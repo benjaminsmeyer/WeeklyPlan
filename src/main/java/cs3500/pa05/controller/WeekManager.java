@@ -117,8 +117,8 @@ public class WeekManager {
     quotes.setWrapText(true);
     notes.setWrapText(true);
 
-    quotes.setText(week.getQuotes());
-    notes.setText(week.getNotes());
+    quotes.setPromptText(week.getQuotes());
+    notes.setPromptText(week.getNotes());
 
     for (int i = 0; i < dayLayouts.size(); i ++) {
       dayLayouts.get(i).getChildren().clear();
