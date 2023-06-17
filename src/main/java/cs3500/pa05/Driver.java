@@ -32,6 +32,7 @@ public class Driver extends Application {
     Week week = new Week();
     WeekManager.setup(week);
 
+    primaryStage.setTitle("Week Journal");
     primaryStage.setScene(WeekManager.weekManager.getScene());
     WeekManager.weekManager.run();
     primaryStage.show();

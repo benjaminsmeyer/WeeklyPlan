@@ -4,8 +4,10 @@ import cs3500.pa05.Constants;
 import cs3500.pa05.model.DayOfWeek;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.Week;
+import cs3500.pa05.view.NewTaskView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -39,7 +41,20 @@ public class NewTaskController {
   private TextArea description;
   @FXML
   private Label dayLabel;
+  @FXML
+  private CheckBox complete;
+  @FXML
+  private Label windowLabel;
   private Button selectedButton;
+  private Task task;
+
+  public NewTaskController() {
+
+  }
+
+  public NewTaskController(Task task) {
+    this.task = task;
+  }
 
   @FXML
   public void initialize(){
@@ -61,6 +76,26 @@ public class NewTaskController {
 
     createTask.setStyle("-fx-background-color: " + Constants.taskColor);
     createTask.setOnAction(e -> createTask());
+
+    if (task != null) {
+      name.setText(task.getName());
+      description.setText(task.getDescription());
+
+      switch(task.getDayOfWeek()){
+        case SUNDAY -> selectDay(sunday);
+        case MONDAY -> selectDay(monday);
+        case TUESDAY -> selectDay(tuesday);
+        case WEDNESDAY -> selectDay(wednesday);
+        case THURSDAY -> selectDay(thursday);
+        case FRIDAY -> selectDay(friday);
+        case SATURDAY -> selectDay(saturday);
+      }
+
+      complete.setSelected(task.isDone());
+
+      windowLabel.setText("Edit Task");
+      createTask.setText("Save Edits");
+    }
   }
 
   private void selectDay(Button button) {
@@ -80,18 +115,14 @@ public class NewTaskController {
     } */
   }
 
-  private boolean isButtonSelected(Button button) {
-    return !button.getStyle().endsWith(Constants.taskColor);
-  }
-
   private void createTask() {
     boolean validInput = true;
     String nameText = name.getText();
     if (nameText.equals("")) {
-      nameLabel.setTextFill(Paint.valueOf("red"));
+      nameLabel.setTextFill(Constants.invalidInputLabelColor);
       validInput = false;
     } else {
-      nameLabel.setTextFill(Paint.valueOf("black"));
+      nameLabel.setTextFill(Constants.validInputLabelColor);
     }
 
     String descriptionText = description.getText();
@@ -99,17 +130,30 @@ public class NewTaskController {
     DayOfWeek dayOfWeek = null;
     if (selectedButton != null) {
       dayOfWeek = DayOfWeek.valueOf(selectedButton.getId().toUpperCase());
-      dayLabel.setTextFill(Paint.valueOf("black"));
+      dayLabel.setTextFill(Constants.validInputLabelColor);
     } else {
-      dayLabel.setTextFill(Paint.valueOf("red"));
+      dayLabel.setTextFill(Constants.invalidInputLabelColor);
       validInput = false;
     }
 
 
     if (validInput) {
-      Task newTask = new Task(nameText, descriptionText, dayOfWeek);
+      if (task == null) {
+        Task newTask = new Task(nameText, descriptionText, dayOfWeek, complete.isSelected());
+        WeekManager.weekManager.addActivity(newTask);
+      } else {
+        task.setName(nameText);
+        task.setDescription(descriptionText);
+        task.setDayOfWeek(dayOfWeek);
+        if (complete.isSelected()) {
+          task.complete();
+        } else {
+          task.incomplete();
+        }
+        WeekManager.weekManager.run();
+      }
 
-      WeekManager.weekManager.addActivity(newTask);
+
       Stage thisStage = (Stage) createTask.getScene().getWindow();
       thisStage.close();
     }

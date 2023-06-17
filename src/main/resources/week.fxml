@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -22,21 +23,33 @@
                            <font>
                               <Font name="SWItalc" size="33.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Label>
                         <Button fx:id="newEvent" mnemonicParsing="false" style="-fx-background-color: #A6D8D4;" text="New Event">
                            <font>
                               <Font name="SWItalc" size="14.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="newTask" mnemonicParsing="false" style="-fx-background-color: #8EAF9D;" text="New Task">
                            <font>
                               <Font name="SWItalc" size="14.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: #B9CDDA;" text="Save">
+                        <Button fx:id="save" mnemonicParsing="false" style="-fx-background-color: #B9CDDA;" text="Save">
                            <font>
                               <Font name="SWItalc" size="14.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                      <opaqueInsets>

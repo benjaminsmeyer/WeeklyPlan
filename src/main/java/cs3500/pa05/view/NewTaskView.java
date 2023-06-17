@@ -10,6 +10,8 @@ public class NewTaskView {
   public NewTaskView(NewTaskController controller) {
     this.loader = new FXMLLoader();
     this.loader.setLocation(getClass().getClassLoader().getResource("newTask.fxml"));
+
+    this.loader.setController(controller);
   }
 
   public Scene load() {

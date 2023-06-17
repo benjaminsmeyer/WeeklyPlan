@@ -4,7 +4,7 @@ package cs3500.pa05.model;
  * A task for the day.
  */
 public class Task extends Activity {
-  private boolean task;
+  private boolean complete;
 
   /**
    * Initializes the task.
@@ -18,18 +18,23 @@ public class Task extends Activity {
     incomplete();
   }
 
+  public Task(String name, String description, DayOfWeek dayOfWeek, boolean complete) {
+    super(name, description, dayOfWeek);
+    this.complete = complete;
+  }
+
   /**
    * Set the task as complete.
    */
   public void complete() {
-    task = true;
+    complete = true;
   }
 
   /**
    * Set the task as incomplete.
    */
   public void incomplete() {
-    task = false;
+    complete = false;
   }
 
   /**
@@ -38,6 +43,6 @@ public class Task extends Activity {
    * @return true if task is complete, false otherwise.
    */
   public boolean isDone() {
-    return task;
+    return complete;
   }
 }

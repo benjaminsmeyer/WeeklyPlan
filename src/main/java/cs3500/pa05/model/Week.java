@@ -1,25 +1,22 @@
 package cs3500.pa05.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Week {
   List<Day> days;
-  String label;
+  String name;
   //List<String> categories;
 
   /**
    * Default constructor for Week
    *
    * @param days the Days of this Week
-   * @param label the name of this Week
+   * @param name the name of this Week
    */
-  public Week(List<Day> days, String label) {
+  public Week(List<Day> days, String name) {
     this.days = days;
-    this.label = label;
+    this.name = name;
   }
 
   /**
@@ -29,12 +26,12 @@ public class Week {
     days = new ArrayList<>();
     setWeekStart(DayOfWeek.SUNDAY);
 
-    this.label = "Week";
+    this.name = "Week";
   }
 
   public Week(DayOfWeek startingDay) {
     setWeekStart(startingDay);
-    this.label = "Week";
+    this.name = "Week";
   }
 
   private void setWeekStart(DayOfWeek startingDay) {
@@ -70,6 +67,44 @@ public class Week {
         day.addActivity(activity);
       }
     }
+  }
+
+  public void updateActivityDates() {
+    List<Activity> activities = getAllActivities();
+    clearDayActivities();
+
+    for (Day day : days) {
+      for (Activity activity : activities) {
+        if (day.getDayOfWeek() == activity.getDayOfWeek()) {
+          day.addActivity(activity);
+        }
+      }
+    }
+
+  }
+
+  private List<Activity> getAllActivities() {
+    List<Activity> activities = new ArrayList<>();
+
+    for (Day day : days) {
+      activities.addAll(day.getSchedule());
+    }
+
+    return activities;
+  }
+
+  private void clearDayActivities() {
+    for (Day day : days) {
+      day.getSchedule().clear();
+    }
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return this.name;
   }
 
 }

@@ -57,9 +57,9 @@ public class DayView {
 
     if (!event.getDescription().equals("")) {
       String description = event.getDescription();
-      return new EventBox(name, description, time);
+      return new EventBox(name, description, time, event);
     } else {
-      return new EventBox(name, time);
+      return new EventBox(name, time, event);
     }
   }
 
@@ -71,9 +71,9 @@ public class DayView {
    */
   private static VBox renderTask(Task task) {
     if (!task.getDescription().equals("")) {
-      return new TaskBox(task.getName(), task.getDescription(), task.isDone());
+      return new TaskBox(task.getName(), task.getDescription(), task);
     } else {
-      return new TaskBox(task.getName(), task.isDone());
+      return new TaskBox(task.getName(), task);
     }
 
   }

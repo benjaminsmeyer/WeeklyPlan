@@ -9,11 +9,13 @@ import cs3500.pa05.view.DayView;
 import cs3500.pa05.view.NewEventView;
 import cs3500.pa05.view.NewTaskView;
 import cs3500.pa05.view.TaskBox;
+import cs3500.pa05.view.UpdateWeekNameView;
 import cs3500.pa05.view.WeekView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -65,12 +67,19 @@ public class WeekManager {
   private Button newEvent;
   @FXML
   private Button newTask;
+  @FXML
+  private Button save;
   private WeekView weekView;
   public static WeekManager weekManager;
 
   private WeekManager(Week week) {
     this.week = week;
     weekView = new WeekView(this);
+  }
+
+  @FXML
+  public void initialize(){
+    weekName.setOnMouseClicked(e -> updateWeekName());
   }
 
   public static void setup(Week week) {
@@ -81,6 +90,8 @@ public class WeekManager {
    * Starts the week controller
    */
   public void run() {
+    week.updateActivityDates();
+    updateWeekNameDisplay();
     initWeek();
   }
 
@@ -106,7 +117,7 @@ public class WeekManager {
 
       for (Activity a : schedule) {
         if (a instanceof Task) {
-          tasksLayout.getChildren().add(new TaskBox(a.getName(), ((Task) a).isDone()));
+          tasksLayout.getChildren().add(new TaskBox(a.getName(), (Task)a));
         }
       }
     }
@@ -167,5 +178,19 @@ public class WeekManager {
   public void addActivity(Activity activity) {
     week.addActivity(activity);
     initWeek();
+  }
+
+  private void updateWeekNameDisplay() {
+    weekName.setText(week.getName());
+  }
+
+  public void updateWeekName() {
+    UpdateWeekNameController updateWeekNameController
+        = new UpdateWeekNameController(this.week);
+    UpdateWeekNameView updateWeekNameView = new UpdateWeekNameView(updateWeekNameController);
+
+    Stage stage = new Stage();
+    stage.setScene(updateWeekNameView.load());
+    stage.show();
   }
 }
