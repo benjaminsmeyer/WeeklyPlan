@@ -66,7 +66,7 @@
                      <children>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="tasksLayout" alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="tasksLayout" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="tasksName" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Tasks">
                                        <font>
@@ -79,7 +79,7 @@
                         </ScrollPane>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="dayLayout1" alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout1" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="dayName1" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                        <font>
@@ -92,7 +92,7 @@
                         </ScrollPane>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="dayLayout2" alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout2" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="dayName2" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                        <font>
@@ -105,7 +105,7 @@
                         </ScrollPane>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="dayLayout3" alignment="CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout3" alignment="CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="dayName3" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                        <font>
@@ -118,7 +118,7 @@
                         </ScrollPane>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="dayLayout4" alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout4" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="dayName4" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                        <font>
@@ -134,7 +134,7 @@
                         </ScrollPane>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="dayLayout5" alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout5" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="dayName5" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                        <font>
@@ -147,7 +147,7 @@
                         </ScrollPane>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="dayLayout6" alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout6" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="dayName6" alignment="CENTER" prefHeight="25.0" prefWidth="126.0" text="Monday">
                                        <font>
@@ -160,7 +160,7 @@
                         </ScrollPane>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
                            <content>
-                              <VBox fx:id="dayLayout7" alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout7" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
                                  <children>
                                     <Label fx:id="dayName7" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                        <font>

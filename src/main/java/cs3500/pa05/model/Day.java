@@ -8,7 +8,6 @@ import java.util.List;
  */
 public class Day {
   private List<Activity> schedule;
-  private int maxEvents;
   private DayOfWeek dayOfWeek;
 
 
@@ -16,12 +15,10 @@ public class Day {
    * Default constructor for day
    *
    * @param dayOfWeek the day of the week represented by this day
-   * @param maxEvents the maximum number of events for this day
    * @param schedule a list of events for the day
    */
-  public Day(DayOfWeek dayOfWeek, int maxEvents, List<Activity> schedule) {
+  public Day(DayOfWeek dayOfWeek, List<Activity> schedule) {
     this.schedule = schedule;
-    this.maxEvents = maxEvents;
     this.dayOfWeek = dayOfWeek;
   }
 
@@ -34,7 +31,6 @@ public class Day {
   public Day(DayOfWeek dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
     this.schedule = new ArrayList<>();
-    this.maxEvents = Integer.MAX_VALUE;
   }
 
   public List<Activity> getSchedule()  {
@@ -82,15 +78,6 @@ public class Day {
    */
   public void addActivity(Activity activity) {
     schedule.add(activity);
-  }
-
-  /**
-   * Updates number of maximum events allowed per day.
-   *
-   * @param max maximum number of events allowed per day
-   */
-  public void setMaxEvents(int max) {
-    maxEvents = max;
   }
 
   public DayOfWeek getDayOfWeek() {

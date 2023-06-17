@@ -15,6 +15,14 @@ public class UpdateWeekNameController {
   @FXML
   private Label nameLabel;
   @FXML
+  private Label maxEventsLabel;
+  @FXML
+  private Label maxTasksLabel;
+  @FXML
+  private TextField maxEventsField;
+  @FXML
+  private TextField maxTasksField;
+  @FXML
   private TextField name;
   @FXML
   private Button sunday;
@@ -64,7 +72,15 @@ public class UpdateWeekNameController {
       case SATURDAY -> selectDay(saturday);
     }
 
-    saveButton.setOnAction(e -> updateWeekName());
+    if (week.getMaxEvents() != Integer.MAX_VALUE) {
+      maxEventsField.setText("" + week.getMaxEvents());
+    }
+
+    if (week.getMaxTasks() != Integer.MAX_VALUE) {
+      maxTasksField.setText("" + week.getMaxTasks());
+    }
+
+    saveButton.setOnAction(e -> updateWeekSettings());
     saveButton.setStyle("-fx-background-color: " + Constants.saveColor);
     name.setText(week.getName());
   }
@@ -86,18 +102,54 @@ public class UpdateWeekNameController {
     } */
   }
 
-  private void updateWeekName() {
+  private void updateWeekSettings() {
     String newWeekName = name.getText();
+
+    boolean validInput = true;
 
     if (newWeekName.length() > 0) {
       week.setName(newWeekName);
-      week.setWeekStart(DayOfWeek.valueOf(selectedButton.getId().toUpperCase()));
+    } else {
+      validInput = false;
+      nameLabel.setTextFill(Constants.invalidInputLabelColor);
+    }
+
+    int maxEvents = readMax(maxEventsField, maxEventsLabel);
+    if (maxEvents < 0) {
+      validInput = false;
+    }
+
+    int maxTasks = readMax(maxTasksField, maxTasksLabel);
+    if (maxTasks < 0) {
+      validInput = false;
+    }
+
+    if (validInput) {
+      week.updateWeekStart(DayOfWeek.valueOf(selectedButton.getId().toUpperCase()));
+      week.setMaxEvents(maxEvents);
+      week.setMaxTasks(maxTasks);
       WeekManager.weekManager.run();
 
       Stage stage = (Stage) name.getScene().getWindow();
       stage.close();
-    } else {
-      nameLabel.setTextFill(Constants.invalidInputLabelColor);
     }
+  }
+
+  private int readMax(TextField field, Label label) {
+    int max = -1;
+    if (field.getText().equals("")) {
+      max = Integer.MAX_VALUE;
+    } else {
+      try {
+        max = Integer.parseInt(field.getText());
+        if (max < 0) {
+          label.setTextFill(Constants.invalidInputLabelColor);
+        }
+      } catch (Exception ex) {
+        label.setTextFill(Constants.invalidInputLabelColor);
+      }
+    }
+
+    return max;
   }
 }

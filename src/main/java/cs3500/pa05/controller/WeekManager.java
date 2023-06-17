@@ -1,5 +1,6 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.model.Activity;
 import cs3500.pa05.model.Day;
@@ -113,6 +114,19 @@ public class WeekManager {
 
       dayNames.get(i).setText(Utils.dayOfWeekToString(days.get(i).getDayOfWeek()));
       dayLayouts.get(i).getChildren().add(dayNames.get(i));
+
+      if (days.get(i).getEvents().size() > week.getMaxEvents()) {
+        dayLayouts.get(i).getChildren().add(Utils.defaultLabel(
+            "Max number of events (" + week.getMaxEvents() + ") exceeded!",
+            Constants.invalidInputLabelColor));
+      }
+
+      if (days.get(i).getTasks().size() > week.getMaxTasks()) {
+        dayLayouts.get(i).getChildren().add(Utils.defaultLabel(
+            "Max number of tasks (" + week.getMaxTasks() + ") exceeded!",
+            Constants.invalidInputLabelColor));
+      }
+
       dayLayouts.get(i).getChildren().addAll(scheduleButtons);
 
       for (Activity a : schedule) {

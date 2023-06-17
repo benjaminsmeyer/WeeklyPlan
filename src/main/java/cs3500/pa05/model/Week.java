@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Week {
-  List<Day> days;
-  String name;
+  private List<Day> days;
+  private String name;
+  private int maxEvents;
+  private int maxTasks;
   //List<String> categories;
 
   /**
@@ -17,6 +19,15 @@ public class Week {
   public Week(List<Day> days, String name) {
     this.days = days;
     this.name = name;
+    this.maxEvents = Integer.MAX_VALUE;
+    this.maxTasks = Integer.MAX_VALUE;
+  }
+
+  public Week(List<Day> days, String name, int maxEvents, int maxTasks) {
+    this.days = days;
+    this.name = name;
+    this.maxEvents = maxEvents;
+    this.maxTasks = maxTasks;
   }
 
   /**
@@ -25,16 +36,19 @@ public class Week {
   public Week() {
     days = new ArrayList<>();
     setWeekStart(DayOfWeek.SUNDAY);
-
-    this.name = "Week";
+    this.maxEvents = Integer.MAX_VALUE;
+    this.maxTasks = Integer.MAX_VALUE;
+    this.name = "My Week";
   }
 
   public Week(DayOfWeek startingDay) {
     setWeekStart(startingDay);
+    this.maxEvents = Integer.MAX_VALUE;
+    this.maxTasks = Integer.MAX_VALUE;
     this.name = "Week";
   }
 
-  public void setWeekStart(DayOfWeek startingDay) {
+  private void setWeekStart(DayOfWeek startingDay) {
     days = new ArrayList<>();
     List<DayOfWeek> array = List.of(DayOfWeek.values());
 
@@ -49,6 +63,33 @@ public class Week {
     for (DayOfWeek day : ordering) {
       days.add(new Day(day));
     }
+  }
+
+  public void updateWeekStart(DayOfWeek startingDay) {
+    List<DayOfWeek> array = List.of(DayOfWeek.values());
+
+    DayOfWeek[] ordering = new DayOfWeek[array.size()];
+    int indexOfStartingDay = array.indexOf(startingDay);
+
+    for (int i = 0; i < array.size(); i ++) {
+      int newIndexes = i + (array.size() - indexOfStartingDay);
+      ordering[newIndexes % array.size()] = array.get(i);
+    }
+
+    ArrayList<Day> newDays = new ArrayList<>();
+    for (DayOfWeek day : ordering) {
+      newDays.add(this.getDay(day));
+    }
+    this.days = newDays;
+  }
+
+  private Day getDay(DayOfWeek dayOfWeek) {
+    for (Day day : days) {
+      if (day.getDayOfWeek() == dayOfWeek) {
+        return  day;
+      }
+    }
+    throw new IllegalArgumentException("Invalid day given " + dayOfWeek);
   }
 
   public DayOfWeek getStartOfWeek() {
@@ -109,6 +150,22 @@ public class Week {
 
   public String getName() {
     return this.name;
+  }
+
+  public void setMaxEvents(int maxEvents) {
+    this.maxEvents = maxEvents;
+  }
+
+  public void setMaxTasks(int maxTasks) {
+    this.maxTasks = maxTasks;
+  }
+
+  public int getMaxEvents() {
+    return maxEvents;
+  }
+
+  public int getMaxTasks() {
+    return maxTasks;
   }
 
 }

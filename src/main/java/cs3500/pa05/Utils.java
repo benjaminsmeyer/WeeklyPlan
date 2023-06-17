@@ -3,6 +3,12 @@ package cs3500.pa05;
 import cs3500.pa05.model.DayOfWeek;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 /**
  * A utilities class
@@ -40,5 +46,20 @@ public class Utils {
   public static void setButtonCursorStatus(Node n) {
     n.setOnMouseEntered(e -> n.getScene().setCursor(Cursor.HAND));
     n.setOnMouseExited(e -> n.getScene().setCursor(Cursor.DEFAULT));
+  }
+
+  public static Label defaultLabel(String text) {
+    Label label = new Label(text);
+    label.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
+        FontPosture.REGULAR, 10));
+    label.setTextFill(Color.web(Constants.activityNameColor));
+    label.setWrapText(true);
+    return label;
+  }
+
+  public static Label defaultLabel(String text, Paint color) {
+    Label label = defaultLabel(text);
+    label.setTextFill(color);
+    return label;
   }
 }
