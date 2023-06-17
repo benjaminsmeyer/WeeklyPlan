@@ -1,7 +1,12 @@
-package cs3500.pa05.json;
+package cs3500.pa05.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cs3500.pa05.json.ActivityJson;
+import cs3500.pa05.json.DayJson;
+import cs3500.pa05.json.EventJson;
+import cs3500.pa05.json.TaskJson;
+import cs3500.pa05.json.WeekJson;
 import cs3500.pa05.model.Activity;
 import cs3500.pa05.model.Day;
 import cs3500.pa05.model.Event;
