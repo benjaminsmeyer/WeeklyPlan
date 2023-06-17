@@ -15,7 +15,7 @@ public final class Constants {
   public static final String saveColor = "#B9CDDA";
   public static final String taskSelectedColor = "#8EAFFF";
   public static final String activityNameColor = "#000000";
-  public static final String activityDescrptionColor = "#545454";
+  public static final String activityDescriptionColor = "#545454";
   public static final String weekFont = "Verdana";
   public static final Paint validInputLabelColor = Paint.valueOf("black");
   public static final Paint invalidInputLabelColor = Paint.valueOf("red");

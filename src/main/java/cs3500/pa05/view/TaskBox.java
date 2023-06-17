@@ -5,8 +5,6 @@ import cs3500.pa05.Utils;
 import cs3500.pa05.controller.NewTaskController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.control.CheckBox;
 import cs3500.pa05.model.Task;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -41,7 +39,7 @@ public class TaskBox extends VBox {
     Label descriptionLabel = new Label(description);
     descriptionLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
         FontPosture.REGULAR, 10));
-    descriptionLabel.setTextFill(Color.web(Constants.activityDescrptionColor));
+    descriptionLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
     descriptionLabel.setWrapText(true);
     descriptionLabel.setWrapText(true);
     this.task = task;
@@ -58,7 +56,7 @@ public class TaskBox extends VBox {
       Label completeLabel = new Label("Complete");
       completeLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
           FontPosture.REGULAR, 10));
-      completeLabel.setTextFill(Color.web(Constants.activityDescrptionColor));
+      completeLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
       completeLabel.setWrapText(true);
       getChildren().add(completeLabel);
     }

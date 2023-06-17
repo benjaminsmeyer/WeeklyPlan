@@ -3,18 +3,12 @@ package cs3500.pa05.view;
 import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.controller.NewEventController;
-import cs3500.pa05.controller.NewTaskController;
 import cs3500.pa05.model.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -32,13 +26,13 @@ public class EventBox extends VBox {
     Label descriptionLabel = new Label(description);
     descriptionLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
         FontPosture.REGULAR, 10));
-    descriptionLabel.setTextFill(Color.web(Constants.activityDescrptionColor));
+    descriptionLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
     descriptionLabel.setWrapText(true);
 
     Label timeLabel = new Label(time);
     timeLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
         FontPosture.REGULAR, 10));
-    timeLabel.setTextFill(Color.web(Constants.activityDescrptionColor));
+    timeLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
     timeLabel.setWrapText(true);
 
     this.event = event;
@@ -59,7 +53,7 @@ public class EventBox extends VBox {
     Label timeLabel = new Label(time);
     timeLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
         FontPosture.REGULAR, 10));
-    timeLabel.setTextFill(Color.web(Constants.activityDescrptionColor));
+    timeLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
     timeLabel.setWrapText(true);
 
     this.event = event;

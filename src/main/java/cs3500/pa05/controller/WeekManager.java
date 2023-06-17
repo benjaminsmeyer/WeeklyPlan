@@ -20,6 +20,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -72,6 +73,10 @@ public class WeekManager {
   private Button save;
   private WeekView weekView;
   public static WeekManager weekManager;
+  @FXML
+  private TextArea notes;
+  @FXML
+  private TextArea quotes;
 
   private WeekManager(Week week) {
     this.week = week;
@@ -105,6 +110,15 @@ public class WeekManager {
     setupDayLayout();
     tasksLayout.getChildren().clear();
     tasksLayout.getChildren().add(tasksName);
+
+    notes.setStyle("-fx-background-color: " + Constants.eventColor);
+    quotes.setStyle("-fx-background-color: " + Constants.eventColor);
+
+    quotes.setWrapText(true);
+    notes.setWrapText(true);
+
+    quotes.setText(week.getQuotes());
+    notes.setText(week.getNotes());
 
     for (int i = 0; i < dayLayouts.size(); i ++) {
       dayLayouts.get(i).getChildren().clear();
