@@ -6,6 +6,7 @@ import cs3500.pa05.model.DayOfWeek;
 /**
  * JSON format of this record:
  * <p>
+ * <code>
  *{
  * "name" : "name of task",
  * "description" : "description of task",

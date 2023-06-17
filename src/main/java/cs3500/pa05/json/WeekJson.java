@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * JSON format of this record:
  * <p>
+ * <code>
  *{
  * "days" : [
  *  * {

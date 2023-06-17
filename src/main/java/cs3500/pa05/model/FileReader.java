@@ -1,4 +1,4 @@
-package cs3500.pa05;
+package cs3500.pa05.model;
 
 import java.io.File;
 import java.io.FileInputStream;

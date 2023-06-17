@@ -3,10 +3,10 @@ package cs3500.pa05.json;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import cs3500.pa05.model.DayOfWeek;
 
-//Let the user click Save to persist the data in a Week to a file using JSON encoding in a .bujo file
 /**
  * JSON format of this record:
  * <p>
+ * <code>
  *{
  * "name" : "name of task",
  * "description" : "description of task",

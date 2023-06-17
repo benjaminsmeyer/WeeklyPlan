@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Simple utils class used to hold static methods that help with serializing and deserializing JSON.
  */
 public class JsonUtils {
+//Let the user click Save to persist the data in a Week to a file using JSON encoding in a .bujo file
 
   /**
    * Converts a given record object to a JsonNode.

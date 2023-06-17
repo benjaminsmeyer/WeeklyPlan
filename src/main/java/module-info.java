@@ -17,4 +17,5 @@ module cs3500.pa05 {
 
     opens cs3500.pa05.json to com.fasterxml.jackson.core;
     exports cs3500.pa05.json;
+    opens cs3500.pa05.model to javafx.fxml;
 }
