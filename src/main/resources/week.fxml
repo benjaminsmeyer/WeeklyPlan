@@ -259,7 +259,7 @@
                            <children>
                               <TextArea fx:id="notes" prefHeight="200.0" prefWidth="200.0" />
                               <TextArea fx:id="quotes" prefHeight="200.0" prefWidth="200.0" />
-                              <VBox fx:id="dayLayout21" alignment="TOP_CENTER" prefHeight="124.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #FFFF;" />
+                              <TextArea fx:id="overview" prefHeight="200.0" prefWidth="200.0" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

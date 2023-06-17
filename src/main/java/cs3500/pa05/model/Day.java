@@ -72,6 +72,47 @@ public class Day {
   }
 
   /**
+   * Count total events
+   *
+   * @return the total of events
+   */
+  public int countEvents() {
+    int count = 0;
+    for (Event event : getEvents()) {
+      count++;
+    }
+    return count;
+  }
+
+  /**
+   * Count total tasks
+   *
+   * @return the total of tasks
+   */
+  public int countTasks() {
+    int count = 0;
+    for (Task task : getTasks()) {
+      count++;
+    }
+    return count;
+  }
+
+  /**
+   * Count total of completed tasks
+   *
+   * @return the total of completed of tasks
+   */
+  public int countCompletedTasks() {
+    int count = 0;
+    for (Task task : getTasks()) {
+      if (task.isDone()) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  /**
    * Adds activity to the day.
    *
    * @param activity  activity to be added to day
