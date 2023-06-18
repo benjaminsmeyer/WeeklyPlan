@@ -137,6 +137,7 @@ public class WeekManager {
     week.updateActivityDates();
     updateWeekNameDisplay();
     initWeek();
+    //TODO: save the week here
   }
 
   /**

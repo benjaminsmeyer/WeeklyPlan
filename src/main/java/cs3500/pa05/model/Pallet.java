@@ -11,4 +11,4 @@ public record Pallet (
   String saveColor,
   Font headerFont,
   Font textFont,
-  String validTextColor, String invalidTextColor){ }
+  String validTextColor, String invalidTextColor){}

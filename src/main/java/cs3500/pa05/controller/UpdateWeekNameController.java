@@ -3,6 +3,7 @@ package cs3500.pa05.controller;
 import cs3500.pa05.Constants;
 import cs3500.pa05.model.DayOfWeek;
 import cs3500.pa05.model.Week;
+import cs3500.pa05.view.WeekView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -48,8 +49,12 @@ public class UpdateWeekNameController {
   private Label windowLabel;
   private Button selectedButton;
   private Week week;
-  UpdateWeekNameController(Week week) {
+  public UpdateWeekNameController(Week week) {
     this.week = week;
+  }
+
+  public UpdateWeekNameController() {
+
   }
 
   @FXML
@@ -72,27 +77,31 @@ public class UpdateWeekNameController {
     friday.setOnAction(e -> selectDay(friday));
     saturday.setOnAction(e -> selectDay(saturday));
 
-    switch(week.getStartOfWeek()){
-      case SUNDAY -> selectDay(sunday);
-      case MONDAY -> selectDay(monday);
-      case TUESDAY -> selectDay(tuesday);
-      case WEDNESDAY -> selectDay(wednesday);
-      case THURSDAY -> selectDay(thursday);
-      case FRIDAY -> selectDay(friday);
-      case SATURDAY -> selectDay(saturday);
-    }
+    if (week != null) {
+      switch (week.getStartOfWeek()) {
+        case SUNDAY -> selectDay(sunday);
+        case MONDAY -> selectDay(monday);
+        case TUESDAY -> selectDay(tuesday);
+        case WEDNESDAY -> selectDay(wednesday);
+        case THURSDAY -> selectDay(thursday);
+        case FRIDAY -> selectDay(friday);
+        case SATURDAY -> selectDay(saturday);
+      }
 
-    if (week.getMaxEvents() != Integer.MAX_VALUE) {
-      maxEventsField.setText("" + week.getMaxEvents());
-    }
+      if (week.getMaxEvents() != Integer.MAX_VALUE) {
+        maxEventsField.setText("" + week.getMaxEvents());
+      }
 
-    if (week.getMaxTasks() != Integer.MAX_VALUE) {
-      maxTasksField.setText("" + week.getMaxTasks());
+      if (week.getMaxTasks() != Integer.MAX_VALUE) {
+        maxTasksField.setText("" + week.getMaxTasks());
+      }
+      name.setText(week.getName());
+    } else {
+      selectDay(sunday);
     }
 
     saveButton.setOnAction(e -> updateWeekSettings());
     saveButton.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    name.setText(week.getName());
   }
 
   private void selectDay(Button button) {
@@ -118,7 +127,9 @@ public class UpdateWeekNameController {
     boolean validInput = true;
 
     if (newWeekName.length() > 0) {
-      week.setName(newWeekName);
+      if (week != null) {
+        week.setName(newWeekName);
+      }
     } else {
       validInput = false;
       nameLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
@@ -134,11 +145,22 @@ public class UpdateWeekNameController {
       validInput = false;
     }
 
+    DayOfWeek selectedDay = DayOfWeek.valueOf(selectedButton.getId().toUpperCase());
+
     if (validInput) {
-      week.updateWeekStart(DayOfWeek.valueOf(selectedButton.getId().toUpperCase()));
-      week.setMaxEvents(maxEvents);
-      week.setMaxTasks(maxTasks);
-      WeekManager.weekManager.run();
+      if (week != null) {
+        week.updateWeekStart(selectedDay);
+        week.setMaxEvents(maxEvents);
+        week.setMaxTasks(maxTasks);
+        WeekManager.weekManager.run();
+      } else {
+        week = new Week(newWeekName, maxEvents, maxTasks, selectedDay);
+
+        WeekManager.setup(week);
+        Stage stage = new Stage();
+        stage.setScene(WeekManager.weekManager.getScene());
+        stage.show();
+      }
 
       Stage stage = (Stage) name.getScene().getWindow();
       stage.close();

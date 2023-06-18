@@ -37,6 +37,17 @@ public class Week {
     this.quotes = "Enter quotes here...";
   }
 
+  public Week(String name, int maxEvents, int maxTasks, DayOfWeek startDay) {
+    days = new ArrayList<>();
+    setWeekStart(startDay);
+    this.name = name;
+    this.maxEvents = maxEvents;
+    this.maxTasks = maxTasks;
+    this.notes = "Enter notes here...";
+    this.quotes = "Enter quotes here...";
+  }
+
+
   /**
    * Convenience constructor for Week. Initializes a week with empty days
    */
