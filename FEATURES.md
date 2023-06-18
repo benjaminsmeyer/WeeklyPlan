@@ -18,3 +18,4 @@
 - Week Start
 
 ## Section 5: Extra Credit
+- Visual Flourish
