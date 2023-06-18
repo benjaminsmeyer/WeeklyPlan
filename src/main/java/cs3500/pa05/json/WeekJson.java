@@ -1,6 +1,7 @@
 package cs3500.pa05.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.jar.JarOutputStream;
 
 /**
  * JSON format of this record:
@@ -30,5 +31,6 @@ public record WeekJson(
     @JsonProperty("days") DayJson[] days,
     @JsonProperty("name") String name,
     @JsonProperty("maxEvents") int maxEvents,
-    @JsonProperty("maxTasks") int maxTasks) {
+    @JsonProperty("maxTasks") int maxTasks,
+    @JsonProperty("text") TextJson text) {
 }

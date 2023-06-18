@@ -4,7 +4,9 @@ import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.model.Activity;
 import cs3500.pa05.model.Day;
+import cs3500.pa05.model.FileWriter;
 import cs3500.pa05.model.Pallet;
+import cs3500.pa05.model.Save;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.Week;
 import cs3500.pa05.view.DayView;
@@ -134,10 +136,11 @@ public class WeekManager {
    * Updates the week view. Should be called after any visual change to the week
    */
   public void run() {
+    System.out.println("Running");
     week.updateActivityDates();
     updateWeekNameDisplay();
     initWeek();
-    //TODO: save the week here
+    save();
   }
 
   /**
@@ -173,6 +176,12 @@ public class WeekManager {
     PalletManager.setCurrentPallet(pallet);
     updateTheme();
     run();
+  }
+
+  private void save() {
+    Save save = new Save(Constants.weekPath + this.week.getName());
+    System.out.println("Saving!!");
+    save.saveWeek(this.week);
   }
 
   /**
@@ -234,7 +243,6 @@ public class WeekManager {
     overviewLabel.setPrefWidth(240);
     overview.getChildren().add(overviewLabel);
     overview.setStyle("-fx-background-color: " + PalletManager.currentPallet.overlayColor());
-    System.out.println("updating weekly status " + weeklyStats);
   }
 
   private double totalTaskCompletePercent() {
@@ -285,7 +293,6 @@ public class WeekManager {
    * Sets all Node color/font values to be those of the current Pallet
    */
   private void updateTheme() {
-    System.out.println(PalletManager.currentPallet.backgroundColor());
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
     newEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     newTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());

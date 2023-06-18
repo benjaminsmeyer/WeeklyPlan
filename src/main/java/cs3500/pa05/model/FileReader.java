@@ -2,13 +2,16 @@ package cs3500.pa05.model;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cs3500.pa05.Constants;
 import cs3500.pa05.json.ActivityJson;
 import cs3500.pa05.json.DayJson;
 import cs3500.pa05.json.TextJson;
 import cs3500.pa05.json.WeekJson;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileReader {
@@ -26,15 +29,22 @@ public class FileReader {
     this.file = file;
   }
 
-  public void readFile() {
+  public Week readFile() {
     try {
       JsonParser parser = this.mapper.getFactory().createParser(file);
       WeekJson message = parser.readValueAs(WeekJson.class);
       delegateMessage(message);
-      //TODO: connect load to week gui
+      return new Week(days, name, maxEvents, maxTasks, notes, quotes);
     } catch (IOException e) {
+      throw new IllegalStateException("Could not read from file " + file.getName());
       // Disconnected from server or parsing exception
     }
+  }
+
+  public static List<String> getAllBujoFiles() {
+    List<String> names = Arrays.stream(new File(Constants.weekPath).list()).toList();
+    System.out.println(names.get(0));
+    return names;
   }
 
   private void delegateMessage(WeekJson message) {

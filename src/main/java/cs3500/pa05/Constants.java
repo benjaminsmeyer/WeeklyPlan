@@ -23,6 +23,7 @@ public final class Constants {
   public static final String activityNameColor = "#000000";
   public static final String activityDescriptionColor = "#545454";
   public static final String weekFont = "Verdana";
+  public static final String weekPath = "weeks/";
   public static final Paint validInputLabelColor = Paint.valueOf(defaultTextColor);
   public static final Paint invalidInputLabelColor = Paint.valueOf(invalidTextColor);
 }

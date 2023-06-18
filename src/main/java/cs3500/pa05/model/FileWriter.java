@@ -9,10 +9,10 @@ public class FileWriter {
   /**
    * Instantiates an instance of FileWriter with the <code>content</code> to be written.
    *
-   * @param fileName where to write the contents
+   * @param pathName where to write the contents
    */
-  public FileWriter(String fileName) {
-    file = new File(fileName);
+  public FileWriter(String pathName) {
+    file = new File(pathName);
   }
 
   /**

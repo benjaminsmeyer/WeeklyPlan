@@ -1,7 +1,11 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.Constants;
+import cs3500.pa05.model.FileReader;
+import cs3500.pa05.model.Week;
 import cs3500.pa05.view.UpdateWeekNameView;
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -21,9 +25,10 @@ public class OpeningWindowController {
     newWeek.setOnAction(e -> handleNewWeek());
     //TODO: Set up the loadWeek menu button to read from a directory of saved weeks and allow
     //      the user to select one
-    List<File> weeks = new ArrayList<>(); // = FileReader.readAllInDir(someSaveDirectory)
-    for (File week : weeks) {
-      MenuItem weekToLoad = new MenuItem();
+
+    List<String> weeks = FileReader.getAllBujoFiles();
+    for (String week : weeks) {
+      MenuItem weekToLoad = new MenuItem(week.substring(0, week.indexOf(".bujo")));
       weekToLoad.setOnAction(e -> handleLoadWeek(week));
       loadWeek.getItems().add(weekToLoad);
     }
@@ -42,7 +47,17 @@ public class OpeningWindowController {
     thisStage.close();
   }
 
-  private void handleLoadWeek(File file) {
-    //TODO: implement
+  private void handleLoadWeek(String file) {
+    PalletManager.setCurrentPallet(PalletManager.defaultPallet);
+    FileReader reader = new FileReader();
+    reader.openFile(new File(Constants.weekPath + file));
+    WeekManager.setup(reader.readFile());
+
+    Stage stage = new Stage();
+    stage.setScene(WeekManager.weekManager.getScene());
+    stage.show();
+
+    Stage thisStage = (Stage) newWeek.getScene().getWindow();
+    thisStage.close();
   }
 }
