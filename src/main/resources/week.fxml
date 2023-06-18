@@ -5,6 +5,7 @@
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Scene fill="#e4e6c3" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Scene fill="#2d2d2d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <root>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <VBox prefHeight="700.0" prefWidth="1100.0" spacing="20.0" style="-fx-background-color: D7DAE5;">
+            <VBox fx:id="mainBox" prefHeight="700.0" prefWidth="1100.0" spacing="20.0" style="-fx-background-color: D7DAE5;">
                <children>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
@@ -52,6 +53,11 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <MenuButton fx:id="themeDropDown" mnemonicParsing="false" style="-fx-background-color: #B9CDDA;" text="Theme">
+                           <font>
+                              <Font name="SWItalc" size="14.0" />
+                           </font>
+                        </MenuButton>
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -60,14 +66,14 @@
                         <Insets left="20.0" />
                      </padding>
                   </HBox>
-                  <HBox prefHeight="457.0" prefWidth="232.0" spacing="10.0" style="-fx-background-color: D7DAE5;">
+                  <HBox prefHeight="457.0" prefWidth="232.0" spacing="10.0">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="taskPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background: #F7F7F2;">
                            <content>
-                              <VBox fx:id="tasksLayout" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="tasksLayout" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="tasksName" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Tasks">
                                        <font>
@@ -78,9 +84,9 @@
                               </VBox>
                            </content>
                         </ScrollPane>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="sundayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="dayLayout1" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout1" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="dayName1" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                        <font>
@@ -91,9 +97,9 @@
                               </VBox>
                            </content>
                         </ScrollPane>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="mondayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="dayLayout2" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout2" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="dayName2" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                        <font>
@@ -104,9 +110,9 @@
                               </VBox>
                            </content>
                         </ScrollPane>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="tuesdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="dayLayout3" alignment="CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout3" alignment="CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="dayName3" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                        <font>
@@ -117,9 +123,9 @@
                               </VBox>
                            </content>
                         </ScrollPane>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="wednesdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="dayLayout4" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout4" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="dayName4" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                        <font>
@@ -133,9 +139,9 @@
                               </VBox>
                            </content>
                         </ScrollPane>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="thursdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="dayLayout5" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout5" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="dayName5" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                        <font>
@@ -146,9 +152,9 @@
                               </VBox>
                            </content>
                         </ScrollPane>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="fridayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="dayLayout6" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout6" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="dayName6" alignment="CENTER" prefHeight="25.0" prefWidth="126.0" text="Monday">
                                        <font>
@@ -159,9 +165,9 @@
                               </VBox>
                            </content>
                         </ScrollPane>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: F7F7F2;">
+                        <ScrollPane fx:id="saturdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <VBox fx:id="dayLayout7" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0" style="-fx-background-color: F7F7F2;">
+                              <VBox fx:id="dayLayout7" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                  <children>
                                     <Label fx:id="dayName7" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                        <font>
@@ -191,7 +197,7 @@
                                     <Insets right="130.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="quotesLabel1" text="Overview">
+                              <Label fx:id="overviewLabel" text="Overview">
                                  <font>
                                     <Font name="SWItalc" size="33.0" />
                                  </font>
@@ -205,7 +211,7 @@
                            <children>
                               <TextArea fx:id="notes" prefHeight="79.0" prefWidth="300.0" />
                               <TextArea fx:id="quotes" prefHeight="200.0" prefWidth="300.0" />
-                              <VBox fx:id="dayLayout21" alignment="TOP_CENTER" prefHeight="124.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #FFFF;" />
+                              <VBox alignment="TOP_CENTER" prefHeight="124.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #FFFF;" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

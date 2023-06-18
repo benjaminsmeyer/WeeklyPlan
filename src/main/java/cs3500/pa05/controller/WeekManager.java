@@ -4,6 +4,7 @@ import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.model.Activity;
 import cs3500.pa05.model.Day;
+import cs3500.pa05.model.Pallet;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.Week;
 import cs3500.pa05.view.DayView;
@@ -15,13 +16,21 @@ import cs3500.pa05.view.WeekView;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -29,6 +38,8 @@ import javafx.stage.Stage;
  */
 public class WeekManager {
   private Week week;
+  @FXML
+  private VBox mainBox;
   @FXML
   private Label weekName;
   @FXML
@@ -71,14 +82,38 @@ public class WeekManager {
   private Button newTask;
   @FXML
   private Button save;
+  @FXML
+  private ScrollPane taskPane;
+  @FXML
+  private ScrollPane sundayPane;
+  @FXML
+  private ScrollPane mondayPane;
+  @FXML
+  private ScrollPane tuesdayPane;
+  @FXML
+  private ScrollPane wednesdayPane;
+  @FXML
+  private ScrollPane thursdayPane;
+  @FXML
+  private ScrollPane fridayPane;
+  @FXML
+  private ScrollPane saturdayPane;
   private WeekView weekView;
   public static WeekManager weekManager;
   @FXML
   private TextArea notes;
   @FXML
+  private MenuButton themeDropDown;
+  @FXML
   private TextArea quotes;
   @FXML
   private TextArea overview;
+  @FXML
+  private Label notesLabel;
+  @FXML
+  private Label quotesLabel;
+  @FXML
+  private Label overviewLabel;
 
 
   private WeekManager(Week week) {
@@ -89,6 +124,21 @@ public class WeekManager {
   @FXML
   public void initialize(){
     weekName.setOnMouseClicked(e -> updateWeekName());
+    setupPalletDropdown();
+    run();
+  }
+
+  private void setupPalletDropdown() {
+    for (int i = 0; i < PalletManager.themes.size(); i++) {
+      int finalI = i;
+      MenuItem nextItem = new MenuItem(PalletManager.themes.get(finalI).name());
+      nextItem.setOnAction
+          (e -> {PalletManager.setCurrentPallet(PalletManager.themes.get(finalI));
+            updateTheme();
+            run();
+            System.out.println(PalletManager.currentPallet.backgroundColor());});
+      themeDropDown.getItems().add(nextItem);
+    }
   }
 
   public static void setup(Week week) {
@@ -114,21 +164,21 @@ public class WeekManager {
     tasksLayout.getChildren().clear();
     tasksLayout.getChildren().add(tasksName);
 
-    notes.setStyle("-fx-background-color: " + Constants.eventColor);
-    quotes.setStyle("-fx-background-color: " + Constants.eventColor);
+    notes.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    quotes.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
 
     quotes.setWrapText(true);
     notes.setWrapText(true);
-    overview.setWrapText(true);
+    //overview.setWrapText(true);
 
     quotes.setText(week.getQuotes());
     notes.setText(week.getNotes());
-    overview.setEditable(false);
+    //overview.setEditable(false);
 
     // Show statistics for the Week in the GUI. At a minimum, include total Events and total Tasks, and percent of tasks completed.
     String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %d", week.totalWeekEvents(), week.totalWeekTasks(), 10)
         + "%"; // TODO: Add week.getPercentOfTotalTasksCompleted
-    overview.setText(weeklyStats);
+    //overview.setText(weeklyStats);
 
     for (int i = 0; i < dayLayouts.size(); i ++) {
       dayLayouts.get(i).getChildren().clear();
@@ -160,8 +210,44 @@ public class WeekManager {
       }
     }
 
+    updateTheme();
+
     newEvent.setOnAction(e -> openNewEventMenu());
     newTask.setOnAction(e -> openNewTaskMenu());
+  }
+
+  private void updateTheme() {
+    System.out.println(PalletManager.currentPallet.backgroundColor());
+    mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
+    newEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    newTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    save.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    newEvent.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    newTask.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    save.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    weekName.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    for (Label name : dayNames) {
+      name.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    }
+    tasksName.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+
+    taskPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    mondayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    tuesdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    wednesdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    thursdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    fridayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    saturdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    sundayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+
+    notesLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    quotesLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    overviewLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+
+    themeDropDown.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    themeDropDown.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+
+    //TODO: figure out how to change the background color of text fieles
   }
 
   /**

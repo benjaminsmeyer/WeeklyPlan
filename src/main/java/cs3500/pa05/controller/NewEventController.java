@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -57,6 +59,8 @@ public class NewEventController {
   private Button pm;
   @FXML
   private Label windowLabel;
+  @FXML
+  private VBox mainBox;
   private Button selectedDay;
   private Button selectedTime;
   private Event event;
@@ -71,15 +75,17 @@ public class NewEventController {
 
   @FXML
   public void initialize() {
-    sunday.setStyle("-fx-background-color: " + Constants.eventColor);
-    monday.setStyle("-fx-background-color: " + Constants.eventColor);
-    tuesday.setStyle("-fx-background-color: " + Constants.eventColor);
-    wednesday.setStyle("-fx-background-color: " + Constants.eventColor);
-    thursday.setStyle("-fx-background-color: " + Constants.eventColor);
-    friday.setStyle("-fx-background-color: " + Constants.eventColor);
-    saturday.setStyle("-fx-background-color: " + Constants.eventColor);
-    am.setStyle("-fx-background-color: " + Constants.eventColor);
-    pm.setStyle("-fx-background-color: " + Constants.eventColor);
+    updateTheme();
+
+    sunday.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    monday.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    tuesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    wednesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    thursday.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    friday.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    saturday.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    am.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    pm.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
 
     sunday.setOnAction(e -> selectDay(sunday));
     monday.setOnAction(e -> selectDay(monday));
@@ -91,7 +97,7 @@ public class NewEventController {
     am.setOnAction(e -> selectTime(am));
     pm.setOnAction(e -> selectTime(pm));
 
-    createEvent.setStyle("-fx-background-color: " + Constants.eventColor);
+    createEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     createEvent.setOnAction(e -> createEvent());
 
     hour.textProperty().addListener(e -> handleTime(hour));
@@ -132,7 +138,7 @@ public class NewEventController {
 
   private void selectDay(Button button) {
     if (selectedDay != null) {
-      selectedDay.setStyle("-fx-background-color: " + Constants.eventColor);
+      selectedDay.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     }
     selectedDay = button;
     selectedDay.setStyle("-fx-background-color: " + Constants.taskSelectedColor);
@@ -149,7 +155,7 @@ public class NewEventController {
 
   private void selectTime(Button button) {
     if (selectedTime != null) {
-      selectedTime.setStyle("-fx-background-color: " + Constants.eventColor);
+      selectedTime.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     }
     selectedTime = button;
     selectedTime.setStyle("-fx-background-color: " + Constants.taskSelectedColor);
@@ -160,10 +166,10 @@ public class NewEventController {
     String nameText = name.getText();
 
     if (nameText.equals("")) {
-      nameLabel.setTextFill(Constants.invalidInputLabelColor);
+      nameLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
       validInput = false;
     } else {
-      nameLabel.setTextFill(Constants.validInputLabelColor);
+      nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     }
 
     String descriptionText = description.getText();
@@ -171,9 +177,9 @@ public class NewEventController {
     DayOfWeek dayOfWeek = null;
     if (selectedDay != null) {
       dayOfWeek = DayOfWeek.valueOf(selectedDay.getId().toUpperCase());
-      dayLabel.setTextFill(Constants.validInputLabelColor);
+      dayLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     } else {
-      dayLabel.setTextFill(Constants.invalidInputLabelColor);
+      dayLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
       validInput = false;
     }
 
@@ -183,7 +189,7 @@ public class NewEventController {
     if (selectedTime == null) {
       validInput = false;
       validTime = false;
-      timeLabel.setTextFill(Constants.invalidInputLabelColor);
+      timeLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
     } else {
       pm = selectedTime.getText().equals("PM");
     }
@@ -196,7 +202,7 @@ public class NewEventController {
       if (hourNum > 12 || hourNum < 0) {
         validInput = false;
         validTime = false;
-        timeLabel.setTextFill(Constants.invalidInputLabelColor);
+        timeLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
       } else {
         hourNum *= 60;
         if (pm) {
@@ -206,7 +212,7 @@ public class NewEventController {
     } catch (Exception e) {
       validInput = false;
       validTime = false;
-      timeLabel.setTextFill(Constants.invalidInputLabelColor);
+      timeLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
     }
 
     String minuteText = minute.getText();
@@ -217,28 +223,28 @@ public class NewEventController {
       if (minuteNum > 59 || minuteNum < 0) {
         validInput = false;
         validTime = false;
-        timeLabel.setTextFill(Constants.invalidInputLabelColor);
+        timeLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
       }
     } catch (Exception ex) {
       validInput = false;
       validTime = false;
-      timeLabel.setTextFill(Constants.invalidInputLabelColor);
+      timeLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
     }
 
     int timeNum = hourNum + minuteNum;
 
     if (validTime) {
-      timeLabel.setTextFill(Constants.validInputLabelColor);
+      timeLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     }
 
     String durationText = duration.getText();
     int durationNum = 0;
     try {
       durationNum = Integer.parseInt(durationText);
-      durationLabel.setTextFill(Constants.validInputLabelColor);
+      durationLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     } catch (Exception ex) {
       validInput = false;
-      durationLabel.setTextFill(Constants.invalidInputLabelColor);
+      durationLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
     }
 
     if (validInput) {
@@ -263,6 +269,45 @@ public class NewEventController {
     if (textField.getText().length() > 2) {
       textField.setText(textField.getText(0, 2));
     }
+  }
 
+  private void updateTheme() {
+    mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
+    windowLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    descriptionLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    dayLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    timeLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    durationLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+
+    nameLabel.setFont(PalletManager.currentPallet.textFont());
+    descriptionLabel.setFont(PalletManager.currentPallet.textFont());
+    dayLabel.setFont(PalletManager.currentPallet.textFont());
+    timeLabel.setFont(PalletManager.currentPallet.textFont());
+    timeLabel.setFont(PalletManager.currentPallet.textFont());
+
+    sunday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    monday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    tuesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    wednesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    thursday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    friday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    saturday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+
+    sunday.setFont(PalletManager.currentPallet.textFont());
+    monday.setFont(PalletManager.currentPallet.textFont());
+    tuesday.setFont(PalletManager.currentPallet.textFont());
+    wednesday.setFont(PalletManager.currentPallet.textFont());
+    thursday.setFont(PalletManager.currentPallet.textFont());
+    friday.setFont(PalletManager.currentPallet.textFont());
+    saturday.setFont(PalletManager.currentPallet.textFont());
+
+    am.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    pm.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    am.setFont(PalletManager.currentPallet.textFont());
+    pm.setFont(PalletManager.currentPallet.textFont());
+
+    createEvent.setFont(PalletManager.currentPallet.textFont());
+    createEvent.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
   }
 }

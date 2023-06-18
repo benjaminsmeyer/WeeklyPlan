@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane prefWidth="200">
+    <AnchorPane prefHeight="301.0" prefWidth="350.0">
       <children>
-         <VBox prefHeight="156.0" prefWidth="291.0" spacing="10.0" style="-fx-background-color: #D7DAE5;">
+         <VBox fx:id="mainBox" prefHeight="156.0" prefWidth="350.0" spacing="10.0" style="-fx-background-color: #D7DAE5;">
             <children>
                <Label fx:id="windowLabel" text="Week Settings">
                   <font>
@@ -58,37 +58,37 @@
                </Label>
                <HBox prefHeight="100.0" prefWidth="176.0">
                   <children>
-                     <Button fx:id="sunday" mnemonicParsing="false" text="Sun">
+                     <Button fx:id="sunday" mnemonicParsing="false" prefWidth="50.0" text="Sun">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                      </Button>
-                     <Button fx:id="monday" mnemonicParsing="false" text="Mon">
+                     <Button fx:id="monday" mnemonicParsing="false" prefWidth="50.0" text="Mon">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                      </Button>
-                     <Button fx:id="tuesday" mnemonicParsing="false" text="Tue">
+                     <Button fx:id="tuesday" mnemonicParsing="false" prefWidth="50.0" text="Tue">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                      </Button>
-                     <Button fx:id="wednesday" mnemonicParsing="false" text="Wed">
+                     <Button fx:id="wednesday" mnemonicParsing="false" prefWidth="50.0" text="Wed">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                      </Button>
-                     <Button fx:id="thursday" mnemonicParsing="false" text="Thu">
+                     <Button fx:id="thursday" mnemonicParsing="false" prefWidth="50.0" text="Thu">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                      </Button>
-                     <Button fx:id="friday" mnemonicParsing="false" text="Fri">
+                     <Button fx:id="friday" mnemonicParsing="false" prefWidth="50.0" text="Fri">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>
                      </Button>
-                     <Button fx:id="saturday" mnemonicParsing="false" text="Sat">
+                     <Button fx:id="saturday" mnemonicParsing="false" prefWidth="50.0" text="Sat">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>

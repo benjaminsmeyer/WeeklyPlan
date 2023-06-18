@@ -11,6 +11,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -45,6 +48,8 @@ public class NewTaskController {
   private CheckBox complete;
   @FXML
   private Label windowLabel;
+  @FXML
+  private VBox mainBox;
   private Button selectedButton;
   private Task task;
 
@@ -58,13 +63,18 @@ public class NewTaskController {
 
   @FXML
   public void initialize(){
-    sunday.setStyle("-fx-background-color: " + Constants.taskColor);
-    monday.setStyle("-fx-background-color: " + Constants.taskColor);
-    tuesday.setStyle("-fx-background-color: " + Constants.taskColor);
-    wednesday.setStyle("-fx-background-color: " + Constants.taskColor);
-    thursday.setStyle("-fx-background-color: " + Constants.taskColor);
-    friday.setStyle("-fx-background-color: " + Constants.taskColor);
-    saturday.setStyle("-fx-background-color: " + Constants.taskColor);
+    updateTheme();
+
+    windowLabel.setTextFill(Paint.valueOf(PalletManager.currentPallet.validTextColor()));
+    windowLabel.setTextFill(Paint.valueOf(PalletManager.currentPallet.validTextColor()));
+
+    sunday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    monday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    tuesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    wednesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    thursday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    friday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    saturday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
 
     sunday.setOnAction(e -> selectDay(sunday));
     monday.setOnAction(e -> selectDay(monday));
@@ -74,7 +84,7 @@ public class NewTaskController {
     friday.setOnAction(e -> selectDay(friday));
     saturday.setOnAction(e -> selectDay(saturday));
 
-    createTask.setStyle("-fx-background-color: " + Constants.taskColor);
+    createTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     createTask.setOnAction(e -> createTask());
 
     if (task != null) {
@@ -100,7 +110,7 @@ public class NewTaskController {
 
   private void selectDay(Button button) {
     if (selectedButton != null) {
-      selectedButton.setStyle("-fx-background-color: " + Constants.taskColor);
+      selectedButton.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     }
     selectedButton = button;
     selectedButton.setStyle("-fx-background-color: " + Constants.taskSelectedColor);
@@ -109,7 +119,7 @@ public class NewTaskController {
     // If you can select multiple days, uncomment this
     /*
     if (isButtonSelected(button)) {
-      button.setStyle("-fx-background-color: " + Constants.taskColor);
+      button.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     } else {
       button.setStyle("-fx-background-color: " + Constants.taskSelectedColor);
     } */
@@ -119,10 +129,10 @@ public class NewTaskController {
     boolean validInput = true;
     String nameText = name.getText();
     if (nameText.equals("")) {
-      nameLabel.setTextFill(Constants.invalidInputLabelColor);
+      nameLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
       validInput = false;
     } else {
-      nameLabel.setTextFill(Constants.validInputLabelColor);
+      nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     }
 
     String descriptionText = description.getText();
@@ -130,9 +140,9 @@ public class NewTaskController {
     DayOfWeek dayOfWeek = null;
     if (selectedButton != null) {
       dayOfWeek = DayOfWeek.valueOf(selectedButton.getId().toUpperCase());
-      dayLabel.setTextFill(Constants.validInputLabelColor);
+      dayLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     } else {
-      dayLabel.setTextFill(Constants.invalidInputLabelColor);
+      dayLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
       validInput = false;
     }
 
@@ -157,5 +167,36 @@ public class NewTaskController {
       Stage thisStage = (Stage) createTask.getScene().getWindow();
       thisStage.close();
     }
+  }
+
+  private void updateTheme() {
+    mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
+    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    descriptionLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    dayLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    
+    nameLabel.setFont(PalletManager.currentPallet.textFont());
+    descriptionLabel.setFont(PalletManager.currentPallet.textFont());
+    dayLabel.setFont(PalletManager.currentPallet.textFont());
+
+    sunday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    monday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    tuesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    wednesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    thursday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    friday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    saturday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    complete.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+
+    sunday.setFont(PalletManager.currentPallet.textFont());
+    monday.setFont(PalletManager.currentPallet.textFont());
+    tuesday.setFont(PalletManager.currentPallet.textFont());
+    wednesday.setFont(PalletManager.currentPallet.textFont());
+    thursday.setFont(PalletManager.currentPallet.textFont());
+    friday.setFont(PalletManager.currentPallet.textFont());
+    saturday.setFont(PalletManager.currentPallet.textFont());
+
+    createTask.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    createTask.setFont(PalletManager.currentPallet.textFont());
   }
 }

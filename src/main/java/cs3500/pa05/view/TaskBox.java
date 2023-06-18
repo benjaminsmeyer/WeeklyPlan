@@ -3,6 +3,7 @@ package cs3500.pa05.view;
 import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.controller.NewTaskController;
+import cs3500.pa05.controller.PalletManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import cs3500.pa05.model.Task;
@@ -19,9 +20,8 @@ public class TaskBox extends VBox {
 
   public TaskBox(String name, Task task) {
     Label nameLabel = new Label(name);
-    nameLabel.setFont(Font.font(Constants.weekFont, FontWeight.SEMI_BOLD,
-        FontPosture.REGULAR, 15));
-    nameLabel.setTextFill(Color.web(Constants.activityNameColor));
+    nameLabel.setFont(PalletManager.currentPallet.headerFont());
+    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     nameLabel.setWrapText(true);
     this.task = task;
 
@@ -31,15 +31,14 @@ public class TaskBox extends VBox {
 
   public TaskBox(String name, String description, Task task) {
     Label nameLabel = new Label(name);
-    nameLabel.setFont(Font.font(Constants.weekFont, FontWeight.SEMI_BOLD,
-        FontPosture.REGULAR, 15));
-    nameLabel.setTextFill(Color.web(Constants.activityNameColor));
+    nameLabel.setFont(PalletManager.currentPallet.headerFont());
+    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     nameLabel.setWrapText(true);
 
     Label descriptionLabel = new Label(description);
-    descriptionLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
-        FontPosture.REGULAR, 10));
-    descriptionLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
+    descriptionLabel.setFont(PalletManager.currentPallet.textFont());
+    descriptionLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    descriptionLabel.setOpacity(Constants.descriptionOpacity);
     descriptionLabel.setWrapText(true);
     descriptionLabel.setWrapText(true);
     this.task = task;
@@ -50,13 +49,13 @@ public class TaskBox extends VBox {
   }
 
   private void setup() {
-    setStyle("-fx-background-color: " + Constants.taskColor);
+    setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     if (task.isDone()){
       setOpacity(.6);
       Label completeLabel = new Label("Complete");
-      completeLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
-          FontPosture.REGULAR, 10));
-      completeLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
+      completeLabel.setFont(PalletManager.currentPallet.textFont());
+      completeLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+      completeLabel.setOpacity(Constants.descriptionOpacity);
       completeLabel.setWrapText(true);
       getChildren().add(completeLabel);
     }

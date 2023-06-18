@@ -3,6 +3,7 @@ package cs3500.pa05.view;
 import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.controller.NewEventController;
+import cs3500.pa05.controller.PalletManager;
 import cs3500.pa05.model.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,21 +19,20 @@ public class EventBox extends VBox {
   Event event;
   public EventBox(String name, String description, String time, Event event) {
     Label nameLabel = new Label(name);
-    nameLabel.setFont(Font.font(Constants.weekFont, FontWeight.SEMI_BOLD,
-        FontPosture.REGULAR, 15));
-    nameLabel.setTextFill(Color.web(Constants.activityNameColor));
+    nameLabel.setFont(PalletManager.currentPallet.headerFont());
+    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     nameLabel.setWrapText(true);
 
     Label descriptionLabel = new Label(description);
-    descriptionLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
-        FontPosture.REGULAR, 10));
-    descriptionLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
+    descriptionLabel.setFont(PalletManager.currentPallet.textFont());
+    descriptionLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    descriptionLabel.setOpacity(Constants.descriptionOpacity);
     descriptionLabel.setWrapText(true);
 
     Label timeLabel = new Label(time);
-    timeLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
-        FontPosture.REGULAR, 10));
-    timeLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
+    timeLabel.setFont(PalletManager.currentPallet.textFont());
+    timeLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    timeLabel.setOpacity(Constants.descriptionOpacity);
     timeLabel.setWrapText(true);
 
     this.event = event;
@@ -46,14 +46,14 @@ public class EventBox extends VBox {
     Label nameLabel = new Label(name);
     nameLabel.setFont(Font.font(Constants.weekFont, FontWeight.SEMI_BOLD,
         FontPosture.REGULAR, 15));
-    nameLabel.setTextFill(Color.web(Constants.activityNameColor));
+    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     nameLabel.setWrapText(true);
 
 
     Label timeLabel = new Label(time);
-    timeLabel.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
-        FontPosture.REGULAR, 10));
-    timeLabel.setTextFill(Color.web(Constants.activityDescriptionColor));
+    timeLabel.setFont(PalletManager.currentPallet.textFont());
+    timeLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    timeLabel.setOpacity(Constants.descriptionOpacity);
     timeLabel.setWrapText(true);
 
     this.event = event;
@@ -63,7 +63,7 @@ public class EventBox extends VBox {
   }
 
   private void setup() {
-    setStyle("-fx-background-color: " + Constants.eventColor);
+    setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     setPadding(new Insets(5, 5, 5, 5));
     setAlignment(Pos.TOP_CENTER);
     setMaxWidth(Constants.activityWidth);

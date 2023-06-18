@@ -25,7 +25,7 @@ public class WeekLoader {
     try {
       return this.loader.load();
     } catch (IOException exc) {
-      throw new IllegalStateException("Unable to load layout.");
+      throw new IllegalStateException("Unable to load layout. " + exc.getMessage());
     }
   }
 }
