@@ -8,6 +8,7 @@ import cs3500.pa05.json.DayJson;
 import cs3500.pa05.json.EventJson;
 import cs3500.pa05.json.JsonUtils;
 import cs3500.pa05.json.TaskJson;
+import cs3500.pa05.json.TextJson;
 import cs3500.pa05.json.WeekJson;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +50,18 @@ public class Save {
    */
   private WeekJson weekToJson(Week week) {
     WeekJson response = new WeekJson(daysToJson(week.getDays()), week.getName(),
-        week.getMaxEvents(), week.getMaxTasks());
+        week.getMaxEvents(), week.getMaxTasks(), textToJson(week));
     return response;
+  }
+
+  /**
+   * Converts text into corresponding json.
+   *
+   * @param week the week this text belongs to
+   * @return  the corresponding TextJson in week
+   */
+  private TextJson textToJson(Week week) {
+    return new TextJson(week.getQuotes(), week.getNotes());
   }
 
   /**
