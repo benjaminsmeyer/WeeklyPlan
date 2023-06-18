@@ -33,8 +33,18 @@ public class Week {
     this.name = name;
     this.maxEvents = maxEvents;
     this.maxTasks = maxTasks;
-    this.notes = "Enter notes here...";
-    this.quotes = "Enter quotes here...";
+    this.notes = "";
+    this.quotes = "";
+  }
+
+  public Week(List<Day> days, String name, int maxEvents, int maxTasks,
+              String notes, String quotes) {
+    this.days = days;
+    this.name = name;
+    this.maxEvents = maxEvents;
+    this.maxTasks = maxTasks;
+    this.notes = notes;
+    this.quotes = quotes;
   }
 
   public Week(String name, int maxEvents, int maxTasks, DayOfWeek startDay) {
@@ -43,8 +53,8 @@ public class Week {
     this.name = name;
     this.maxEvents = maxEvents;
     this.maxTasks = maxTasks;
-    this.notes = "Enter notes here...";
-    this.quotes = "Enter quotes here...";
+    this.notes = "";
+    this.quotes = "";
   }
 
 
@@ -57,8 +67,8 @@ public class Week {
     this.maxEvents = Integer.MAX_VALUE;
     this.maxTasks = Integer.MAX_VALUE;
     this.name = "My Week";
-    this.notes = "Enter notes here...";
-    this.quotes = "Enter quotes here...";
+    this.notes = "";
+    this.quotes = "";
   }
 
   public Week(DayOfWeek startingDay) {
@@ -66,8 +76,8 @@ public class Week {
     this.maxEvents = Integer.MAX_VALUE;
     this.maxTasks = Integer.MAX_VALUE;
     this.name = "Week";
-    this.notes = "Enter notes here...";
-    this.quotes = "Enter quotes here...";
+    this.notes = "";
+    this.quotes = "";
   }
 
   private void setWeekStart(DayOfWeek startingDay) {
@@ -221,5 +231,12 @@ public class Week {
     }
     return count;
   }
+
+  public int totalCompleteTasks() {    int count = 0;
+    for (Day day : days) {
+      count += day.countCompletedTasks();
+    }
+    return count;}
+
 
 }

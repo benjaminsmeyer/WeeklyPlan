@@ -107,7 +107,7 @@ public class WeekManager {
   @FXML
   private TextArea quotes;
   @FXML
-  private TextArea overview;
+  private VBox overview;
   @FXML
   private Label notesLabel;
   @FXML
@@ -186,6 +186,7 @@ public class WeekManager {
     setupDayLayouts();
     updateTheme();
     setupButtons();
+    updateWeeklyStats();
   }
 
   /**
@@ -213,16 +214,35 @@ public class WeekManager {
 
     quotes.setWrapText(true);
     notes.setWrapText(true);
-    //overview.setWrapText(true);
 
     quotes.setText(week.getQuotes());
     notes.setText(week.getNotes());
-    //overview.setEditable(false);
 
+    quotes.textProperty().addListener(e -> updateQuotes());
+    notes.textProperty().addListener(e -> updateNotes());
+  }
+
+  private void updateWeeklyStats() {
     // Show statistics for the Week in the GUI. At a minimum, include total Events and total Tasks, and percent of tasks completed.
-    String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %d", week.totalWeekEvents(), week.totalWeekTasks(), 10)
-        + "%"; // TODO: Add week.getPercentOfTotalTasksCompleted
-    //overview.setText(weeklyStats);
+    String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %,.2f", week.totalWeekEvents(), week.totalWeekTasks(), totalTaskCompletePercent())
+        + "%";
+    overview.getChildren().clear();
+    Label overviewLabel = new Label(weeklyStats);
+    overviewLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    overviewLabel.setFont(PalletManager.currentPallet.textFont());
+    overviewLabel.setWrapText(true);
+    overviewLabel.setPrefWidth(240);
+    overview.getChildren().add(overviewLabel);
+    overview.setStyle("-fx-background-color: " + PalletManager.currentPallet.overlayColor());
+    System.out.println("updating weekly status " + weeklyStats);
+  }
+
+  private double totalTaskCompletePercent() {
+    if (week.totalWeekTasks() == 0) {
+      return 0;
+    } else {
+      return ((double)week.totalCompleteTasks() / (double) week.totalWeekTasks()) * 100;
+    }
   }
 
   /**
@@ -371,5 +391,13 @@ public class WeekManager {
     Stage stage = new Stage();
     stage.setScene(updateWeekNameView.load());
     stage.show();
+  }
+
+  private void updateNotes() {
+    week.setNotes(notes.getText());
+  }
+
+  private void updateQuotes() {
+    week.setQuotes(quotes.getText());
   }
 }
