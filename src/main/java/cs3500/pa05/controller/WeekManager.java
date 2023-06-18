@@ -386,6 +386,11 @@ public class WeekManager {
     initWeek();
   }
 
+  public void removeActivity(Activity activity) {
+    week.removeActivity(activity);
+    initWeek();
+  }
+
   private void updateWeekNameDisplay() {
     weekName.setText(week.getName());
   }

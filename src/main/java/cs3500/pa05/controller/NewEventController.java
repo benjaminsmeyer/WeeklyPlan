@@ -34,6 +34,8 @@ public class NewEventController {
   @FXML
   private Button createEvent;
   @FXML
+  private Button deleteEvent;
+  @FXML
   private Label nameLabel;
   @FXML
   private TextField name;
@@ -100,6 +102,9 @@ public class NewEventController {
     createEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     createEvent.setOnAction(e -> createEvent());
 
+    deleteEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+    deleteEvent.setOnAction(e -> removeEvent());
+
     hour.textProperty().addListener(e -> handleTime(hour));
     minute.textProperty().addListener(e -> handleTime(minute));
 
@@ -132,6 +137,7 @@ public class NewEventController {
 
       windowLabel.setText("Edit Event");
       createEvent.setText("Save Edits");
+      deleteEvent.setText("Delete Event");
       duration.setText("" + event.getDuration());
     }
   }
@@ -263,6 +269,11 @@ public class NewEventController {
       Stage thisStage = (Stage) createEvent.getScene().getWindow();
       thisStage.close();
     }
+  }
+
+  private void removeEvent() {
+    WeekManager.weekManager.removeActivity(event);
+    WeekManager.weekManager.run();
   }
 
   private void handleTime(TextField textField) {
