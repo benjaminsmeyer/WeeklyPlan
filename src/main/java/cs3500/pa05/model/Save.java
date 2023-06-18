@@ -1,23 +1,18 @@
 package cs3500.pa05.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.json.ActivityJson;
 import cs3500.pa05.json.DayJson;
 import cs3500.pa05.json.EventJson;
+import cs3500.pa05.json.JsonUtils;
 import cs3500.pa05.json.TaskJson;
 import cs3500.pa05.json.WeekJson;
-import cs3500.pa05.model.Activity;
-import cs3500.pa05.model.Day;
-import cs3500.pa05.model.Event;
-import cs3500.pa05.model.FileWriter;
-import cs3500.pa05.model.Task;
-import cs3500.pa05.model.Week;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Save {
-  WeekJson savedWeek;
   FileWriter fileWriter;
   ObjectMapper mapper;
 
@@ -27,9 +22,9 @@ public class Save {
   }
 
   public void saveWeek(Week week) {
-    savedWeek = weekToJson(week);
+    JsonNode jsonResponse = JsonUtils.serializeRecord(weekToJson(week));
     try {
-      String str = mapper.writeValueAsString(savedWeek);
+      String str = mapper.writeValueAsString(jsonResponse);
       fileWriter.writeToFile(str);
     } catch (JsonProcessingException e) {
       System.out.println(e.getMessage());
@@ -59,19 +54,28 @@ public class Save {
   }
 
   private ActivityJson activityToJson(Activity activity) {
-    if (activity instanceof Event) {
-      return new ActivityJson(true, eventToJson((Event) activity), false, null);
-    } else {
-      return new ActivityJson(false, null, true, taskToJson((Task) activity));
+    return new ActivityJson(
+        activity instanceof Event,
+        eventToJson(activity),
+        activity instanceof Task,
+        taskToJson(activity)
+    );
+  }
+
+  private EventJson eventToJson(Activity activity) {
+    try {
+      return mapper.convertValue(activity, EventJson.class);
+    } catch (IllegalArgumentException e) {
+      return null;
     }
   }
 
-  private EventJson eventToJson(Event event) {
-    return mapper.convertValue(event, EventJson.class);
-  }
-
-  private TaskJson taskToJson(Task task) {
-    return mapper.convertValue(task, TaskJson.class);
+  private TaskJson taskToJson(Activity activity) {
+    try {
+      return mapper.convertValue(activity, TaskJson.class);
+    } catch (IllegalArgumentException e) {
+      return null;
+    }
   }
 
 }
