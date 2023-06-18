@@ -118,8 +118,8 @@ public class NewEventController {
       }
 
       String timeString = Utils.timeToString(event.getStartTime());
-      String hourString = timeString.substring(0,2);
-      String minuteString = timeString.substring(3, 5);
+      String hourString = timeString.substring(0,timeString.indexOf(":"));
+      String minuteString = timeString.substring(timeString.indexOf(":")+1, timeString.length());
 
       hour.setText(hourString);
       minute.setText(minuteString);
