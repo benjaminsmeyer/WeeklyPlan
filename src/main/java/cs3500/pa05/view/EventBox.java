@@ -1,79 +1,53 @@
 package cs3500.pa05.view;
 
-import cs3500.pa05.Constants;
-import cs3500.pa05.Utils;
 import cs3500.pa05.controller.NewEventController;
 import cs3500.pa05.controller.PalletManager;
 import cs3500.pa05.model.Event;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class EventBox extends VBox {
+public class EventBox extends ActivityBox {
   Event event;
+
+  /**
+   * Constructor for EventBox that takes a name, description, time, and the Event to render
+   *
+   * @param name the name of the Event
+   * @param description a description of the Event
+   * @param time the time of the Event
+   * @param event the Event to be rendered
+   */
   public EventBox(String name, String description, String time, Event event) {
-    Label nameLabel = new Label(name);
-    nameLabel.setFont(PalletManager.currentPallet.headerFont());
-    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    nameLabel.setWrapText(true);
-
-    Label descriptionLabel = new Label(description);
-    descriptionLabel.setFont(PalletManager.currentPallet.textFont());
-    descriptionLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    descriptionLabel.setOpacity(Constants.descriptionOpacity);
-    descriptionLabel.setWrapText(true);
-
-    Label timeLabel = new Label(time);
-    timeLabel.setFont(PalletManager.currentPallet.textFont());
-    timeLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    timeLabel.setOpacity(Constants.descriptionOpacity);
-    timeLabel.setWrapText(true);
+    createHeader(name);
+    createSubtext(description);
+    createSubtext(time);
 
     this.event = event;
-    getChildren().add(nameLabel);
-    getChildren().add(descriptionLabel);
-    getChildren().add(timeLabel);
     setup();
   }
 
+  /**
+   * A constructor for EventBox that takes a name, time, and the Event to be rendered
+   *
+   * @param name the name of the event
+   * @param time a description of the event
+   * @param event the Event to be rendered
+   */
   public EventBox(String name, String time, Event event) {
-    Label nameLabel = new Label(name);
-    nameLabel.setFont(Font.font(Constants.weekFont, FontWeight.SEMI_BOLD,
-        FontPosture.REGULAR, 15));
-    nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    nameLabel.setWrapText(true);
-
-
-    Label timeLabel = new Label(time);
-    timeLabel.setFont(PalletManager.currentPallet.textFont());
-    timeLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    timeLabel.setOpacity(Constants.descriptionOpacity);
-    timeLabel.setWrapText(true);
+    createHeader(name);
+    createSubtext(time);
 
     this.event = event;
-    getChildren().add(nameLabel);
-    getChildren().add(timeLabel);
     setup();
   }
 
-  private void setup() {
+  @Override
+  protected void setup() {
+    super.setup();
     setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
-    setPadding(new Insets(5, 5, 5, 5));
-    setAlignment(Pos.TOP_CENTER);
-    setMaxWidth(Constants.activityWidth);
-
-    setSpacing(10);
-    setOnMouseClicked(e -> editEvent());
-    Utils.setButtonCursorStatus(this);
   }
 
-  private void editEvent() {
+  @Override
+  protected void edit() {
     NewEventController newTaskController = new NewEventController(event);
     NewEventView newTaskView = new NewEventView(newTaskController);
 

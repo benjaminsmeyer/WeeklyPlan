@@ -121,32 +121,17 @@ public class WeekManager {
     weekView = new WeekView(this);
   }
 
-  @FXML
-  public void initialize(){
-    weekName.setOnMouseClicked(e -> updateWeekName());
-    setupPalletDropdown();
-    run();
-  }
-
-  private void setupPalletDropdown() {
-    for (int i = 0; i < PalletManager.themes.size(); i++) {
-      int finalI = i;
-      MenuItem nextItem = new MenuItem(PalletManager.themes.get(finalI).name());
-      nextItem.setOnAction
-          (e -> {PalletManager.setCurrentPallet(PalletManager.themes.get(finalI));
-            updateTheme();
-            run();
-            System.out.println(PalletManager.currentPallet.backgroundColor());});
-      themeDropDown.getItems().add(nextItem);
-    }
-  }
-
+  /**
+   * Creates a new WeekManager instance for the given Week
+   *
+   * @param week
+   */
   public static void setup(Week week) {
     weekManager = new WeekManager(week);
   }
 
   /**
-   * Starts the week controller
+   * Updates the week view. Should be called after any visual change to the week
    */
   public void run() {
     week.updateActivityDates();
@@ -155,15 +140,73 @@ public class WeekManager {
   }
 
   /**
+   * Called when the GUI loads in. Performs initial setup.
+   */
+  @FXML
+  public void initialize(){
+    weekName.setOnMouseClicked(e -> updateWeekName());
+    setupPalletDropdown();
+    run();
+  }
+
+  /**
+   * Loads the pallets into the pallet dropdown and adds ActionListeners to each of them
+   * that updates the pallet to the selected pallet
+   */
+  private void setupPalletDropdown() {
+    for (int i = 0; i < PalletManager.themes.size(); i++) {
+      int finalI = i;
+      MenuItem nextItem = new MenuItem(PalletManager.themes.get(finalI).name());
+      nextItem.setOnAction
+          (e -> updateTheme(PalletManager.themes.get(finalI)));
+      themeDropDown.getItems().add(nextItem);
+    }
+  }
+
+  /**
+   * Sets all Node color/font values to be those of the given Pallet
+   *
+   * @param pallet the color pallet to update to
+   */
+  private void updateTheme(Pallet pallet) {
+    PalletManager.setCurrentPallet(pallet);
+    updateTheme();
+    run();
+  }
+
+  /**
    * Initializes the week by placing all the events in the week and
    * naming all the days appropriately
    */
   private void initWeek() {
-    List<Day> days = week.getDays();
     setupDayLayout();
+    setupTaskQueue();
+    setupNotesAndQuotes();
+    setupDayLayouts();
+    updateTheme();
+    setupButtons();
+  }
+
+  /**
+   * Adds action listeners to all the buttons in the WeekView
+   */
+  private void setupButtons() {
+    newEvent.setOnAction(e -> openNewEventMenu());
+    newTask.setOnAction(e -> openNewTaskMenu());
+  }
+
+  /**
+   * Resets the Task Queue
+   */
+  private void setupTaskQueue() {
     tasksLayout.getChildren().clear();
     tasksLayout.getChildren().add(tasksName);
+  }
 
+  /**
+   * Resets the Notes, Quotes, and Overview fields
+   */
+  private void setupNotesAndQuotes() {
     notes.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     quotes.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
 
@@ -179,7 +222,13 @@ public class WeekManager {
     String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %d", week.totalWeekEvents(), week.totalWeekTasks(), 10)
         + "%"; // TODO: Add week.getPercentOfTotalTasksCompleted
     //overview.setText(weeklyStats);
+  }
 
+  /**
+   * Resets each day Layout
+   */
+  private void setupDayLayouts() {
+    List<Day> days = week.getDays();
     for (int i = 0; i < dayLayouts.size(); i ++) {
       dayLayouts.get(i).getChildren().clear();
 
@@ -209,13 +258,11 @@ public class WeekManager {
         }
       }
     }
-
-    updateTheme();
-
-    newEvent.setOnAction(e -> openNewEventMenu());
-    newTask.setOnAction(e -> openNewTaskMenu());
   }
 
+  /**
+   * Sets all Node color/font values to be those of the current Pallet
+   */
   private void updateTheme() {
     System.out.println(PalletManager.currentPallet.backgroundColor());
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
@@ -226,6 +273,7 @@ public class WeekManager {
     newTask.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     save.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     weekName.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+
     for (Label name : dayNames) {
       name.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     }
@@ -247,7 +295,7 @@ public class WeekManager {
     themeDropDown.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
     themeDropDown.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
 
-    //TODO: figure out how to change the background color of text fieles
+    //TODO: figure out how to change the background color of text fields
   }
 
   /**
@@ -273,6 +321,9 @@ public class WeekManager {
     dayNames.add(dayName7);
   }
 
+  /**
+   * Opens the menu for creating a new Event
+   */
   private void openNewEventMenu() {
     NewEventController newEventController = new NewEventController();
     NewEventView newEventView = new NewEventView(newEventController);
@@ -282,6 +333,9 @@ public class WeekManager {
     stage.show();
   }
 
+  /**
+   * Opens the menu for creating a new Task
+   */
   private void openNewTaskMenu() {
     NewTaskController newTaskController = new NewTaskController();
     NewTaskView newTaskView = new NewTaskView(newTaskController);
@@ -296,7 +350,7 @@ public class WeekManager {
    * @return the Scene representing this week
    */
   public Scene getScene() {
-    return weekView.loadScene();
+    return weekView.load();
   }
 
   public void addActivity(Activity activity) {

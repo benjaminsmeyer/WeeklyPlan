@@ -1,19 +1,11 @@
 package cs3500.pa05.view;
 
-import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.model.Activity;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Skin;
-import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.layout.VBox;
 
 public class DayView {
@@ -67,7 +59,7 @@ public class DayView {
    * Returns a VBox representing the given Task
    *
    * @param task The Task to render
-   * @returna VBox representing the given Task
+   * @return VBox representing the given Task
    */
   private static VBox renderTask(Task task) {
     if (!task.getDescription().equals("")) {

@@ -8,6 +8,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Manages the different Pallets
+ */
 public class PalletManager {
   public static Pallet currentPallet;
 
@@ -59,6 +62,11 @@ public class PalletManager {
   public static List<Pallet> themes
       = new ArrayList<>(Arrays.stream(new Pallet[]{defaultPallet, darkPallet, violetPallet}).toList());
 
+  /**
+   * Updates the current color Pallet being rendered
+   *
+   * @param pallet the pallet to set to be the current pallet
+   */
   public static void setCurrentPallet(Pallet pallet) {
     currentPallet = pallet;
   }
