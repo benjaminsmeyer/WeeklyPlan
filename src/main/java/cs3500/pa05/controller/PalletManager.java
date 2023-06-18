@@ -59,8 +59,39 @@ public class PalletManager {
       "#FF0000"
   );
 
+  public static Pallet bubblegumPallet = new Pallet(
+      "Bubble Gum",
+      "#E574BC",
+      "#F9B4ED",
+      "#E5F4E3",
+      "#FDF0D5",
+      "#FF8360",
+      Font.font("Comic Sans MS", FontWeight.NORMAL,
+          FontPosture.REGULAR, 15),
+      Font.font("Comic Sans MS", FontWeight.NORMAL,
+          FontPosture.REGULAR, 12),
+      "#1E2D24",
+      "#FF0000"
+  );
+
+  public static Pallet monoPallet = new Pallet(
+      "Monochrome",
+      "#717171",
+      "#979797",
+      "#e9e9e9",
+      "#c0c0c0",
+      "#efefef",
+      Font.font("Courier New", FontWeight.NORMAL,
+          FontPosture.REGULAR, 15),
+      Font.font("Courier New", FontWeight.NORMAL,
+          FontPosture.REGULAR, 12),
+      "#000000",
+      "#FFFFFF"
+  );
+
   public static List<Pallet> themes
-      = new ArrayList<>(Arrays.stream(new Pallet[]{defaultPallet, darkPallet, violetPallet}).toList());
+      = new ArrayList<>(Arrays.stream(new Pallet[]{defaultPallet, darkPallet,
+      violetPallet, bubblegumPallet, monoPallet}).toList());
 
   /**
    * Updates the current color Pallet being rendered
