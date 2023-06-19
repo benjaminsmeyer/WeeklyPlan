@@ -3,13 +3,13 @@ package cs3500.pa05.model;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cs3500.pa05.Constants;
-import cs3500.pa05.json.ActivityJson;
 import cs3500.pa05.json.DayJson;
+import cs3500.pa05.json.EventJson;
+import cs3500.pa05.json.TaskJson;
 import cs3500.pa05.json.TextJson;
 import cs3500.pa05.json.WeekJson;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -64,12 +64,24 @@ public class FileReader {
 
   private List<Activity> parseSchedule(DayJson dayJson) {
     List<Activity> activities = new ArrayList<>();
-    for (ActivityJson activity : dayJson.schedule()) {
-      if (activity.isEvent()) {
-        activities.add(mapper.convertValue(activity.event(), Event.class));
-      } else {
-        activities.add(mapper.convertValue(activity.task(), Task.class));
-      }
+
+    activities.addAll(parseEvents(dayJson));
+    activities.addAll(parseTasks(dayJson));
+    return activities;
+  }
+
+  private List<Activity> parseEvents(DayJson dayJson) {
+    List<Activity> activities = new ArrayList<>();
+    for (EventJson event : dayJson.events()) {
+      activities.add(mapper.convertValue(event, Event.class));
+    }
+    return activities;
+  }
+
+  private List<Activity> parseTasks(DayJson dayJson) {
+    List<Activity> activities = new ArrayList<>();
+    for (TaskJson task : dayJson.tasks()) {
+      activities.add(mapper.convertValue(task, Task.class));
     }
     return activities;
   }
