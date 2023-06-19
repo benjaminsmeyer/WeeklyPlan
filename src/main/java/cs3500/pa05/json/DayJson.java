@@ -38,9 +38,11 @@ import cs3500.pa05.model.DayOfWeek;
  * </p>
  *
  * @param dayOfWeek the day of the week represented by this day
- * @param schedule a list of activities for the day
+ * @param events a list of Event activities for the day
+ * @param tasks a list of Task activities for the day
  */
 public record DayJson(
     @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek,
-    @JsonProperty("schedule") ActivityJson[] schedule) {
+    @JsonProperty("events") EventJson[] events,
+    @JsonProperty("tasks") TaskJson[] tasks) {
 }
