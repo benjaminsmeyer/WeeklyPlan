@@ -49,7 +49,7 @@ public class Save {
    */
   private WeekJson weekToJson(Week week) {
     WeekJson response = new WeekJson(daysToJson(week.getDays()), week.getName(),
-        week.getMaxEvents(), week.getMaxTasks(), textToJson(week));
+        week.getMaxEvents(), week.getMaxTasks(), textToJson(week), week.getPalletName());
     return response;
   }
 

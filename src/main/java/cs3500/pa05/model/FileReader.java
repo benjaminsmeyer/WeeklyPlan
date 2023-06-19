@@ -24,6 +24,7 @@ public class FileReader {
   int maxTasks;
   String notes;
   String quotes;
+  String palletName;
 
   public void openFile(File file) {
     this.file = file;
@@ -34,7 +35,7 @@ public class FileReader {
       JsonParser parser = this.mapper.getFactory().createParser(file);
       WeekJson message = parser.readValueAs(WeekJson.class);
       delegateMessage(message);
-      return new Week(days, name, maxEvents, maxTasks, notes, quotes);
+      return new Week(days, name, maxEvents, maxTasks, notes, quotes, palletName);
     } catch (IOException e) {
       throw new IllegalStateException("Could not read from file " + file.getName());
       // Disconnected from server or parsing exception
@@ -43,7 +44,6 @@ public class FileReader {
 
   public static List<String> getAllBujoFiles() {
     List<String> names = Arrays.stream(new File(Constants.weekPath).list()).toList();
-    System.out.println(names.get(0));
     return names;
   }
 
@@ -52,6 +52,7 @@ public class FileReader {
     name = message.name();
     maxEvents = message.maxEvents();
     maxTasks = message.maxTasks();
+    palletName = message.palletName();
     parseTextJson(message.text());
   }
 

@@ -32,5 +32,6 @@ public record WeekJson(
     @JsonProperty("name") String name,
     @JsonProperty("maxEvents") int maxEvents,
     @JsonProperty("maxTasks") int maxTasks,
-    @JsonProperty("text") TextJson text) {
+    @JsonProperty("text") TextJson text,
+    @JsonProperty("palletName") String palletName) {
 }

@@ -93,6 +93,16 @@ public class PalletManager {
       = new ArrayList<>(Arrays.stream(new Pallet[]{defaultPallet, darkPallet,
       violetPallet, bubblegumPallet, monoPallet}).toList());
 
+  public static Pallet getPalletWithName(String name) {
+    for (Pallet p : themes) {
+      if (p.name().equals(name)) {
+        return p;
+      }
+    }
+
+    return null;
+  }
+
   /**
    * Updates the current color Pallet being rendered
    *

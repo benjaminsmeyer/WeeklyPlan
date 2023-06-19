@@ -1,6 +1,8 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.Constants;
+import cs3500.pa05.controller.PalletManager;
+import cs3500.pa05.controller.WeekManager;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class Week {
 
   private String notes;
   private String quotes;
+  private Pallet weekTheme;
   //List<String> categories;
 
   /**
@@ -29,6 +32,7 @@ public class Week {
     this.maxTasks = Integer.MAX_VALUE;
     this.notes = "";
     this.quotes = "";
+    this.weekTheme = PalletManager.defaultPallet;
   }
 
   public Week(List<Day> days, String name, int maxEvents, int maxTasks) {
@@ -38,16 +42,19 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = "";
     this.quotes = "";
+    this.weekTheme = PalletManager.defaultPallet;
   }
 
   public Week(List<Day> days, String name, int maxEvents, int maxTasks,
-              String notes, String quotes) {
+              String notes, String quotes, String palletName) {
     this.days = days;
     this.name = name;
     this.maxEvents = maxEvents;
     this.maxTasks = maxTasks;
     this.notes = notes;
     this.quotes = quotes;
+    this.weekTheme = PalletManager.getPalletWithName(palletName);
+    PalletManager.setCurrentPallet(weekTheme);
   }
 
   public Week(String name, int maxEvents, int maxTasks, DayOfWeek startDay) {
@@ -58,6 +65,7 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = "";
     this.quotes = "";
+    this.weekTheme = PalletManager.defaultPallet;
   }
 
 
@@ -72,6 +80,7 @@ public class Week {
     this.name = "My Week";
     this.notes = "";
     this.quotes = "";
+    this.weekTheme = PalletManager.defaultPallet;
   }
 
   public Week(DayOfWeek startingDay) {
@@ -81,6 +90,7 @@ public class Week {
     this.name = "Week";
     this.notes = "";
     this.quotes = "";
+    this.weekTheme = PalletManager.defaultPallet;
   }
 
   private void setWeekStart(DayOfWeek startingDay) {
@@ -251,5 +261,13 @@ public class Week {
     }
     return count;}
 
+  public String getPalletName() {
+    return this.weekTheme.name();
+  }
+
+  public void setPallet(Pallet pallet) {
+    PalletManager.setCurrentPallet(pallet);
+    this.weekTheme = pallet;
+  }
 
 }

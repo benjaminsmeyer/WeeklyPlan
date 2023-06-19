@@ -173,7 +173,7 @@ public class WeekManager {
    * @param pallet the color pallet to update to
    */
   private void updateTheme(Pallet pallet) {
-    PalletManager.setCurrentPallet(pallet);
+    this.week.setPallet(pallet);
     updateTheme();
     run();
   }
