@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * A task for the day.
  */
 public class Task extends Activity {
-  private boolean done;
+  private boolean complete;
 
   /**
    * Initializes the task.
@@ -24,21 +24,21 @@ public class Task extends Activity {
   @JsonCreator
   public Task(@JsonProperty("name") String name, @JsonProperty("description") String description, @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("complete") boolean complete) {
     super(name, description, dayOfWeek);
-    this.done = complete;
+    this.complete = complete;
   }
 
   /**
    * Set the task as complete.
    */
   public void complete() {
-    done = true;
+    complete = true;
   }
 
   /**
    * Set the task as incomplete.
    */
   public void incomplete() {
-    done = false;
+    complete = false;
   }
 
   /**
@@ -47,6 +47,6 @@ public class Task extends Activity {
    * @return true if task is complete, false otherwise.
    */
   public boolean isDone() {
-    return done;
+    return complete;
   }
 }

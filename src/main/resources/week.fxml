@@ -188,16 +188,13 @@
                                  <font>
                                     <Font name="SWItalc" size="33.0" />
                                  </font>
-                                 <padding>
-                                    <Insets left="50.0" />
-                                 </padding>
                               </Label>
                               <Label fx:id="quotesLabel" text="Quotes">
                                  <font>
                                     <Font name="SWItalc" size="33.0" />
                                  </font>
                                  <padding>
-                                    <Insets left="120.0" right="50.0" />
+                                    <Insets right="50.0" />
                                  </padding>
                               </Label>
                               <Label fx:id="overviewLabel" text="Overview">

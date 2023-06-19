@@ -136,7 +136,6 @@ public class WeekManager {
    * Updates the week view. Should be called after any visual change to the week
    */
   public void run() {
-    System.out.println("Running");
     week.updateActivityDates();
     updateWeekNameDisplay();
     initWeek();
@@ -181,7 +180,6 @@ public class WeekManager {
 
   private void save() {
     Save save = new Save(Constants.weekPath + this.week.getName());
-    System.out.println("Saving!!");
     save.saveWeek(this.week);
   }
 
@@ -385,12 +383,12 @@ public class WeekManager {
 
   public void addActivity(Activity activity) {
     week.addActivity(activity);
-    initWeek();
+    run();
   }
 
   public void removeActivity(Activity activity) {
     week.removeActivity(activity);
-    initWeek();
+    run();
   }
 
   private void updateWeekNameDisplay() {
