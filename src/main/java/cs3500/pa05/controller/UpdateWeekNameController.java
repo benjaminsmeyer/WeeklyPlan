@@ -69,6 +69,18 @@ public class UpdateWeekNameController {
     friday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
     saturday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
 
+    maxEventsField.setFont(PalletManager.currentPallet.textFont());
+    maxEventsField.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    maxTasksField.setFont(PalletManager.currentPallet.textFont());
+    maxTasksField.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    name.setFont(PalletManager.currentPallet.textFont());
+    name.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
     sunday.setOnAction(e -> selectDay(sunday));
     monday.setOnAction(e -> selectDay(monday));
     tuesday.setOnAction(e -> selectDay(tuesday));

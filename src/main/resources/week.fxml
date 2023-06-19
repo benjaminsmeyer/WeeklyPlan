@@ -214,7 +214,10 @@
                            <children>
                               <TextArea fx:id="notes" prefHeight="79.0" prefWidth="300.0" promptText="Enter notes here..." />
                               <TextArea fx:id="quotes" prefHeight="200.0" prefWidth="300.0" promptText="Enter quotes here..." />
-                              <VBox fx:id="overview" alignment="CENTER" prefHeight="124.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #FFFF;" />
+                              <VBox fx:id="overview" prefHeight="124.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #FFFF;">
+                                 <padding>
+                                    <Insets left="5.0" top="5.0" />
+                                 </padding></VBox>
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

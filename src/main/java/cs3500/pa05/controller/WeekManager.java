@@ -217,9 +217,6 @@ public class WeekManager {
    * Resets the Notes, Quotes, and Overview fields
    */
   private void setupNotesAndQuotes() {
-    notes.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
-    quotes.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
-
     quotes.setWrapText(true);
     notes.setWrapText(true);
 
@@ -322,7 +319,13 @@ public class WeekManager {
     themeDropDown.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
     themeDropDown.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
 
-    //TODO: figure out how to change the background color of text fields
+    quotes.setFont(PalletManager.currentPallet.textFont());
+    quotes.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    notes.setFont(PalletManager.currentPallet.textFont());
+    notes.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
   }
 
   /**

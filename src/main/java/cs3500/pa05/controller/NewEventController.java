@@ -102,6 +102,26 @@ public class NewEventController {
     am.setOnAction(e -> selectTime(am));
     pm.setOnAction(e -> selectTime(pm));
 
+    name.setFont(PalletManager.currentPallet.textFont());
+    name.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    description.setFont(PalletManager.currentPallet.textFont());
+    description.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    hour.setFont(PalletManager.currentPallet.textFont());
+    hour.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    minute.setFont(PalletManager.currentPallet.textFont());
+    minute.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    duration.setFont(PalletManager.currentPallet.textFont());
+    duration.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
     createEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     createEvent.setOnAction(e -> createEvent());
 

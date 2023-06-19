@@ -88,6 +88,15 @@ public class NewTaskController {
     friday.setOnAction(e -> selectDay(friday));
     saturday.setOnAction(e -> selectDay(saturday));
 
+
+    name.setFont(PalletManager.currentPallet.textFont());
+    name.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    description.setFont(PalletManager.currentPallet.textFont());
+    description.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
     createTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     createTask.setOnAction(e -> createTask());
 
