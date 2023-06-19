@@ -1,5 +1,8 @@
 package cs3500.pa05.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * A task for the day.
  */
@@ -18,7 +21,8 @@ public class Task extends Activity {
     incomplete();
   }
 
-  public Task(String name, String description, DayOfWeek dayOfWeek, boolean complete) {
+  @JsonCreator
+  public Task(@JsonProperty("name") String name, @JsonProperty("description") String description, @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("complete") boolean complete) {
     super(name, description, dayOfWeek);
     this.complete = complete;
   }

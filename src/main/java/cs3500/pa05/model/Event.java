@@ -1,5 +1,8 @@
 package cs3500.pa05.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Event for the day.
  */
@@ -16,7 +19,8 @@ public class Event extends Activity {
    * @param startTime the start time of the event
    * @param duration the duration of the event
    */
-  public Event(String name, String description, DayOfWeek dayOfWeek, int startTime, int duration) {
+  @JsonCreator
+  public Event(@JsonProperty("name") String name, @JsonProperty("description") String description, @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("startTime") int startTime, @JsonProperty("duration") int duration) {
     super(name, description, dayOfWeek);
     this.startTime = startTime;
     this.duration = duration;
