@@ -88,14 +88,9 @@
                   </children>
                </HBox>
                <CheckBox fx:id="complete" mnemonicParsing="false" text="Complete" />
-               <HBox prefHeight="100.0" prefWidth="176.0" spacing="20.0">
+               <HBox fx:id="buttonBox" prefHeight="100.0" prefWidth="176.0" spacing="20.0">
                   <children>
                      <Button fx:id="createTask" mnemonicParsing="false" text="Create Task">
-                        <cursor>
-                           <Cursor fx:constant="HAND" />
-                        </cursor>
-                     </Button>
-                     <Button fx:id="deleteTask" mnemonicParsing="false" text="Delete Task">
                         <cursor>
                            <Cursor fx:constant="HAND" />
                         </cursor>

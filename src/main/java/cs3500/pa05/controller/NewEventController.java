@@ -7,10 +7,12 @@ import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.view.NewEventView;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -34,6 +36,7 @@ public class NewEventController {
   @FXML
   private Button createEvent;
   @FXML
+  private HBox buttonBox;
   private Button deleteEvent;
   @FXML
   private Label nameLabel;
@@ -102,9 +105,6 @@ public class NewEventController {
     createEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
     createEvent.setOnAction(e -> createEvent());
 
-    deleteEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
-    deleteEvent.setOnAction(e -> removeEvent());
-
     hour.textProperty().addListener(e -> handleTime(hour));
     minute.textProperty().addListener(e -> handleTime(minute));
 
@@ -135,9 +135,15 @@ public class NewEventController {
         selectTime(am);
       }
 
+      deleteEvent = new Button("Delete Event");
+      deleteEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
+      deleteEvent.setFont(PalletManager.currentPallet.textFont());
+      deleteEvent.setOnAction(e -> removeEvent());
+      deleteEvent.setCursor(Cursor.HAND);
+      buttonBox.getChildren().add(deleteEvent);
+
       windowLabel.setText("Edit Event");
       createEvent.setText("Save Edits");
-      deleteEvent.setText("Delete Event");
       duration.setText("" + event.getDuration());
     }
   }
@@ -274,6 +280,9 @@ public class NewEventController {
   private void removeEvent() {
     WeekManager.weekManager.removeActivity(event);
     WeekManager.weekManager.run();
+
+    Stage thisStage = (Stage) createEvent.getScene().getWindow();
+    thisStage.close();
   }
 
   private void handleTime(TextField textField) {

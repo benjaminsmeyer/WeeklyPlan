@@ -6,6 +6,7 @@ import cs3500.pa05.model.Task;
 import cs3500.pa05.model.Week;
 import cs3500.pa05.view.NewTaskView;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -34,8 +35,9 @@ public class NewTaskController {
   private Button saturday;
   @FXML
   private Button createTask;
-  @FXML
   private Button deleteTask;
+  @FXML
+  private HBox buttonBox;
   @FXML
   private Label nameLabel;
   @FXML
@@ -88,10 +90,6 @@ public class NewTaskController {
 
     createTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     createTask.setOnAction(e -> createTask());
-    deleteTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    deleteTask.setOnAction(e -> removeTask());
-
-
 
     if (task != null) {
       name.setText(task.getName());
@@ -108,6 +106,13 @@ public class NewTaskController {
       }
 
       complete.setSelected(task.isDone());
+
+      deleteTask = new Button("Delete Event");
+      deleteTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+      deleteTask.setFont(PalletManager.currentPallet.textFont());
+      deleteTask.setOnAction(e -> removeTask());
+      deleteTask.setCursor(Cursor.HAND);
+      buttonBox.getChildren().add(deleteTask);
 
       windowLabel.setText("Edit Task");
       deleteTask.setText("Delete Event");
@@ -179,6 +184,9 @@ public class NewTaskController {
   private void removeTask() {
     WeekManager.weekManager.removeActivity(task);
     WeekManager.weekManager.run();
+
+    Stage thisStage = (Stage) createTask.getScene().getWindow();
+    thisStage.close();
   }
 
   private void updateTheme() {
