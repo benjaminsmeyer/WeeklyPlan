@@ -182,9 +182,9 @@
                   </HBox>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="78.0" prefWidth="1058.0" spacing="90.0">
+                        <HBox prefHeight="78.0" prefWidth="1058.0" spacing="250.0">
                            <children>
-                              <Label fx:id="notesLabel" text="Weekly Notes">
+                              <Label fx:id="notesLabel" text="Notes">
                                  <font>
                                     <Font name="SWItalc" size="33.0" />
                                  </font>
@@ -202,7 +202,7 @@
                                     <Font name="SWItalc" size="33.0" />
                                  </font>
                                  <padding>
-                                    <Insets left="80.0" />
+                                    <Insets left="-90.0" />
                                  </padding>
                               </Label>
                            </children>

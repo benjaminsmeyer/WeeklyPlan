@@ -326,6 +326,8 @@ public class WeekManager {
     notes.setFont(PalletManager.currentPallet.textFont());
     notes.setStyle(
         "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    themeDropDown.setCursor(Cursor.HAND);
   }
 
   /**

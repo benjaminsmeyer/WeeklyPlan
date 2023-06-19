@@ -22,9 +22,9 @@ public class Task extends Activity {
   }
 
   @JsonCreator
-  public Task(@JsonProperty("name") String name, @JsonProperty("description") String description, @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("complete") boolean complete) {
+  public Task(@JsonProperty("name") String name, @JsonProperty("description") String description, @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("done") boolean done) {
     super(name, description, dayOfWeek);
-    this.complete = complete;
+    this.complete = done;
   }
 
   /**

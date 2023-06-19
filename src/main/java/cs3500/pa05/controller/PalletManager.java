@@ -49,13 +49,13 @@ public class PalletManager {
       "#513B56",
       "#525174",
       "#348AA7",
-      "#5DD39E",
-      "#BCE784",
+      "#F87575",
+      "#A69658",
       Font.font("Jokerman", FontWeight.NORMAL,
           FontPosture.REGULAR, 15),
       Font.font("Jokerman", FontWeight.NORMAL,
           FontPosture.REGULAR, 12),
-      "#000000",
+      "#FFFFFF",
       "#FF0000"
   );
 
@@ -77,7 +77,7 @@ public class PalletManager {
   public static Pallet monoPallet = new Pallet(
       "Monochrome",
       "#717171",
-      "#979797",
+      "#c6c6c6",
       "#e9e9e9",
       "#c0c0c0",
       "#efefef",
