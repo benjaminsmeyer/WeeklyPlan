@@ -1,5 +1,8 @@
 package cs3500.pa05.model;
 
+import cs3500.pa05.Constants;
+import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -185,7 +188,9 @@ public class Week {
   }
 
   public void setName(String name) {
+    File thisFile = new File(Constants.weekPath + this.name + ".bujo");
     this.name = name;
+    thisFile.renameTo(new File(Constants.weekPath + this.name + ".bujo"));
   }
 
   public String getName() {
