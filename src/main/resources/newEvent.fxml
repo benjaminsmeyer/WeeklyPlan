@@ -127,11 +127,20 @@
                   </padding>
                </Label>
                <TextField fx:id="duration" promptText="Minutes (Required)" />
-               <Button fx:id="createEvent" mnemonicParsing="false" text="Create Event">
-                  <cursor>
-                     <Cursor fx:constant="HAND" />
-                  </cursor>
-               </Button>
+               <HBox prefHeight="200.0" prefWidth="176.0" spacing="20.0">
+                  <children>
+                     <Button fx:id="createEvent" mnemonicParsing="false" text="Create Event">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                     <Button fx:id="deleteEvent" mnemonicParsing="false" text="Delete Event">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor>
+                     </Button>
+                  </children>
+               </HBox>
             </children>
             <padding>
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

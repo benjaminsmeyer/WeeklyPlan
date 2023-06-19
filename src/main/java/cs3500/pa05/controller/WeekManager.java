@@ -149,6 +149,7 @@ public class WeekManager {
   @FXML
   public void initialize(){
     weekName.setOnMouseClicked(e -> updateWeekName());
+    save.setOnAction(e -> save());
     setupPalletDropdown();
     run();
   }
@@ -372,6 +373,7 @@ public class WeekManager {
     stage.setScene(newTaskView.load());
     stage.show();
   }
+
   /**
    * Returns the scene for this week
    *
@@ -383,6 +385,11 @@ public class WeekManager {
 
   public void addActivity(Activity activity) {
     week.addActivity(activity);
+    initWeek();
+  }
+
+  public void removeActivity(Activity activity) {
+    week.removeActivity(activity);
     initWeek();
   }
 

@@ -121,6 +121,10 @@ public class Day {
     schedule.add(activity);
   }
 
+  public void removeActivity(Activity activity) {
+    schedule.remove(activity);
+  }
+
   public DayOfWeek getDayOfWeek() {
     return dayOfWeek;
   }

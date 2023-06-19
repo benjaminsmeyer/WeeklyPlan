@@ -35,6 +35,8 @@ public class NewTaskController {
   @FXML
   private Button createTask;
   @FXML
+  private Button deleteTask;
+  @FXML
   private Label nameLabel;
   @FXML
   private TextField name;
@@ -86,6 +88,10 @@ public class NewTaskController {
 
     createTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     createTask.setOnAction(e -> createTask());
+    deleteTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    deleteTask.setOnAction(e -> removeTask());
+
+
 
     if (task != null) {
       name.setText(task.getName());
@@ -104,6 +110,7 @@ public class NewTaskController {
       complete.setSelected(task.isDone());
 
       windowLabel.setText("Edit Task");
+      deleteTask.setText("Delete Event");
       createTask.setText("Save Edits");
     }
   }
@@ -167,6 +174,11 @@ public class NewTaskController {
       Stage thisStage = (Stage) createTask.getScene().getWindow();
       thisStage.close();
     }
+  }
+
+  private void removeTask() {
+    WeekManager.weekManager.removeActivity(task);
+    WeekManager.weekManager.run();
   }
 
   private void updateTheme() {

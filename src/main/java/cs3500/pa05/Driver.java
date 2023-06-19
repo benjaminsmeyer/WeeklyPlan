@@ -24,7 +24,7 @@ public class Driver extends Application {
   }
 
   @Override
-  public void start(Stage primaryStage) throws Exception {
+  public void start(Stage primaryStage) {
     OpeningWindowController updateWeekNameController = new OpeningWindowController();
     OpeningWindowViewer updateWeekNameView = new OpeningWindowViewer(updateWeekNameController);
 

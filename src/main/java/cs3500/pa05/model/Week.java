@@ -146,6 +146,14 @@ public class Week {
     }
   }
 
+  public void removeActivity(Activity activity) {
+    for (Day day : days) {
+      if (activity.getDayOfWeek() == day.getDayOfWeek()) {
+        day.removeActivity(activity);
+      }
+    }
+  }
+
   public void updateActivityDates() {
     List<Activity> activities = getAllActivities();
     clearDayActivities();

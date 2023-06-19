@@ -3,7 +3,6 @@ package cs3500.pa05.model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cs3500.pa05.json.ActivityJson;
 import cs3500.pa05.json.DayJson;
 import cs3500.pa05.json.EventJson;
 import cs3500.pa05.json.JsonUtils;
@@ -73,65 +72,24 @@ public class Save {
   private DayJson[] daysToJson(List<Day> days) {
     List<DayJson> week = new ArrayList<>();
     for (Day day : days) {
-      week.add(new DayJson(day.getDayOfWeek(), activitiesToJson(day.getSchedule())));
+      week.add(new DayJson(day.getDayOfWeek(), eventsToJson(day), tasksToJson(day)));
     }
     return week.toArray(DayJson[]::new);
   }
 
-  /**
-   * Converts a list of Activity into an array of ActivityJson.
-   *
-   * @param activities the list of activities being given
-   * @return  the corresponding array of ActivityJson to the days
-   */
-  private ActivityJson[] activitiesToJson(List<Activity> activities) {
-    List<ActivityJson> schedule = new ArrayList<>();
-    for (Activity activity : activities) {
-      schedule.add(activityToJson(activity));
+  private EventJson[] eventsToJson(Day day) {
+    List<EventJson> events = new ArrayList<>();
+    for (Event event : day.getEvents()) {
+      events.add(mapper.convertValue(event, EventJson.class));
     }
-    return schedule.toArray(ActivityJson[]::new);
+    return events.toArray(EventJson[]::new);
   }
 
-  /**
-   * Converts an individual activity to its corresponding Json.
-   *
-   * @param activity the activity to be converted
-   * @return  the converted activity
-   */
-  private ActivityJson activityToJson(Activity activity) {
-    return new ActivityJson(
-        activity instanceof Event,
-        eventToJson(activity),
-        activity instanceof Task,
-        taskToJson(activity)
-    );
-  }
-
-  /**
-   * Converts an activity into an EventJson.
-   *
-   * @param activity the activity to be converted
-   * @return  the corresponding EventJson or null
-   */
-  private EventJson eventToJson(Activity activity) {
-    try {
-      return mapper.convertValue(activity, EventJson.class);
-    } catch (IllegalArgumentException e) {
-      return null;
+  private TaskJson[] tasksToJson(Day day) {
+    List<TaskJson> tasks = new ArrayList<>();
+    for (Task task : day.getTasks()) {
+      tasks.add(mapper.convertValue(task, TaskJson.class));
     }
-  }
-
-  /**
-   * Converts an activity into an TaskJson.
-   *
-   * @param activity the activity to be converted
-   * @return  the corresponding TaskJson or null
-   */
-  private TaskJson taskToJson(Activity activity) {
-    try {
-      return mapper.convertValue(activity, TaskJson.class);
-    } catch (IllegalArgumentException e) {
-      return null;
-    }
+    return tasks.toArray(TaskJson[]::new);
   }
 }
