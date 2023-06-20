@@ -18,6 +18,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+/**
+ * New Task Controller
+ */
 public class NewTaskController {
   @FXML
   private Button sunday;
@@ -57,9 +60,7 @@ public class NewTaskController {
   private Button selectedButton;
   private Task task;
 
-  public NewTaskController() {
-
-  }
+  public NewTaskController() {}
 
   public NewTaskController(Task task) {
     this.task = task;

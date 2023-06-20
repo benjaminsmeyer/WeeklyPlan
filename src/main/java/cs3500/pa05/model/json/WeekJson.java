@@ -1,7 +1,6 @@
-package cs3500.pa05.json;
+package cs3500.pa05.model.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.jar.JarOutputStream;
 
 /**
  * JSON format of this record:

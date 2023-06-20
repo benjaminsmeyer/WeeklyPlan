@@ -3,12 +3,12 @@ package cs3500.pa05.model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cs3500.pa05.json.DayJson;
-import cs3500.pa05.json.EventJson;
-import cs3500.pa05.json.JsonUtils;
-import cs3500.pa05.json.TaskJson;
-import cs3500.pa05.json.TextJson;
-import cs3500.pa05.json.WeekJson;
+import cs3500.pa05.model.json.DayJson;
+import cs3500.pa05.model.json.EventJson;
+import cs3500.pa05.model.json.JsonUtils;
+import cs3500.pa05.model.json.TaskJson;
+import cs3500.pa05.model.json.TextJson;
+import cs3500.pa05.model.json.WeekJson;
 import java.util.ArrayList;
 import java.util.List;
 

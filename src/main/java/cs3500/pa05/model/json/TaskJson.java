@@ -1,4 +1,4 @@
-package cs3500.pa05.json;
+package cs3500.pa05.model.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import cs3500.pa05.model.DayOfWeek;
@@ -19,7 +19,7 @@ import cs3500.pa05.model.DayOfWeek;
  * @param name the name of the task
  * @param description the description of the task
  * @param dayOfWeek the day of the week
- * @param complete if the task is complete
+ * @param done if the task is complete
  */
 public record TaskJson(
     @JsonProperty("name") String name,
