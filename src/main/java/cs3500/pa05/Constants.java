@@ -7,7 +7,6 @@ import javafx.scene.paint.Paint;
  * Constant variables to use throughout the class
  */
 public final class Constants {
-
   public static final int activityWidth = 120;
   public static final int defaultBorderRadius = 18;
 

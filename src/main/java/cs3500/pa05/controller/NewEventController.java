@@ -18,6 +18,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+/**
+ * New Event Controller
+ */
 public class NewEventController {
   @FXML
   private Button sunday;
@@ -70,14 +73,23 @@ public class NewEventController {
   private Button selectedTime;
   private Event event;
 
-  public NewEventController() {
+  /**
+   * Initializes a new event controller.
+   */
+  public NewEventController() {}
 
-  }
-
+  /**
+   * Initializes a new event controller.
+   *
+   * @param event the event
+   */
   public NewEventController(Event event) {
     this.event = event;
   }
 
+  /**
+   * Initializes the GUI.
+   */
   @FXML
   public void initialize() {
     updateTheme();
@@ -168,6 +180,11 @@ public class NewEventController {
     }
   }
 
+  /**
+   * Selects the day.
+   *
+   * @param button selected day button
+   */
   private void selectDay(Button button) {
     if (selectedDay != null) {
       selectedDay.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
@@ -185,6 +202,11 @@ public class NewEventController {
     } */
   }
 
+  /**
+   * Selects the time.
+   *
+   * @param button selected time button
+   */
   private void selectTime(Button button) {
     if (selectedTime != null) {
       selectedTime.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
@@ -193,6 +215,9 @@ public class NewEventController {
     selectedTime.setStyle("-fx-background-color: " + Constants.taskSelectedColor);
   }
 
+  /**
+   * Creates an event.
+   */
   private void createEvent() {
     boolean validInput = true;
     String nameText = name.getText();
@@ -297,6 +322,9 @@ public class NewEventController {
     }
   }
 
+  /**
+   * Removes the event.
+   */
   private void removeEvent() {
     WeekManager.weekManager.removeActivity(event);
     WeekManager.weekManager.run();
@@ -305,12 +333,20 @@ public class NewEventController {
     thisStage.close();
   }
 
+  /**
+   * Handles the time.
+   *
+   * @param textField the text field for time
+   */
   private void handleTime(TextField textField) {
     if (textField.getText().length() > 2) {
       textField.setText(textField.getText(0, 2));
     }
   }
 
+  /**
+   * Updates the GUI theme.
+   */
   private void updateTheme() {
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
     windowLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));

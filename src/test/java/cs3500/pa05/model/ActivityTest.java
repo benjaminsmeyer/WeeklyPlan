@@ -13,34 +13,34 @@ class ActivityTest {
   }
 
   @Test
-  void getName() {
+  void getNameTest() {
     assertEquals("task", activity.getName());
   }
 
   @Test
-  void getDescription() {
+  void getDescriptionTest() {
     assertEquals("description", activity.getDescription());
   }
 
   @Test
-  void getDayOfWeek() {
+  void getDayOfWeekTest() {
     assertEquals(DayOfWeek.MONDAY, activity.getDayOfWeek());
   }
 
   @Test
-  void setDayOfWeek() {
+  void setDayOfWeekTest() {
     activity.setDayOfWeek(DayOfWeek.SATURDAY);
     assertEquals(DayOfWeek.SATURDAY, activity.getDayOfWeek());
   }
 
   @Test
-  void setName() {
+  void setNameTest() {
     activity.setName("new name");
     assertEquals("new name", activity.getName());
   }
 
   @Test
-  void setDescription() {
+  void setDescriptionTest() {
     activity.setDescription("new description");
     assertEquals("new description", activity.getDescription());
   }

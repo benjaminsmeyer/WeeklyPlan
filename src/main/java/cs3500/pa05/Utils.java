@@ -38,16 +38,33 @@ public class Utils {
     return hour + ":" + ((minutes < 10)? "0" + minutes : minutes) + ((pm)? "PM" : "AM");
   }
 
+  /**
+   * Converts the day of the week to a string.
+   *
+   * @param dayOfWeek the day of the week
+   * @return a string of the day of the week
+   */
   public static String dayOfWeekToString(DayOfWeek dayOfWeek) {
     return dayOfWeek.toString().charAt(0)
         + dayOfWeek.toString().substring(1).toLowerCase();
   }
 
+  /**
+   * Sets the button cursor status.
+   *
+   * @param n the button status
+   */
   public static void setButtonCursorStatus(Node n) {
     n.setOnMouseEntered(e -> n.getScene().setCursor(Cursor.HAND));
     n.setOnMouseExited(e -> n.getScene().setCursor(Cursor.DEFAULT));
   }
 
+  /**
+   * Sets the default label.
+   *
+   * @param text the default label
+   * @return the new label with its text
+   */
   public static Label defaultLabel(String text) {
     Label label = new Label(text);
     label.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
@@ -57,6 +74,13 @@ public class Utils {
     return label;
   }
 
+  /**
+   * Sets the default label with its paint color.
+   *
+   * @param text the default label text
+   * @param color the color of the default label
+   * @return the new label with its text and color
+   */
   public static Label defaultLabel(String text, Paint color) {
     Label label = defaultLabel(text);
     label.setTextFill(color);
