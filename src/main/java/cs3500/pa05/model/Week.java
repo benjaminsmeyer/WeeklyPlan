@@ -118,21 +118,6 @@ public class Week {
     this.weekTheme = PalletManager.defaultPallet;
   }
 
-
-  /**
-   * Convenience constructor for Week. Initializes a week with empty days.
-   */
-  public Week() {
-    days = new ArrayList<>();
-    setWeekStart(DayOfWeek.SUNDAY);
-    this.maxEvents = Integer.MAX_VALUE;
-    this.maxTasks = Integer.MAX_VALUE;
-    this.name = "My Week";
-    this.notes = "";
-    this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
-  }
-
   /**
    * Week constructor.
    *

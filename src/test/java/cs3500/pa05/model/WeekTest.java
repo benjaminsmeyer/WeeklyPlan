@@ -48,9 +48,6 @@ class WeekTest {
 
   @Test
   void testContructors() {
-    Week emptyWeek = new Week();
-    assertEquals(DayOfWeek.SUNDAY, emptyWeek.getStartOfWeek());
-
     Week dayWeek = new Week(DayOfWeek.MONDAY);
     assertEquals(DayOfWeek.MONDAY, dayWeek.getStartOfWeek());
 
