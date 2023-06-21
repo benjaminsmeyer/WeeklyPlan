@@ -9,12 +9,12 @@ import java.util.List;
 import javafx.scene.layout.VBox;
 
 /**
- * Day view
+ * Day view.
  */
 public class DayView {
 
   /**
-   * Returns a list of VBox with a rendered version of each of the given activities
+   * Returns a list of VBox with a rendered version of each of the given activities.
    *
    * @param activities a list of activities to render
    * @return list of VBoxes with corresponding to the given list of activities
@@ -36,7 +36,7 @@ public class DayView {
   }
 
   /**
-   * Returns a VBox representing the given event
+   * Returns a VBox representing the given event.
    *
    * @param event the Event to render
    * @return a VBox representing the given Event
@@ -59,7 +59,7 @@ public class DayView {
   }
 
   /**
-   * Returns a VBox representing the given Task
+   * Returns a VBox representing the given Task.
    *
    * @param task The Task to render
    * @return VBox representing the given Task

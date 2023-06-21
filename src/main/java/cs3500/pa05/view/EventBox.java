@@ -6,13 +6,13 @@ import cs3500.pa05.model.Event;
 import javafx.stage.Stage;
 
 /**
- * Event box
+ * Event box.
  */
 public class EventBox extends ActivityBox {
   private Event event;
 
   /**
-   * Constructor for EventBox that takes a name, description, time, and the Event to render
+   * Constructor for EventBox that takes a name, description, time, and the Event to render.
    *
    * @param name        the name of the Event
    * @param description a description of the Event
@@ -29,7 +29,7 @@ public class EventBox extends ActivityBox {
   }
 
   /**
-   * A constructor for EventBox that takes a name, time, and the Event to be rendered
+   * A constructor for EventBox that takes a name, time, and the Event to be rendered.
    *
    * @param name  the name of the event
    * @param time  a description of the event

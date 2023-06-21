@@ -10,12 +10,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 /**
- * Activity box
+ * Activity box.
  */
 public abstract class ActivityBox extends VBox {
 
   /**
-   * Initializes the settings on this ActivityBox
+   * Initializes the settings on this ActivityBox.
    */
   protected void setup() {
     setPadding(new Insets(5, 5, 5, 5));
@@ -28,12 +28,12 @@ public abstract class ActivityBox extends VBox {
   }
 
   /**
-   * Opens a new Stage that allows the user to edit or create a new Activity
+   * Opens a new Stage that allows the user to edit or create a new Activity.
    */
   protected abstract void edit();
 
   /**
-   * Creates a new Header label and adds it to this HBox's children
+   * Creates a new Header label and adds it to this HBox's children.
    *
    * @param text the text to render
    */
@@ -46,7 +46,7 @@ public abstract class ActivityBox extends VBox {
   }
 
   /**
-   * Creates a new subtext label and adds it to this HBox's children
+   * Creates a new subtext label and adds it to this HBox's children.
    *
    * @param text the text to render
    */
