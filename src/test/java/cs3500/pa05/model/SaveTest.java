@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.text.Font;
 import org.junit.jupiter.api.Test;
 
 class SaveTest {
@@ -24,6 +25,17 @@ class SaveTest {
     days.add(new Day(DayOfWeek.THURSDAY));
     days.add(new Day(DayOfWeek.FRIDAY));
     days.add(new Day(DayOfWeek.SATURDAY));
+
+    Pallet pallet = new Pallet("name",
+        "backgroundColor",
+        "overlayColor",
+        "taskColor",
+        "eventColor",
+        "saveColor",
+        Font.font("Times"),
+        Font.font("Times"),
+        "validTextColor",
+        "invalidTextColor");
 
     Week week = new Week(days, "test week");
     Save save = new Save("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
