@@ -7,10 +7,16 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for Day class.
+ */
 class DayTest {
   private Day emptyDay;
   private Day day;
 
+  /**
+   * Set up Day instances for tests.
+   */
   @BeforeEach
   void setUp() {
     emptyDay = new Day(DayOfWeek.SUNDAY);
@@ -23,6 +29,9 @@ class DayTest {
     day = new Day(DayOfWeek.SUNDAY, activities);
   }
 
+  /**
+   * Test getSchedule function.
+   */
   @Test
   void getScheduleTest() {
     List<Activity> schedule = emptyDay.getSchedule();
@@ -32,6 +41,9 @@ class DayTest {
     assertEquals(3, schedule.size());
   }
 
+  /**
+   * Test getTasks function.
+   */
   @Test
   void getTasksTest() {
     List<Task> tasks = day.getTasks();
@@ -39,6 +51,9 @@ class DayTest {
     assertEquals("task", tasks.get(0).getName());
   }
 
+  /**
+   * Test getEvents function.
+   */
   @Test
   void getEventsTest() {
     List<Event> events = day.getEvents();
@@ -46,18 +61,27 @@ class DayTest {
     assertEquals("event", events.get(0).getName());
   }
 
+  /**
+   * Test countEvents function.
+   */
   @Test
   void countEventsTest() {
     assertEquals(1, day.countEvents());
     assertEquals(day.getEvents().size(), day.countEvents());
   }
 
+  /**
+   * Test countTasks function.
+   */
   @Test
   void countTasksTest() {
     assertEquals(2, day.countTasks());
     assertEquals(day.getTasks().size(), day.countTasks());
   }
 
+  /**
+   * Test countCompletedTasks function.
+   */
   @Test
   void countCompletedTasksTest() {
     assertEquals(0, day.countCompletedTasks());
@@ -66,6 +90,9 @@ class DayTest {
     assertEquals(1, day.countCompletedTasks());
   }
 
+  /**
+   * Test addActivity function.
+   */
   @Test
   void addActivityTest() {
     assertEquals(1, day.countEvents());
@@ -73,6 +100,9 @@ class DayTest {
     assertEquals(2, day.countEvents());
   }
 
+  /**
+   * Test removeActivity function.
+   */
   @Test
   void removeActivityTest() {
     assertEquals(1, day.countEvents());
@@ -80,6 +110,9 @@ class DayTest {
     assertEquals(0, day.countEvents());
   }
 
+  /**
+   * Test getDayOfWeek function.
+   */
   @Test
   void getDayOfWeekTest() {
     assertEquals(DayOfWeek.SUNDAY, day.getDayOfWeek());

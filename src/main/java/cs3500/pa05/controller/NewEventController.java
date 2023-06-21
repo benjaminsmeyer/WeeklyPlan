@@ -123,7 +123,7 @@ public class NewEventController {
 
       String timeString = Utils.timeToString(event.getStartTime());
       String hourString = timeString.substring(0, timeString.indexOf(":"));
-      String minuteString = timeString.substring(timeString.indexOf(":") + 1, timeString.length());
+      String minuteString = timeString.substring(timeString.indexOf(":") + 1);
 
       hour.setText(hourString);
       minute.setText(minuteString);
@@ -137,7 +137,7 @@ public class NewEventController {
       deleteEventSpecifications();
       windowLabel.setText("Edit Event");
       createEvent.setText("Save Edits");
-      duration.setText("" + event.getDuration());
+      duration.setText(String.valueOf(event.getDuration()));
     }
   }
 
@@ -271,7 +271,7 @@ public class NewEventController {
       validInput = false;
     }
 
-    boolean validTime = true;
+    validTime = true;
     boolean pm = false;
     if (selectedTime == null) {
       invalidInput();

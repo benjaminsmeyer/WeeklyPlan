@@ -7,13 +7,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 
-class FileWriteTest {
+/**
+ * Test class for FileWriter class.
+ */
+class FileWriterTest {
 
+  /**
+   * Tests writeToFile function.
+   */
   @Test
   void writeToFileTest() {
     String filePath = "src/test/testfiles/weekTest.bujo";
-    FileWrite fileWrite = new FileWrite(filePath);
-    fileWrite.writeToFile("hello");
+    FileWriter fileWriter = new FileWriter(filePath);
+    fileWriter.writeToFile("hello");
 
     try {
       assertEquals("hello", Files.readString(Path.of(filePath)));

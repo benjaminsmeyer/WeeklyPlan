@@ -3,7 +3,7 @@ package cs3500.pa05.model;
 import javafx.scene.text.Font;
 
 /**
- * Pallet of each theme
+ * Pallet of each theme.
  *
  * @param name             the name of theme
  * @param backgroundColor  color of theme

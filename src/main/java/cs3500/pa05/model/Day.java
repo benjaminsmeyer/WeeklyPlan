@@ -7,12 +7,12 @@ import java.util.List;
  * Create a Day.
  */
 public class Day {
-  private List<Activity> schedule;
-  private DayOfWeek dayOfWeek;
+  private final List<Activity> schedule;
+  private final DayOfWeek dayOfWeek;
 
 
   /**
-   * Default constructor for day
+   * Default constructor for day.
    *
    * @param dayOfWeek the day of the week represented by this day
    * @param schedule  a list of events for the day
@@ -24,7 +24,7 @@ public class Day {
 
   /**
    * A convenience constructor for Day. Initializes it with an empty list of activities
-   * and a max number of maxEvents
+   * and a max number of maxEvents.
    *
    * @param dayOfWeek the day of the week represented by this day
    */
@@ -33,6 +33,11 @@ public class Day {
     this.schedule = new ArrayList<>();
   }
 
+  /**
+   * Returns all activities stored in this Day.
+   *
+   * @return all activities stored in this Day
+   */
   public List<Activity> getSchedule() {
     return schedule;
   }
@@ -72,7 +77,7 @@ public class Day {
   }
 
   /**
-   * Count total events
+   * Count total events.
    *
    * @return the total of events
    */
@@ -85,7 +90,7 @@ public class Day {
   }
 
   /**
-   * Count total tasks
+   * Count total tasks.
    *
    * @return the total of tasks
    */
@@ -98,7 +103,7 @@ public class Day {
   }
 
   /**
-   * Count total of completed tasks
+   * Count total of completed tasks.
    *
    * @return the total of completed of tasks
    */
@@ -131,7 +136,7 @@ public class Day {
   }
 
   /**
-   * Gets the day of the week
+   * Gets the day of the week.
    *
    * @return the day of the week
    */

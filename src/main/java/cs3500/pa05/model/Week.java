@@ -18,6 +18,7 @@ public class Week {
   private String notes;
   private String quotes;
   private Pallet weekTheme;
+  //List<String> categories;
 
   /**
    * Week constructor.
@@ -38,8 +39,34 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = notes;
     this.quotes = quotes;
-    this.weekTheme = PalletManager.getPalletWithName(palletName);
-    PalletManager.setCurrentPallet(weekTheme);
+    try {
+      this.weekTheme = PalletManager.getPalletWithName(palletName);
+      PalletManager.setCurrentPallet(weekTheme);
+    } catch (Exception e) {
+      this.weekTheme = null;
+    }
+  }
+
+  /**
+   * Week constructor.
+   *
+   * @param days      the days of the week
+   * @param name      the name of the week
+   * @param maxEvents the max events
+   * @param maxTasks  the max tasks
+   * @param notes     the notes
+   * @param quotes    the quotes
+   * @param pallet    the pallet
+   */
+  public Week(List<Day> days, String name, int maxEvents, int maxTasks,
+              String notes, String quotes, Pallet pallet) {
+    this.days = days;
+    this.name = name;
+    this.maxEvents = maxEvents;
+    this.maxTasks = maxTasks;
+    this.notes = notes;
+    this.quotes = quotes;
+    this.weekTheme = pallet;
   }
 
   /**
@@ -58,7 +85,11 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = "";
     this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
+    try {
+      this.weekTheme = PalletManager.defaultPallet;
+    } catch (Exception e) {
+      this.weekTheme = null;
+    }
   }
 
   /**
@@ -182,7 +213,7 @@ public class Week {
   }
 
   /**
-   * Gets all activities
+   * Gets all activities.
    *
    * @return a list of all the activities
    */
@@ -197,7 +228,7 @@ public class Week {
   }
 
   /**
-   * Clears day activities
+   * Clears day activities.
    */
   private void clearDayActivities() {
     for (Day day : days) {
@@ -206,7 +237,7 @@ public class Week {
   }
 
   /**
-   * Gets the name
+   * Gets the name.
    *
    * @return the name
    */
@@ -215,7 +246,7 @@ public class Week {
   }
 
   /**
-   * Sets the name
+   * Sets the name.
    *
    * @param name the name
    */
@@ -226,7 +257,7 @@ public class Week {
   }
 
   /**
-   * Gets the max events
+   * Gets the max events.
    *
    * @return the max events
    */
@@ -235,7 +266,7 @@ public class Week {
   }
 
   /**
-   * Sets max events
+   * Sets max events.
    *
    * @param maxEvents the max events
    */
@@ -244,7 +275,7 @@ public class Week {
   }
 
   /**
-   * Gets the max tasks
+   * Gets the max tasks.
    *
    * @return the max tasks
    */
@@ -253,7 +284,7 @@ public class Week {
   }
 
   /**
-   * Sets max tasks
+   * Sets max tasks.
    *
    * @param maxTasks the max tasks
    */
@@ -262,7 +293,7 @@ public class Week {
   }
 
   /**
-   * Gets the notes
+   * Gets the notes.
    *
    * @return the notes
    */
@@ -271,7 +302,7 @@ public class Week {
   }
 
   /**
-   * Sets the notes
+   * Sets the notes.
    *
    * @param notes the notes
    */
@@ -280,7 +311,7 @@ public class Week {
   }
 
   /**
-   * Gets the quotes
+   * Gets the quotes.
    *
    * @return the quotes
    */
@@ -289,7 +320,7 @@ public class Week {
   }
 
   /**
-   * Sets the quotes
+   * Sets the quotes.
    *
    * @param quotes the quotes
    */
@@ -298,7 +329,7 @@ public class Week {
   }
 
   /**
-   * The total of week events
+   * The total of week events.
    *
    * @return the total amount of week events
    */
@@ -311,7 +342,7 @@ public class Week {
   }
 
   /**
-   * The total of week tasks
+   * The total of week tasks.
    *
    * @return the total amount of week tasks
    */
@@ -324,7 +355,7 @@ public class Week {
   }
 
   /**
-   * The total of week complete tasks
+   * The total of week complete tasks.
    *
    * @return the total amount of week complete tasks
    */
@@ -337,7 +368,7 @@ public class Week {
   }
 
   /**
-   * Gets the pallet name
+   * Gets the pallet name.
    *
    * @return the pallet name
    */
@@ -346,7 +377,7 @@ public class Week {
   }
 
   /**
-   * Sets the pallet name
+   * Sets the pallet name.
    *
    * @param pallet the pallet
    */

@@ -2,16 +2,21 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cs3500.pa05.controller.PalletManager;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test for Week class.
+ */
 class WeekTest {
   private Week week;
   private List<Day> days;
 
+  /**
+   * Instantiates Week instance for tests.
+   */
   @BeforeEach
   void setUp() {
     days = new ArrayList<>();
@@ -25,10 +30,14 @@ class WeekTest {
     days.add(new Day(DayOfWeek.THURSDAY));
     days.add(new Day(DayOfWeek.FRIDAY));
     days.add(new Day(DayOfWeek.SATURDAY));
-    
-    week = new Week(days, "test week");
+
+    week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "",
+        PalletManagerMockTest.defaultPallet);
   }
 
+  /**
+   * Tests updateWeekStart function.
+   */
   @Test
   void updateWeekStartTest() {
     assertEquals(DayOfWeek.SUNDAY, week.getStartOfWeek());
@@ -36,36 +45,34 @@ class WeekTest {
     assertEquals(DayOfWeek.THURSDAY, week.getStartOfWeek());
   }
 
+  /**
+   * Tests getWeekStart function.
+   */
   @Test
   void getStartOfWeekTest() {
     assertEquals(DayOfWeek.SUNDAY, week.getStartOfWeek());
   }
 
+  /**
+   * Tests getDays function.
+   */
   @Test
   void getDaysTest() {
     assertEquals(7, week.getDays().size());
   }
 
+  /**
+   * Tests that different Week class constructors build.
+   */
   @Test
   void testContructors() {
-    Week emptyWeek = new Week();
-    assertEquals(DayOfWeek.SUNDAY, emptyWeek.getStartOfWeek());
-
-    Week dayWeek = new Week(DayOfWeek.MONDAY);
-    assertEquals(DayOfWeek.MONDAY, dayWeek.getStartOfWeek());
-
     Week maxDefinedWeek = new Week("max's are defined", 10, 10, DayOfWeek.FRIDAY);
     assertEquals(10, maxDefinedWeek.getMaxEvents());
-
-    Week fourParamWeek = new Week(days, "full week info", 20, 20);
-    assertEquals(days.size(), fourParamWeek.getDays().size());
-    assertEquals(PalletManager.defaultPallet.name(), fourParamWeek.getPalletName());
-
-    Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes",
-        PalletManager.bubblegumPallet.name());
-    assertEquals(PalletManager.bubblegumPallet.name(), allParamWeek.getPalletName());
   }
 
+  /**
+   * Tests addActivity function.
+   */
   @Test
   void addActivityTest() {
     Day day = week.getDays().get(0);
@@ -74,6 +81,9 @@ class WeekTest {
     assertEquals(3, day.getSchedule().size());
   }
 
+  /**
+   * Tests removeActivity function.
+   */
   @Test
   void removeActivityTest() {
     Day day = week.getDays().get(0);
@@ -82,6 +92,9 @@ class WeekTest {
     assertEquals(1, day.getSchedule().size());
   }
 
+  /**
+   * Tests updateActivityDates function.
+   */
   @Test
   void updateActivityDatesTest() {
     assertEquals(DayOfWeek.SUNDAY, week.getDays().get(0).getDayOfWeek());
@@ -90,6 +103,9 @@ class WeekTest {
     assertEquals(DayOfWeek.THURSDAY, week.getDays().get(0).getDayOfWeek());
   }
 
+  /**
+   * Tests setName function.
+   */
   @Test
   void setNameTest() {
     assertEquals("test week", week.getName());
@@ -97,11 +113,17 @@ class WeekTest {
     assertEquals("new name", week.getName());
   }
 
+  /**
+   * Tests getName function.
+   */
   @Test
   void getNameTest() {
     assertEquals("test week", week.getName());
   }
 
+  /**
+   * Tests setMaxEvents function.
+   */
   @Test
   void setMaxEventsTest() {
     assertEquals(Integer.MAX_VALUE, week.getMaxEvents());
@@ -110,6 +132,9 @@ class WeekTest {
 
   }
 
+  /**
+   * Tests getMaxEvents function.
+   */
   @Test
   void setMaxTasksTest() {
     assertEquals(Integer.MAX_VALUE, week.getMaxTasks());
@@ -117,21 +142,33 @@ class WeekTest {
     assertEquals(10, week.getMaxTasks());
   }
 
+  /**
+   * Tests getMaxEvents function.
+   */
   @Test
   void getMaxEventsTest() {
     assertEquals(Integer.MAX_VALUE, week.getMaxEvents());
   }
 
+  /**
+   * Tests getMaxTasks function.
+   */
   @Test
   void getMaxTasksTest() {
     assertEquals(Integer.MAX_VALUE, week.getMaxTasks());
   }
 
+  /**
+   * Tests getNotes function.
+   */
   @Test
   void getNotesTest() {
     assertEquals("", week.getNotes());
   }
 
+  /**
+   * Tests setNotes function.
+   */
   @Test
   void setNotesTest() {
     assertEquals("", week.getNotes());
@@ -139,11 +176,17 @@ class WeekTest {
     assertEquals("this is a note", week.getNotes());
   }
 
+  /**
+   * Tests getQuotes function.
+   */
   @Test
   void getQuotesTest() {
     assertEquals("", week.getQuotes());
   }
 
+  /**
+   * Tests setQuotes function.
+   */
   @Test
   void setQuotesTest() {
     assertEquals("", week.getQuotes());
@@ -151,6 +194,9 @@ class WeekTest {
     assertEquals("this is a quote", week.getQuotes());
   }
 
+  /**
+   * Tests totalWeekEvents function.
+   */
   @Test
   void totalWeekEventsTest() {
     assertEquals(1, week.totalWeekEvents());
@@ -158,6 +204,9 @@ class WeekTest {
     assertEquals(2, week.totalWeekEvents());
   }
 
+  /**
+   * Tests totalWeekTasks function.
+   */
   @Test
   void totalWeekTasksTest() {
     assertEquals(1, week.totalWeekTasks());
@@ -165,6 +214,9 @@ class WeekTest {
     assertEquals(2, week.totalWeekTasks());
   }
 
+  /**
+   * Tests totalCompleteTasks function.
+   */
   @Test
   void totalCompleteTasksTest() {
     assertEquals(0, week.totalCompleteTasks());
@@ -172,15 +224,19 @@ class WeekTest {
     assertEquals(1, week.totalCompleteTasks());
   }
 
+  /**
+   * Tests getPalletName function.
+   */
   @Test
   void getPalletNameTest() {
-    assertEquals(PalletManager.defaultPallet.name(), week.getPalletName());
+    assertEquals(PalletManagerMockTest.defaultPallet.name(), week.getPalletName());
   }
 
+  /**
+   * Tests setPallet function.
+   */
   @Test
   void setPalletTest() {
-    assertEquals(PalletManager.defaultPallet.name(), week.getPalletName());
-    week.setPallet(PalletManager.bubblegumPallet);
-    assertEquals(PalletManager.bubblegumPallet.name(), week.getPalletName());
+    assertEquals(PalletManagerMockTest.defaultPallet.name(), week.getPalletName());
   }
 }

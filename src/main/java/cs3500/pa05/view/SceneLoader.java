@@ -5,10 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
 /**
- * Handles the scene loader
+ * Handles the scene loader.
  */
 public abstract class SceneLoader {
-  private FXMLLoader loader;
+  private final FXMLLoader loader;
 
   /**
    * Initializes the scene loader.
@@ -24,7 +24,7 @@ public abstract class SceneLoader {
   }
 
   /**
-   * Loads the scene
+   * Loads the scene.
    *
    * @return the scene
    */

@@ -1,25 +1,15 @@
-package cs3500.pa05.controller;
+package cs3500.pa05.model;
 
-import cs3500.pa05.model.Pallet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 
 /**
  * Manages the different Pallets.
  */
-public class PalletManager {
-  /**
-   * Pallet Theme of current pallet in GUI.
-   */
+public class PalletManagerMockTest {
   public static Pallet currentPallet;
 
-  /**
-   * Default Pallet Theme for GUI.
-   */
   public static Pallet defaultPallet = new Pallet(
       "Default",
       "#D7DAE5",
@@ -27,17 +17,12 @@ public class PalletManager {
       "#8EAF9D",
       "#A6D8D4",
       "#B9CDDA",
-      Font.font("Serif", FontWeight.NORMAL,
-          FontPosture.REGULAR, 15),
-      Font.font("Serif", FontWeight.NORMAL,
-          FontPosture.REGULAR, 12),
+      null,
+      null,
       "#000000",
       "#FF0000"
   );
 
-  /**
-   * Dark Pallet Theme for GUI.
-   */
   public static Pallet darkPallet = new Pallet(
       "Dark",
       "#261C15",
@@ -45,17 +30,12 @@ public class PalletManager {
       "#4E8098",
       "#F05D23",
       "#9A348E",
-      Font.font("Times New Roman", FontWeight.NORMAL,
-          FontPosture.REGULAR, 15),
-      Font.font("Times New Roman", FontWeight.NORMAL,
-          FontPosture.REGULAR, 12),
+      null,
+      null,
       "#FFFFFF",
       "#FF0000"
   );
 
-  /**
-   * Violet Pallet Theme for GUI.
-   */
   public static Pallet violetPallet = new Pallet(
       "Violet",
       "#513B56",
@@ -63,17 +43,12 @@ public class PalletManager {
       "#348AA7",
       "#F87575",
       "#A69658",
-      Font.font("Arial", FontWeight.NORMAL,
-          FontPosture.REGULAR, 15),
-      Font.font("Arial", FontWeight.NORMAL,
-          FontPosture.REGULAR, 12),
+      null,
+      null,
       "#FFFFFF",
       "#FF0000"
   );
 
-  /**
-   * Bubblegum Pallet Theme for GUI.
-   */
   public static Pallet bubblegumPallet = new Pallet(
       "Bubble Gum",
       "#E574BC",
@@ -81,17 +56,12 @@ public class PalletManager {
       "#E5F4E3",
       "#FDF0D5",
       "#FF8360",
-      Font.font("Serif", FontWeight.NORMAL,
-          FontPosture.REGULAR, 15),
-      Font.font("Serif", FontWeight.NORMAL,
-          FontPosture.REGULAR, 12),
+      null,
+      null,
       "#1E2D24",
       "#FF0000"
   );
 
-  /**
-   * Mono Pallet Theme for GUI.
-   */
   public static Pallet monoPallet = new Pallet(
       "Monochrome",
       "#717171",
@@ -99,17 +69,12 @@ public class PalletManager {
       "#e9e9e9",
       "#c0c0c0",
       "#efefef",
-      Font.font("Courier", FontWeight.NORMAL,
-          FontPosture.REGULAR, 15),
-      Font.font("Courier", FontWeight.NORMAL,
-          FontPosture.REGULAR, 12),
+      null,
+      null,
       "#000000",
       "#FFFFFF"
   );
 
-  /**
-   * All Pallet themes for GUI.
-   */
   public static List<Pallet> themes
       = new ArrayList<>(Arrays.stream(new Pallet[] {defaultPallet,
       darkPallet, violetPallet, bubblegumPallet,

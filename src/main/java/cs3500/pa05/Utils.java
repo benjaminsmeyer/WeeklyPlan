@@ -11,11 +11,11 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 /**
- * A utilities class
+ * A utilities class.
  */
 public class Utils {
   /**
-   * Given a time in minutes, converts it to a string in the form "12:00"
+   * Given a time in minutes, converts it to a string in the form "12:00".
    *
    * @param startTime the time to convert in minutes
    * @return the time as a String

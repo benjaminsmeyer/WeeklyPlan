@@ -21,6 +21,14 @@ public class Task extends Activity {
     incomplete();
   }
 
+  /**
+   * Json creator Initializer.
+   *
+   * @param name  the name of the task
+   * @param description the description of the task
+   * @param dayOfWeek the day of the week
+   * @param done  if the task is complete
+   */
   @JsonCreator
   public Task(@JsonProperty("name") String name, @JsonProperty("description") String description,
               @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("done") boolean done) {

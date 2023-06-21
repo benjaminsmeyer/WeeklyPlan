@@ -26,3 +26,4 @@
 - Visual Flourish
 - Weekly Starters
 - Deployable Application
+- Splash Screen

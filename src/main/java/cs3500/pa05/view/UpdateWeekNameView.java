@@ -3,7 +3,7 @@ package cs3500.pa05.view;
 import cs3500.pa05.controller.UpdateWeekNameController;
 
 /**
- * Updates the week name view
+ * Updates the week name view.
  */
 public class UpdateWeekNameView extends SceneLoader {
 

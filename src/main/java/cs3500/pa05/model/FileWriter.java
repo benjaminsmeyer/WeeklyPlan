@@ -5,22 +5,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Writes a file
+ * Writes a file.
  */
-public class FileWrite {
-  private File file;
+public class FileWriter {
+  private final File file;
 
   /**
    * Instantiates an instance of FileWriter with the <code>content</code> to be written.
    *
    * @param pathName where to write the contents
    */
-  public FileWrite(String pathName) {
+  public FileWriter(String pathName) {
     file = new File(pathName);
   }
 
   /**
    * Writes to the file.
+   *
+   * @param content content to write to file
    */
   public void writeToFile(String content) {
     Path path;

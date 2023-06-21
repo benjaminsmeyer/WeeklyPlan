@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Reads the file
+ * Reads the file.
  */
 public class FileRead {
   List<Day> days;
@@ -26,20 +26,19 @@ public class FileRead {
   String quotes;
   String palletName;
   private File file;
-  private ObjectMapper mapper = new ObjectMapper();
+  private final ObjectMapper mapper = new ObjectMapper();
 
   /**
-   * Gets all bujo files
+   * Gets all bujo files.
    *
    * @return all bujo files
    */
   public static List<String> getAllBujoFiles() {
-    List<String> names = Arrays.stream(new File(Constants.weekPath).list()).toList();
-    return names;
+    return Arrays.stream(new File(Constants.weekPath).list()).toList();
   }
 
   /**
-   * Opens the file
+   * Opens the file.
    *
    * @param file the file to open
    */
@@ -48,7 +47,7 @@ public class FileRead {
   }
 
   /**
-   * Reads the file
+   * Reads the file.
    *
    * @return the week
    */
@@ -65,7 +64,7 @@ public class FileRead {
   }
 
   /**
-   * Delegates message
+   * Delegates message.
    *
    * @param message the message to delegate
    */
@@ -79,7 +78,7 @@ public class FileRead {
   }
 
   /**
-   * Parse day json
+   * Parse day json.
    *
    * @param dayJsons the day json
    */
@@ -91,7 +90,7 @@ public class FileRead {
   }
 
   /**
-   * Parse schedule
+   * Parse schedule.
    *
    * @param dayJson the day json
    * @return a list of activities from day
@@ -105,7 +104,7 @@ public class FileRead {
   }
 
   /**
-   * Parse event
+   * Parse event.
    *
    * @param dayJson the day json
    * @return a list of activities from day
@@ -119,7 +118,7 @@ public class FileRead {
   }
 
   /**
-   * Parse task
+   * Parse task.
    *
    * @param dayJson the day json
    * @return a list of activities from day
@@ -133,7 +132,7 @@ public class FileRead {
   }
 
   /**
-   * Parse text json
+   * Parse text json.
    */
   private void parseTextJson(TextJson textJson) {
     quotes = textJson.quotes();
