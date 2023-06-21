@@ -59,6 +59,7 @@ class WeekTest {
 
     Week fourParamWeek = new Week(days, "full week info", 20, 20);
     assertEquals(days.size(), fourParamWeek.getDays().size());
+    assertEquals(PalletManager.defaultPallet.name(), fourParamWeek.getPalletName());
 
     Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes", PalletManager.bubblegumPallet.name());
     assertEquals(PalletManager.bubblegumPallet.name(), allParamWeek.getPalletName());
