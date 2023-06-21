@@ -80,6 +80,28 @@ public class Week {
   /**
    * Week constructor.
    *
+   * @param days       the days of the week
+   * @param name       the name of the week
+   * @param maxEvents  the max events
+   * @param maxTasks   the max tasks
+   * @param notes      the notes
+   * @param quotes     the quotes
+   * @param pallet     the pallet
+   */
+  public Week(List<Day> days, String name, int maxEvents, int maxTasks,
+              String notes, String quotes, Pallet pallet) {
+    this.days = days;
+    this.name = name;
+    this.maxEvents = maxEvents;
+    this.maxTasks = maxTasks;
+    this.notes = notes;
+    this.quotes = quotes;
+    this.weekTheme = pallet;
+  }
+
+  /**
+   * Week constructor.
+   *
    * @param startDay  the start of the week
    * @param name      the name of the week
    * @param maxEvents the max events
