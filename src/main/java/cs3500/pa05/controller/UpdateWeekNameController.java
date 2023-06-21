@@ -12,6 +12,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * Update week name controller
+ */
 public class UpdateWeekNameController {
   @FXML
   private Button saveButton;
@@ -49,14 +52,26 @@ public class UpdateWeekNameController {
   private Label windowLabel;
   private Button selectedButton;
   private Week week;
+
+  /**
+   * Update week name controller
+   *
+   * @param week the week
+   */
   public UpdateWeekNameController(Week week) {
     this.week = week;
   }
 
+  /**
+   * Update week name controller
+   */
   public UpdateWeekNameController() {
 
   }
 
+  /**
+   * Initializes update week name controller
+   */
   @FXML
   public void initialize() {
     updateTheme();
@@ -116,6 +131,11 @@ public class UpdateWeekNameController {
     saveButton.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
   }
 
+  /**
+   * Handles select days
+   *
+   * @param button the button to select days
+   */
   private void selectDay(Button button) {
     if (selectedButton != null) {
       selectedButton.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
@@ -133,6 +153,9 @@ public class UpdateWeekNameController {
     } */
   }
 
+  /**
+   * Updates week settings
+   */
   private void updateWeekSettings() {
     String newWeekName = name.getText();
 
@@ -179,6 +202,13 @@ public class UpdateWeekNameController {
     }
   }
 
+  /**
+   * Reads max
+   *
+   * @param field the text field
+   * @param label the label
+   * @return the max
+   */
   private int readMax(TextField field, Label label) {
     int max = -1;
     if (field.getText().equals("")) {
@@ -197,6 +227,9 @@ public class UpdateWeekNameController {
     return max;
   }
 
+  /**
+   * Update the theme
+   */
   private void updateTheme() {
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
     windowLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));

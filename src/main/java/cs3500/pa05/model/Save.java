@@ -12,6 +12,9 @@ import cs3500.pa05.model.json.WeekJson;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Saves file
+ */
 public class Save {
   FileWriter fileWriter;
   ObjectMapper mapper;
@@ -77,6 +80,12 @@ public class Save {
     return week.toArray(DayJson[]::new);
   }
 
+  /**
+   * Converts events to json
+   *
+   * @param day the day
+   * @return the events to json
+   */
   private EventJson[] eventsToJson(Day day) {
     List<EventJson> events = new ArrayList<>();
     for (Event event : day.getEvents()) {
@@ -85,6 +94,12 @@ public class Save {
     return events.toArray(EventJson[]::new);
   }
 
+  /**
+   * Converts tasks to json
+   *
+   * @param day the day
+   * @return the tasks to json
+   */
   private TaskJson[] tasksToJson(Day day) {
     List<TaskJson> tasks = new ArrayList<>();
     for (Task task : day.getTasks()) {

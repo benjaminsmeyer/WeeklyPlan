@@ -60,12 +60,23 @@ public class NewTaskController {
   private Button selectedButton;
   private Task task;
 
+  /**
+   * New Task Controller
+   */
   public NewTaskController() {}
 
+  /**
+   * New Task Controller
+   *
+   * @param task the task of controller
+   */
   public NewTaskController(Task task) {
     this.task = task;
   }
 
+  /**
+   * Initializes the task
+   */
   @FXML
   public void initialize(){
     updateTheme();
@@ -130,6 +141,11 @@ public class NewTaskController {
     }
   }
 
+  /**
+   * Handles the selected days
+   *
+   * @param button the select button day
+   */
   private void selectDay(Button button) {
     if (selectedButton != null) {
       selectedButton.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
@@ -147,6 +163,9 @@ public class NewTaskController {
     } */
   }
 
+  /**
+   * Creates a new task
+   */
   private void createTask() {
     boolean validInput = true;
     String nameText = name.getText();
@@ -199,6 +218,9 @@ public class NewTaskController {
     thisStage.close();
   }
 
+  /**
+   * Updates the theme
+   */
   private void updateTheme() {
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
     nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));

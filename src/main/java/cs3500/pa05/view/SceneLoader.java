@@ -1,12 +1,21 @@
 package cs3500.pa05.view;
 
-import cs3500.pa05.controller.NewTaskController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
+/**
+ * Handles the scene loader
+ */
 public abstract class SceneLoader {
   private FXMLLoader loader;
+
+  /**
+   * Initializes the scene loader.
+   *
+   * @param controller the controller
+   * @param fxml the fxml for the gui
+   */
   public SceneLoader(Object controller, String fxml) {
     this.loader = new FXMLLoader();
     this.loader.setLocation(getClass().getClassLoader().getResource(fxml));
@@ -14,6 +23,11 @@ public abstract class SceneLoader {
     this.loader.setController(controller);
   }
 
+  /**
+   * Loads the scene
+   *
+   * @return the scene
+   */
   public Scene load() {
     try {
       return loader.load();

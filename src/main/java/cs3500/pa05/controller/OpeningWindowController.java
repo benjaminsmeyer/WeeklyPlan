@@ -14,12 +14,18 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
+/**
+ * Opening window controller
+ */
 public class OpeningWindowController {
   @FXML
   private Button newWeek;
   @FXML
   private MenuButton loadWeek;
 
+  /**
+   * Initializes the opening window controller
+   */
   @FXML
   public void initialize(){
     newWeek.setOnAction(e -> handleNewWeek());
@@ -34,6 +40,9 @@ public class OpeningWindowController {
     }
   }
 
+  /**
+   * Handles new week
+   */
   private void handleNewWeek() {
     PalletManager.setCurrentPallet(PalletManager.defaultPallet);
     UpdateWeekNameController updateWeekNameController = new UpdateWeekNameController();
@@ -47,6 +56,11 @@ public class OpeningWindowController {
     thisStage.close();
   }
 
+  /**
+   * Handles load week
+   *
+   * @param file the file to load
+   */
   private void handleLoadWeek(String file) {
     PalletManager.setCurrentPallet(PalletManager.defaultPallet);
     FileReader reader = new FileReader();

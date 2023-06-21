@@ -5,8 +5,11 @@ import cs3500.pa05.controller.PalletManager;
 import cs3500.pa05.model.Event;
 import javafx.stage.Stage;
 
+/**
+ * Event box
+ */
 public class EventBox extends ActivityBox {
-  Event event;
+  private Event event;
 
   /**
    * Constructor for EventBox that takes a name, description, time, and the Event to render

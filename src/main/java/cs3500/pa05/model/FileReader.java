@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Reads the file
+ */
 public class FileReader {
   //json file reader?
   private File file;
@@ -26,10 +29,20 @@ public class FileReader {
   String quotes;
   String palletName;
 
+  /**
+   * Opens the file
+   *
+   * @param file the file to open
+   */
   public void openFile(File file) {
     this.file = file;
   }
 
+  /**
+   * Reads the file
+   *
+   * @return the week
+   */
   public Week readFile() {
     try {
       JsonParser parser = this.mapper.getFactory().createParser(file);
@@ -42,11 +55,21 @@ public class FileReader {
     }
   }
 
+  /**
+   * Gets all bujo files
+   *
+   * @return all bujo files
+   */
   public static List<String> getAllBujoFiles() {
     List<String> names = Arrays.stream(new File(Constants.weekPath).list()).toList();
     return names;
   }
 
+  /**
+   * Delegates message
+   *
+   * @param message the message to delegate
+   */
   private void delegateMessage(WeekJson message) {
     parseDayJson(message.days());
     name = message.name();
@@ -56,6 +79,11 @@ public class FileReader {
     parseTextJson(message.text());
   }
 
+  /**
+   * Parse day json
+   *
+   * @param dayJsons the day json
+   */
   private void parseDayJson(DayJson[] dayJsons) {
     days = new ArrayList<>();
     for (DayJson dayJson : dayJsons) {
@@ -63,6 +91,12 @@ public class FileReader {
     }
   }
 
+  /**
+   * Parse schedule
+   *
+   * @param dayJson the day json
+   * @return a list of activities from day
+   */
   private List<Activity> parseSchedule(DayJson dayJson) {
     List<Activity> activities = new ArrayList<>();
 
@@ -71,6 +105,12 @@ public class FileReader {
     return activities;
   }
 
+  /**
+   * Parse event
+   *
+   * @param dayJson the day json
+   * @return a list of activities from day
+   */
   private List<Activity> parseEvents(DayJson dayJson) {
     List<Activity> activities = new ArrayList<>();
     for (EventJson event : dayJson.events()) {
@@ -79,6 +119,12 @@ public class FileReader {
     return activities;
   }
 
+  /**
+   * Parse task
+   *
+   * @param dayJson the day json
+   * @return a list of activities from day
+   */
   private List<Activity> parseTasks(DayJson dayJson) {
     List<Activity> activities = new ArrayList<>();
     for (TaskJson task : dayJson.tasks()) {
@@ -87,6 +133,9 @@ public class FileReader {
     return activities;
   }
 
+  /**
+   * Parse text json
+   */
   private void parseTextJson(TextJson textJson) {
     quotes = textJson.quotes();
     notes = textJson.notes();

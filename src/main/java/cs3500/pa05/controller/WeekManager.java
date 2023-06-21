@@ -118,6 +118,11 @@ public class WeekManager {
   private Label overviewLabel;
 
 
+  /**
+   * Setups week manager
+   *
+   * @param week the week
+   */
   private WeekManager(Week week) {
     this.week = week;
     weekView = new WeekView(this);
@@ -227,6 +232,9 @@ public class WeekManager {
     notes.textProperty().addListener(e -> updateNotes());
   }
 
+  /**
+   * Update weekly stats
+   */
   private void updateWeeklyStats() {
     // Show statistics for the Week in the GUI. At a minimum, include total Events and total Tasks, and percent of tasks completed.
     String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %,.2f", week.totalWeekEvents(), week.totalWeekTasks(), totalTaskCompletePercent())
@@ -241,6 +249,11 @@ public class WeekManager {
     overview.setStyle("-fx-background-color: " + PalletManager.currentPallet.overlayColor());
   }
 
+  /**
+   * Total task complete percent
+   *
+   * @return the total task complete percent
+   */
   private double totalTaskCompletePercent() {
     if (week.totalWeekTasks() == 0) {
       return 0;
@@ -386,20 +399,36 @@ public class WeekManager {
     return weekView.load();
   }
 
+  /**
+   * Add an activity
+   *
+   * @param activity the activity
+   */
   public void addActivity(Activity activity) {
     week.addActivity(activity);
     run();
   }
 
+  /**
+   * Remove an activity
+   *
+   * @param activity the activity
+   */
   public void removeActivity(Activity activity) {
     week.removeActivity(activity);
     run();
   }
 
+  /**
+   * Update week name display
+   */
   private void updateWeekNameDisplay() {
     weekName.setText(week.getName());
   }
 
+  /**
+   * Update week name
+   */
   public void updateWeekName() {
     UpdateWeekNameController updateWeekNameController
         = new UpdateWeekNameController(this.week);
@@ -410,10 +439,16 @@ public class WeekManager {
     stage.show();
   }
 
+  /**
+   * Update notes
+   */
   private void updateNotes() {
     week.setNotes(notes.getText());
   }
 
+  /**
+   * Updatre quotes
+   */
   private void updateQuotes() {
     week.setQuotes(quotes.getText());
   }

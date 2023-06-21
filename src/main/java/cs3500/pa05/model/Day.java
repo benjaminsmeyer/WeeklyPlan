@@ -121,10 +121,20 @@ public class Day {
     schedule.add(activity);
   }
 
+  /**
+   * Removes activity from day.
+   *
+   * @param activity activity to be removed from day
+   */
   public void removeActivity(Activity activity) {
     schedule.remove(activity);
   }
 
+  /**
+   * Gets the day of the week
+   *
+   * @return the day of the week
+   */
   public DayOfWeek getDayOfWeek() {
     return dayOfWeek;
   }

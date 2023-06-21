@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.layout.VBox;
 
+/**
+ * Day view
+ */
 public class DayView {
 
   /**
