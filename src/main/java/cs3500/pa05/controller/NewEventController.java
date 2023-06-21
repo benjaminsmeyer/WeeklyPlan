@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * New Event Controller
+ * New Event Controller.
  */
 public class NewEventController {
   @FXML

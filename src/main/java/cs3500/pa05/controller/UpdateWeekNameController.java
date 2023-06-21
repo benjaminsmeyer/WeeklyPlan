@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * Update week name controller
+ * Update week name controller.
  */
 public class UpdateWeekNameController {
   @FXML
@@ -53,7 +53,7 @@ public class UpdateWeekNameController {
   private Week week;
 
   /**
-   * Update week name controller
+   * Update week name controller.
    *
    * @param week the week
    */
@@ -62,14 +62,14 @@ public class UpdateWeekNameController {
   }
 
   /**
-   * Update week name controller
+   * Update week name controller.
    */
   public UpdateWeekNameController() {
 
   }
 
   /**
-   * Initializes update week name controller
+   * Initializes update week name controller.
    */
   @FXML
   public void initialize() {
@@ -144,7 +144,7 @@ public class UpdateWeekNameController {
   }
 
   /**
-   * Handles select days
+   * Handles select days.
    *
    * @param button the button to select days
    */
@@ -166,7 +166,7 @@ public class UpdateWeekNameController {
   }
 
   /**
-   * Updates week settings
+   * Updates week settings.
    */
   private void updateWeekSettings() {
     String newWeekName = name.getText();
@@ -215,7 +215,7 @@ public class UpdateWeekNameController {
   }
 
   /**
-   * Reads max
+   * Reads max.
    *
    * @param field the text field
    * @param label the label
@@ -240,7 +240,7 @@ public class UpdateWeekNameController {
   }
 
   /**
-   * Update the theme
+   * Update the theme.
    */
   private void updateTheme() {
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
