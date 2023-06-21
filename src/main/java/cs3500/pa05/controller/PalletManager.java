@@ -51,9 +51,9 @@ public class PalletManager {
       "#348AA7",
       "#F87575",
       "#A69658",
-      Font.font("Jokerman", FontWeight.NORMAL,
+      Font.font("Mona Sans", FontWeight.NORMAL,
           FontPosture.REGULAR, 15),
-      Font.font("Jokerman", FontWeight.NORMAL,
+      Font.font("Mona Sans", FontWeight.NORMAL,
           FontPosture.REGULAR, 12),
       "#FFFFFF",
       "#FF0000"
