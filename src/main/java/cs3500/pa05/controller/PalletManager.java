@@ -21,9 +21,9 @@ public class PalletManager {
       "#8EAF9D",
       "#A6D8D4",
       "#B9CDDA",
-      Font.font("Helvetica", FontWeight.NORMAL,
+      Font.font("Times", FontWeight.NORMAL,
           FontPosture.REGULAR, 15),
-      Font.font("Helvetica", FontWeight.NORMAL,
+      Font.font("Times", FontWeight.NORMAL,
           FontPosture.REGULAR, 12),
       "#000000",
       "#FF0000"
