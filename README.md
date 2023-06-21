@@ -22,3 +22,5 @@ reusability, and maintainability.
 Our program is designed for easy expansion. We can effortlessly add new features, such as a progress bar, by integrating
 them into the existing structure. Reusing our functionality makes it simple to incorporate additional buttons into the
 Week Manager. This flexibility ensures that our program can adapt and grow to meet our evolving needs.
+
+To use jar file, click pa05-superplanner.jar and press run.
