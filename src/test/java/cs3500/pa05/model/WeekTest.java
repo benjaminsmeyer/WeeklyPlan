@@ -18,6 +18,13 @@ class WeekTest {
     day.addActivity(new Task("task", "task description", DayOfWeek.SUNDAY));
     day.addActivity(new Event("event", "event description", DayOfWeek.SUNDAY, 1000, 60));
     days.add(day);
+    days.add(new Day(DayOfWeek.MONDAY));
+    days.add(new Day(DayOfWeek.TUESDAY));
+    days.add(new Day(DayOfWeek.WEDNESDAY));
+    days.add(new Day(DayOfWeek.THURSDAY));
+    days.add(new Day(DayOfWeek.FRIDAY));
+    days.add(new Day(DayOfWeek.SATURDAY));
+
     week = new Week(days, "test week");
   }
 
@@ -35,7 +42,7 @@ class WeekTest {
 
   @Test
   void getDaysTest() {
-    assertEquals(1, week.getDays().size());
+    assertEquals(7, week.getDays().size());
   }
 
   @Test
@@ -50,13 +57,15 @@ class WeekTest {
   void removeActivityTest() {
     Day day = week.getDays().get(0);
     assertEquals(2, day.getSchedule().size());
-    week.removeActivity(new Task("task", "description", DayOfWeek.SUNDAY));
+    week.removeActivity(day.getTasks().get(0));
     assertEquals(1, day.getSchedule().size());
   }
 
   @Test
   void updateActivityDatesTest() {
-
+    assertEquals(DayOfWeek.SUNDAY, week.getDays().get(0).getDayOfWeek());
+    week.updateWeekStart(DayOfWeek.THURSDAY);
+    assertEquals(DayOfWeek.THURSDAY, week.getDays().get(0).getDayOfWeek());
   }
 
   @Test
@@ -117,21 +126,21 @@ class WeekTest {
   void setQuotesTest() {
     assertEquals("", week.getQuotes());
     week.setQuotes("this is a quote");
-    assertEquals("this is a note", week.getQuotes());
+    assertEquals("this is a quote", week.getQuotes());
   }
 
   @Test
   void totalWeekEventsTest() {
     assertEquals(1, week.totalWeekEvents());
-    week.addActivity(new Event("new event", "description", DayOfWeek.MONDAY, 2000, 60));
+    week.addActivity(new Event("new event", "new description", DayOfWeek.MONDAY, 2000, 60));
     assertEquals(2, week.totalWeekEvents());
   }
 
   @Test
   void totalWeekTasksTest() {
-    assertEquals(1, week.totalWeekEvents());
-    week.addActivity(new Event("new event", "description", DayOfWeek.MONDAY, 2000, 60));
-    assertEquals(2, week.totalWeekEvents());
+    assertEquals(1, week.totalWeekTasks());
+    week.addActivity(new Task("new task", "new description", DayOfWeek.MONDAY));
+    assertEquals(2, week.totalWeekTasks());
   }
 
   @Test
