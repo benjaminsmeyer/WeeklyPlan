@@ -81,9 +81,9 @@ public class PalletManager {
       "#E5F4E3",
       "#FDF0D5",
       "#FF8360",
-      Font.font("Courier New", FontWeight.NORMAL,
+      Font.font("Courier", FontWeight.NORMAL,
           FontPosture.REGULAR, 15),
-      Font.font("Courier New", FontWeight.NORMAL,
+      Font.font("Courier", FontWeight.NORMAL,
           FontPosture.REGULAR, 12),
       "#1E2D24",
       "#FF0000"
@@ -99,9 +99,9 @@ public class PalletManager {
       "#e9e9e9",
       "#c0c0c0",
       "#efefef",
-      Font.font("Courier New", FontWeight.NORMAL,
+      Font.font("Courier", FontWeight.NORMAL,
           FontPosture.REGULAR, 15),
-      Font.font("Courier New", FontWeight.NORMAL,
+      Font.font("Courier", FontWeight.NORMAL,
           FontPosture.REGULAR, 12),
       "#000000",
       "#FFFFFF"
