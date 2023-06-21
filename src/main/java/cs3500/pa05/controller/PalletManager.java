@@ -51,9 +51,9 @@ public class PalletManager {
       "#348AA7",
       "#F87575",
       "#A69658",
-      Font.font("Ariel", FontWeight.NORMAL,
+      Font.font("Arial", FontWeight.NORMAL,
           FontPosture.REGULAR, 15),
-      Font.font("Ariel", FontWeight.NORMAL,
+      Font.font("Arial", FontWeight.NORMAL,
           FontPosture.REGULAR, 12),
       "#FFFFFF",
       "#FF0000"
