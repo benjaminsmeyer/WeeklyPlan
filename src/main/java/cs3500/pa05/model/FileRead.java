@@ -25,7 +25,6 @@ public class FileRead {
   String notes;
   String quotes;
   String palletName;
-  //json file reader?
   private File file;
   private ObjectMapper mapper = new ObjectMapper();
 
