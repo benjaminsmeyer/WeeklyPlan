@@ -17,7 +17,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 /**
- * New Task Controller
+ * New Task Controller.
  */
 public class NewTaskController {
   @FXML
@@ -64,13 +64,13 @@ public class NewTaskController {
   private Task task;
 
   /**
-   * New Task Controller
+   * New Task Controller.
    */
   public NewTaskController() {
   }
 
   /**
-   * New Task Controller
+   * New Task Controller.
    *
    * @param task the task of controller
    */
@@ -79,7 +79,7 @@ public class NewTaskController {
   }
 
   /**
-   * Initializes the task
+   * Initializes the task.
    */
   @FXML
   public void initialize() {
@@ -171,7 +171,7 @@ public class NewTaskController {
   }
 
   /**
-   * Handles the selected days
+   * Handles the selected days.
    *
    * @param button the select button day
    */
@@ -193,7 +193,7 @@ public class NewTaskController {
   }
 
   /**
-   * Creates a new task
+   * Creates a new task.
    */
   private void createTask() {
     boolean validInput = true;
@@ -250,7 +250,7 @@ public class NewTaskController {
   }
 
   /**
-   * Updates the theme
+   * Updates the theme.
    */
   private void updateTheme() {
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());

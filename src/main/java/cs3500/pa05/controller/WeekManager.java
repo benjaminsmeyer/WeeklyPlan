@@ -113,7 +113,7 @@ public class WeekManager {
 
 
   /**
-   * Setups week manager
+   * Setups week manager.
    *
    * @param week the week
    */
@@ -123,7 +123,7 @@ public class WeekManager {
   }
 
   /**
-   * Creates a new WeekManager instance for the given Week
+   * Creates a new WeekManager instance for the given Week.
    *
    * @param week the week
    */
@@ -132,7 +132,7 @@ public class WeekManager {
   }
 
   /**
-   * Updates the week view. Should be called after any visual change to the week
+   * Updates the week view. Should be called after any visual change to the week.
    */
   public void run() {
     week.updateActivityDates();
@@ -154,7 +154,7 @@ public class WeekManager {
 
   /**
    * Loads the pallets into the pallet dropdown and adds ActionListeners to each of them
-   * that updates the pallet to the selected pallet
+   * that updates the pallet to the selected pallet.
    */
   private void setupPalletDropdown() {
     for (int i = 0; i < PalletManager.themes.size(); i++) {
@@ -167,7 +167,7 @@ public class WeekManager {
   }
 
   /**
-   * Sets all Node color/font values to be those of the given Pallet
+   * Sets all Node color/font values to be those of the given Pallet.
    *
    * @param pallet the color pallet to update to
    */
@@ -177,6 +177,9 @@ public class WeekManager {
     run();
   }
 
+  /**
+   * Saves current week.
+   */
   private void save() {
     Save save = new Save(Constants.weekPath + this.week.getName());
     save.saveWeek(this.week);
@@ -184,7 +187,7 @@ public class WeekManager {
 
   /**
    * Initializes the week by placing all the events in the week and
-   * naming all the days appropriately
+   * naming all the days appropriately.
    */
   private void initWeek() {
     setupDayLayout();
@@ -197,7 +200,7 @@ public class WeekManager {
   }
 
   /**
-   * Adds action listeners to all the buttons in the WeekView
+   * Adds action listeners to all the buttons in the WeekView.
    */
   private void setupButtons() {
     newEvent.setOnAction(e -> openNewEventMenu());
@@ -205,7 +208,7 @@ public class WeekManager {
   }
 
   /**
-   * Resets the Task Queue
+   * Resets the Task Queue.
    */
   private void setupTaskQueue() {
     tasksLayout.getChildren().clear();
@@ -213,7 +216,7 @@ public class WeekManager {
   }
 
   /**
-   * Resets the Notes, Quotes, and Overview fields
+   * Resets the Notes, Quotes, and Overview fields.
    */
   private void setupNotesAndQuotes() {
     quotes.setWrapText(true);
@@ -227,7 +230,7 @@ public class WeekManager {
   }
 
   /**
-   * Update weekly stats
+   * Update weekly stats.
    */
   private void updateWeeklyStats() {
     String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %,.2f",
@@ -244,7 +247,7 @@ public class WeekManager {
   }
 
   /**
-   * Total task complete percent
+   * Total task complete percent.
    *
    * @return the total task complete percent
    */
@@ -257,7 +260,7 @@ public class WeekManager {
   }
 
   /**
-   * Resets each day Layout
+   * Resets each day Layout.
    */
   private void setupDayLayouts() {
     List<Day> days = week.getDays();
@@ -292,7 +295,7 @@ public class WeekManager {
   }
 
   /**
-   * Sets all Node color/font values to be those of the current Pallet
+   * Sets all Node color/font values to be those of the current Pallet.
    */
   private void updateTheme() {
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
@@ -337,7 +340,7 @@ public class WeekManager {
   }
 
   /**
-   * Gets values from the FXML for week HBoxes and stores them in a list
+   * Gets values from the FXML for week HBoxes and stores them in a list.
    */
   private void setupDayLayout() {
     dayLayouts = new ArrayList<>();
@@ -360,7 +363,7 @@ public class WeekManager {
   }
 
   /**
-   * Opens the menu for creating a new Event
+   * Opens the menu for creating a new Event.
    */
   private void openNewEventMenu() {
     NewEventController newEventController = new NewEventController();
@@ -372,7 +375,7 @@ public class WeekManager {
   }
 
   /**
-   * Opens the menu for creating a new Task
+   * Opens the menu for creating a new Task.
    */
   private void openNewTaskMenu() {
     NewTaskController newTaskController = new NewTaskController();
@@ -384,7 +387,7 @@ public class WeekManager {
   }
 
   /**
-   * Returns the scene for this week
+   * Returns the scene for this week.
    *
    * @return the Scene representing this week
    */
@@ -393,7 +396,7 @@ public class WeekManager {
   }
 
   /**
-   * Add an activity
+   * Add an activity.
    *
    * @param activity the activity
    */
@@ -403,7 +406,7 @@ public class WeekManager {
   }
 
   /**
-   * Remove an activity
+   * Remove an activity.
    *
    * @param activity the activity
    */
@@ -413,14 +416,14 @@ public class WeekManager {
   }
 
   /**
-   * Update week name display
+   * Update week name display.
    */
   private void updateWeekNameDisplay() {
     weekName.setText(week.getName());
   }
 
   /**
-   * Update week name
+   * Update week name.
    */
   public void updateWeekName() {
     UpdateWeekNameController updateWeekNameController
@@ -433,14 +436,14 @@ public class WeekManager {
   }
 
   /**
-   * Update notes
+   * Update notes.
    */
   private void updateNotes() {
     week.setNotes(notes.getText());
   }
 
   /**
-   * Updatre quotes
+   * Update quotes.
    */
   private void updateQuotes() {
     week.setQuotes(quotes.getText());
