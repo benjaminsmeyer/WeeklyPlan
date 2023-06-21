@@ -2,8 +2,10 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cs3500.pa05.controller.PalletManager;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.text.Font;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +35,19 @@ class WeekTest {
 
     week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "",
         PalletManagerMockTest.defaultPallet);
+
+    PalletManager.defaultPallet = new Pallet(
+        "Default",
+        "#D7DAE5",
+        "#F7F7F2",
+        "#8EAF9D",
+        "#A6D8D4",
+        "#B9CDDA",
+        Font.loadFont(PalletManager.class.getClassLoader().getResource("fonts/verdana.ttf").toExternalForm(), 15),
+        Font.loadFont(PalletManager.class.getClassLoader().getResource("fonts/verdana.ttf").toExternalForm(), 12),
+        "#000000",
+        "#FF0000"
+    );
   }
 
   /**

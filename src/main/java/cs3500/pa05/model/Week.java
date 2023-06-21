@@ -85,11 +85,7 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = "";
     this.quotes = "";
-    try {
-      this.weekTheme = PalletManager.defaultPallet;
-    } catch (Exception e) {
-      this.weekTheme = null;
-    }
+    this.weekTheme = PalletManager.defaultPallet;
   }
 
   /**
