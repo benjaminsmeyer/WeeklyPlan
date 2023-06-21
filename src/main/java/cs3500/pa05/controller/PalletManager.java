@@ -12,8 +12,14 @@ import javafx.scene.text.FontWeight;
  * Manages the different Pallets.
  */
 public class PalletManager {
+  /**
+   * Pallet Theme of current pallet in GUI.
+   */
   public static Pallet currentPallet;
 
+  /**
+   * Default Pallet Theme for GUI.
+   */
   public static Pallet defaultPallet = new Pallet(
       "Default",
       "#D7DAE5",
@@ -29,6 +35,9 @@ public class PalletManager {
       "#FF0000"
   );
 
+  /**
+   * Dark Pallet Theme for GUI.
+   */
   public static Pallet darkPallet = new Pallet(
       "Dark",
       "#261C15",
@@ -44,6 +53,9 @@ public class PalletManager {
       "#FF0000"
   );
 
+  /**
+   * Violet Pallet Theme for GUI.
+   */
   public static Pallet violetPallet = new Pallet(
       "Violet",
       "#513B56",
@@ -59,6 +71,9 @@ public class PalletManager {
       "#FF0000"
   );
 
+  /**
+   * Bubblegum Pallet Theme for GUI.
+   */
   public static Pallet bubblegumPallet = new Pallet(
       "Bubble Gum",
       "#E574BC",
@@ -74,6 +89,9 @@ public class PalletManager {
       "#FF0000"
   );
 
+  /**
+   * Mono Pallet Theme for GUI.
+   */
   public static Pallet monoPallet = new Pallet(
       "Monochrome",
       "#717171",
@@ -89,6 +107,9 @@ public class PalletManager {
       "#FFFFFF"
   );
 
+  /**
+   * All Pallet themes for GUI.
+   */
   public static List<Pallet> themes
       = new ArrayList<>(Arrays.stream(new Pallet[] {defaultPallet,
       darkPallet, violetPallet, bubblegumPallet,
