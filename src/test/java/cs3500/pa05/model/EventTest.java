@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
  * Tests the event class
  */
 class EventTest {
-
   private Event event;
 
   /**

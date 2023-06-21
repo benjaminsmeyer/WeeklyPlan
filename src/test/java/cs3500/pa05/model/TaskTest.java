@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
  * Tests the task class
  */
 class TaskTest {
-
   private Task task;
 
   /**
