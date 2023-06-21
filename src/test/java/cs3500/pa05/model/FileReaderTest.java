@@ -30,13 +30,23 @@ class FileReaderTest {
   }
 
   @Test
-  void readFile() {
+  void readFileTest() {
     String filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
     cs3500.pa05.model.FileWriter fileWriter = new FileWriter(filePath);
     fileWriter.writeToFile("hello");
 
     try {
       assertEquals("hello", Files.readString(Path.of(filePath)));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest";
+    fileWriter = new FileWriter(filePath);
+    fileWriter.writeToFile("test");
+
+    try {
+      assertEquals("test", Files.readString(Path.of(filePath)));
     } catch (IOException e) {
       e.printStackTrace();
     }
