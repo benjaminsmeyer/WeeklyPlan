@@ -309,7 +309,7 @@ public class NewEventController {
    * Calculates hour for event.
    *
    * @param pm if the hour takes place in pm time
-   * @return  the hour of the event
+   * @return the hour of the event
    */
   private int caculateHour(boolean pm) {
     String hourText = hour.getText();
@@ -419,7 +419,6 @@ public class NewEventController {
     timeLabel.setFont(PalletManager.currentPallet.textFont());
     timeLabel.setFont(PalletManager.currentPallet.textFont());
 
-    updateWeekPallet();
 
     am.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     am.setFont(PalletManager.currentPallet.textFont());
@@ -431,7 +430,7 @@ public class NewEventController {
     createEvent.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
   }
 
-  private void updateWeekPallet() {
+  private void updateDaysTheme() {
     sunday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     monday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     tuesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
