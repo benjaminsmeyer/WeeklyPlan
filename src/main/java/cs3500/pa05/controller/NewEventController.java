@@ -419,6 +419,7 @@ public class NewEventController {
     timeLabel.setFont(PalletManager.currentPallet.textFont());
     timeLabel.setFont(PalletManager.currentPallet.textFont());
 
+    updateDaysTheme();
 
     am.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     am.setFont(PalletManager.currentPallet.textFont());
