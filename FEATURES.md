@@ -24,3 +24,4 @@
 ## Section 5: Extra Credit
 
 - Visual Flourish
+- Weekly Starters
