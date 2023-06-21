@@ -14,7 +14,7 @@ public abstract class SceneLoader {
    * Initializes the scene loader.
    *
    * @param controller the controller
-   * @param fxml the fxml for the gui
+   * @param fxml       the fxml for the gui
    */
   public SceneLoader(Object controller, String fxml) {
     this.loader = new FXMLLoader();

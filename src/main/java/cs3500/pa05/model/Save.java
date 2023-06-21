@@ -47,8 +47,8 @@ public class Save {
   /**
    * Converts a week into weekJson.
    *
-   * @param week  the week instance being converted
-   * @return  the WeekJson of the given week
+   * @param week the week instance being converted
+   * @return the WeekJson of the given week
    */
   private WeekJson weekToJson(Week week) {
     WeekJson response = new WeekJson(daysToJson(week.getDays()), week.getName(),
@@ -60,7 +60,7 @@ public class Save {
    * Converts text into corresponding json.
    *
    * @param week the week this text belongs to
-   * @return  the corresponding TextJson in week
+   * @return the corresponding TextJson in week
    */
   private TextJson textToJson(Week week) {
     return new TextJson(week.getQuotes(), week.getNotes());
@@ -70,7 +70,7 @@ public class Save {
    * Converts a list of days into an array of DayJson.
    *
    * @param days the list of days being given
-   * @return  the corresponding array of DayJson to the days
+   * @return the corresponding array of DayJson to the days
    */
   private DayJson[] daysToJson(List<Day> days) {
     List<DayJson> week = new ArrayList<>();

@@ -13,14 +13,16 @@ public class Event extends Activity {
   /**
    * Initializes the event.
    *
-   * @param name the name of the event
+   * @param name        the name of the event
    * @param description the description of the event
-   * @param dayOfWeek the day of the week for the event
-   * @param startTime the start time of the event
-   * @param duration the duration of the event
+   * @param dayOfWeek   the day of the week for the event
+   * @param startTime   the start time of the event
+   * @param duration    the duration of the event
    */
   @JsonCreator
-  public Event(@JsonProperty("name") String name, @JsonProperty("description") String description, @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("startTime") int startTime, @JsonProperty("duration") int duration) {
+  public Event(@JsonProperty("name") String name, @JsonProperty("description") String description,
+               @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek,
+               @JsonProperty("startTime") int startTime, @JsonProperty("duration") int duration) {
     super(name, description, dayOfWeek);
     this.startTime = startTime;
     this.duration = duration;
@@ -36,21 +38,21 @@ public class Event extends Activity {
   }
 
   /**
-   * Get the duration of the event.
-   *
-   * @return the duration of the event.
-   */
-  public int getDuration() {
-    return duration;
-  }
-
-  /**
    * Change the start time of the event.
    *
    * @param startTime the start time of the event
    */
   public void setStartTime(int startTime) {
     this.startTime = startTime;
+  }
+
+  /**
+   * Get the duration of the event.
+   *
+   * @return the duration of the event.
+   */
+  public int getDuration() {
+    return duration;
   }
 
   /**

@@ -27,9 +27,9 @@ public class TaskBox extends ActivityBox {
   /**
    * Constructor for TaskBox that takes a name, description, and the task to be rendered
    *
-   * @param name the name of the Task
+   * @param name        the name of the Task
    * @param description a description of the Task
-   * @param task the Task to be rendered
+   * @param task        the Task to be rendered
    */
   public TaskBox(String name, String description, Task task) {
     createHeader(name);
@@ -44,7 +44,7 @@ public class TaskBox extends ActivityBox {
     super.setup();
     setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
 
-    if (task.isDone()){
+    if (task.isDone()) {
       setOpacity(.6);
       createSubtext("Complete");
     }

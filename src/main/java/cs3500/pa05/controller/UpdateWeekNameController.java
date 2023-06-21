@@ -3,7 +3,6 @@ package cs3500.pa05.controller;
 import cs3500.pa05.Constants;
 import cs3500.pa05.model.DayOfWeek;
 import cs3500.pa05.model.Week;
-import cs3500.pa05.view.WeekView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -112,7 +111,7 @@ public class UpdateWeekNameController {
         case WEDNESDAY -> selectDay(wednesday);
         case THURSDAY -> selectDay(thursday);
         case FRIDAY -> selectDay(friday);
-        case SATURDAY -> selectDay(saturday);
+        default -> selectDay(saturday);
       }
 
       if (week.getMaxEvents() != Integer.MAX_VALUE) {

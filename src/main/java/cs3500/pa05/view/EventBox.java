@@ -14,10 +14,10 @@ public class EventBox extends ActivityBox {
   /**
    * Constructor for EventBox that takes a name, description, time, and the Event to render
    *
-   * @param name the name of the Event
+   * @param name        the name of the Event
    * @param description a description of the Event
-   * @param time the time of the Event
-   * @param event the Event to be rendered
+   * @param time        the time of the Event
+   * @param event       the Event to be rendered
    */
   public EventBox(String name, String description, String time, Event event) {
     createHeader(name);
@@ -31,8 +31,8 @@ public class EventBox extends ActivityBox {
   /**
    * A constructor for EventBox that takes a name, time, and the Event to be rendered
    *
-   * @param name the name of the event
-   * @param time a description of the event
+   * @param name  the name of the event
+   * @param time  a description of the event
    * @param event the Event to be rendered
    */
   public EventBox(String name, String time, Event event) {

@@ -11,9 +11,9 @@ public abstract class Activity {
   /**
    * Initializes the activity.
    *
-   * @param name the name of the event
+   * @param name        the name of the event
    * @param description the description of the event
-   * @param dayOfWeek the day of the week for the event
+   * @param dayOfWeek   the day of the week for the event
    */
   public Activity(String name, String description, DayOfWeek dayOfWeek) {
     this.name = name;
@@ -31,12 +31,30 @@ public abstract class Activity {
   }
 
   /**
+   * Change the name of the event.
+   *
+   * @param name the name of the event.
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  /**
    * Get the description of the event.
    *
    * @return the description of the event.
    */
   public String getDescription() {
     return description;
+  }
+
+  /**
+   * Change the description of the event.
+   *
+   * @param description the description of the event.
+   */
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   /**
@@ -55,25 +73,6 @@ public abstract class Activity {
    */
   public void setDayOfWeek(DayOfWeek dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
-  }
-
-
-  /**
-   * Change the name of the event.
-   *
-   * @param name the name of the event.
-   */
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * Change the description of the event.
-   *
-   * @param description the description of the event.
-   */
-  public void setDescription(String description) {
-    this.description = description;
   }
 
 }

@@ -90,9 +90,16 @@ public class PalletManager {
   );
 
   public static List<Pallet> themes
-      = new ArrayList<>(Arrays.stream(new Pallet[]{defaultPallet, darkPallet,
-      violetPallet, bubblegumPallet, monoPallet}).toList());
+      = new ArrayList<>(Arrays.stream(new Pallet[] {defaultPallet,
+      darkPallet, violetPallet, bubblegumPallet,
+      monoPallet}).toList());
 
+  /**
+   * Gets the pallet with name
+   *
+   * @param name the name
+   * @return the pallet with name
+   */
   public static Pallet getPalletWithName(String name) {
     for (Pallet p : themes) {
       if (p.name().equals(name)) {

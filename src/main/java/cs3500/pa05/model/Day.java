@@ -15,7 +15,7 @@ public class Day {
    * Default constructor for day
    *
    * @param dayOfWeek the day of the week represented by this day
-   * @param schedule a list of events for the day
+   * @param schedule  a list of events for the day
    */
   public Day(DayOfWeek dayOfWeek, List<Activity> schedule) {
     this.schedule = schedule;
@@ -33,14 +33,14 @@ public class Day {
     this.schedule = new ArrayList<>();
   }
 
-  public List<Activity> getSchedule()  {
+  public List<Activity> getSchedule() {
     return schedule;
   }
 
   /**
    * Returns all Tasks stored in this day.
    *
-   * @return  all tasks stored in this day
+   * @return all tasks stored in this day
    */
   public List<Task> getTasks() {
     List<Task> tasks = new ArrayList<>();
@@ -57,7 +57,7 @@ public class Day {
   /**
    * Returns all Events stored in this day.
    *
-   * @return  all events stored in this day
+   * @return all events stored in this day
    */
   public List<Event> getEvents() {
     List<Event> events = new ArrayList<>();
@@ -115,7 +115,7 @@ public class Day {
   /**
    * Adds activity to the day.
    *
-   * @param activity  activity to be added to day
+   * @param activity activity to be added to day
    */
   public void addActivity(Activity activity) {
     schedule.add(activity);

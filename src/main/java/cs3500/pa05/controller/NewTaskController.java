@@ -3,8 +3,6 @@ package cs3500.pa05.controller;
 import cs3500.pa05.Constants;
 import cs3500.pa05.model.DayOfWeek;
 import cs3500.pa05.model.Task;
-import cs3500.pa05.model.Week;
-import cs3500.pa05.view.NewTaskView;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -63,7 +61,8 @@ public class NewTaskController {
   /**
    * New Task Controller
    */
-  public NewTaskController() {}
+  public NewTaskController() {
+  }
 
   /**
    * New Task Controller
@@ -78,7 +77,7 @@ public class NewTaskController {
    * Initializes the task
    */
   @FXML
-  public void initialize(){
+  public void initialize() {
     updateTheme();
 
     windowLabel.setTextFill(Paint.valueOf(PalletManager.currentPallet.validTextColor()));
@@ -116,14 +115,14 @@ public class NewTaskController {
       name.setText(task.getName());
       description.setText(task.getDescription());
 
-      switch(task.getDayOfWeek()){
+      switch (task.getDayOfWeek()) {
         case SUNDAY -> selectDay(sunday);
         case MONDAY -> selectDay(monday);
         case TUESDAY -> selectDay(tuesday);
         case WEDNESDAY -> selectDay(wednesday);
         case THURSDAY -> selectDay(thursday);
         case FRIDAY -> selectDay(friday);
-        case SATURDAY -> selectDay(saturday);
+        default -> selectDay(saturday);
       }
 
       complete.setSelected(task.isDone());
@@ -226,7 +225,7 @@ public class NewTaskController {
     nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     descriptionLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     dayLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    
+
     nameLabel.setFont(PalletManager.currentPallet.textFont());
     descriptionLabel.setFont(PalletManager.currentPallet.textFont());
     dayLabel.setFont(PalletManager.currentPallet.textFont());

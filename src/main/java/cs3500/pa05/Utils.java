@@ -27,15 +27,16 @@ public class Utils {
 
     while (hour > 12) {
       hour = hour - 12;
-      if (hour > 11)
+      if (hour > 11) {
         pm = !pm;
+      }
     }
 
     if (hour == 12) {
       pm = !pm;
     }
 
-    return hour + ":" + ((minutes < 10)? "0" + minutes : minutes) + ((pm)? "PM" : "AM");
+    return hour + ":" + ((minutes < 10) ? "0" + minutes : minutes) + ((pm) ? "PM" : "AM");
   }
 
   /**
@@ -77,7 +78,7 @@ public class Utils {
   /**
    * Sets the default label with its paint color.
    *
-   * @param text the default label text
+   * @param text  the default label text
    * @param color the color of the default label
    * @return the new label with its text and color
    */

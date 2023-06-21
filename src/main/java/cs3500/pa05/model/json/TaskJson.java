@@ -7,7 +7,7 @@ import cs3500.pa05.model.DayOfWeek;
  * JSON format of this record:
  * <p>
  * <code>
- *{
+ * {
  * "name" : "name of task",
  * "description" : "description of task",
  * "dayOfWeek" : TUESDAY,
@@ -16,16 +16,16 @@ import cs3500.pa05.model.DayOfWeek;
  * </code>
  * </p>
  *
- * @param name the name of the task
+ * @param name        the name of the task
  * @param description the description of the task
- * @param dayOfWeek the day of the week
- * @param done if the task is complete
+ * @param dayOfWeek   the day of the week
+ * @param done        if the task is complete
  */
 public record TaskJson(
     @JsonProperty("name") String name,
     @JsonProperty("description") String description,
     @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek,
-    @JsonProperty("done") boolean done){
+    @JsonProperty("done") boolean done) {
 }
 
 

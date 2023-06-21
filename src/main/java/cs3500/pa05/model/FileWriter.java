@@ -4,8 +4,12 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Writes a file
+ */
 public class FileWriter {
   private File file;
+
   /**
    * Instantiates an instance of FileWriter with the <code>content</code> to be written.
    *

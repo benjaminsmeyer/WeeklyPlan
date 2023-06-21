@@ -4,7 +4,6 @@ import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.model.Activity;
 import cs3500.pa05.model.Day;
-import cs3500.pa05.model.FileWriter;
 import cs3500.pa05.model.Pallet;
 import cs3500.pa05.model.Save;
 import cs3500.pa05.model.Task;
@@ -16,12 +15,9 @@ import cs3500.pa05.view.TaskBox;
 import cs3500.pa05.view.UpdateWeekNameView;
 import cs3500.pa05.view.WeekView;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,8 +25,6 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -39,6 +33,7 @@ import javafx.stage.Stage;
  * Manages the week.
  */
 public class WeekManager {
+  public static WeekManager weekManager;
   private Week week;
   @FXML
   private VBox mainBox;
@@ -101,7 +96,6 @@ public class WeekManager {
   @FXML
   private ScrollPane saturdayPane;
   private WeekView weekView;
-  public static WeekManager weekManager;
   @FXML
   private TextArea notes;
   @FXML
@@ -131,7 +125,7 @@ public class WeekManager {
   /**
    * Creates a new WeekManager instance for the given Week
    *
-   * @param week
+   * @param week the week
    */
   public static void setup(Week week) {
     weekManager = new WeekManager(week);
@@ -151,7 +145,7 @@ public class WeekManager {
    * Called when the GUI loads in. Performs initial setup.
    */
   @FXML
-  public void initialize(){
+  public void initialize() {
     weekName.setOnMouseClicked(e -> updateWeekName());
     save.setOnAction(e -> save());
     setupPalletDropdown();
@@ -166,8 +160,8 @@ public class WeekManager {
     for (int i = 0; i < PalletManager.themes.size(); i++) {
       int finalI = i;
       MenuItem nextItem = new MenuItem(PalletManager.themes.get(finalI).name());
-      nextItem.setOnAction
-          (e -> updateTheme(PalletManager.themes.get(finalI)));
+      nextItem.setOnAction(e ->
+          updateTheme(PalletManager.themes.get(finalI)));
       themeDropDown.getItems().add(nextItem);
     }
   }
@@ -236,8 +230,8 @@ public class WeekManager {
    * Update weekly stats
    */
   private void updateWeeklyStats() {
-    // Show statistics for the Week in the GUI. At a minimum, include total Events and total Tasks, and percent of tasks completed.
-    String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %,.2f", week.totalWeekEvents(), week.totalWeekTasks(), totalTaskCompletePercent())
+    String weeklyStats = String.format("Total Events: %d\nTotal Tasks: %d\nTasks Completed: %,.2f",
+        week.totalWeekEvents(), week.totalWeekTasks(), totalTaskCompletePercent())
         + "%";
     overview.getChildren().clear();
     Label overviewLabel = new Label(weeklyStats);
@@ -258,7 +252,7 @@ public class WeekManager {
     if (week.totalWeekTasks() == 0) {
       return 0;
     } else {
-      return ((double)week.totalCompleteTasks() / (double) week.totalWeekTasks()) * 100;
+      return ((double) week.totalCompleteTasks() / (double) week.totalWeekTasks()) * 100;
     }
   }
 
@@ -267,11 +261,8 @@ public class WeekManager {
    */
   private void setupDayLayouts() {
     List<Day> days = week.getDays();
-    for (int i = 0; i < dayLayouts.size(); i ++) {
+    for (int i = 0; i < dayLayouts.size(); i++) {
       dayLayouts.get(i).getChildren().clear();
-
-      List<Activity> schedule = days.get(i).getSchedule();
-      List<VBox> scheduleButtons = DayView.renderActivities(schedule);
 
       dayNames.get(i).setText(Utils.dayOfWeekToString(days.get(i).getDayOfWeek()));
       dayLayouts.get(i).getChildren().add(dayNames.get(i));
@@ -288,11 +279,13 @@ public class WeekManager {
             Constants.invalidInputLabelColor));
       }
 
+      List<Activity> schedule = days.get(i).getSchedule();
+      List<VBox> scheduleButtons = DayView.renderActivities(schedule);
       dayLayouts.get(i).getChildren().addAll(scheduleButtons);
 
       for (Activity a : schedule) {
         if (a instanceof Task) {
-          tasksLayout.getChildren().add(new TaskBox(a.getName(), (Task)a));
+          tasksLayout.getChildren().add(new TaskBox(a.getName(), (Task) a));
         }
       }
     }

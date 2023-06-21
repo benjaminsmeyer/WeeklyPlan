@@ -2,11 +2,8 @@ package cs3500.pa05.controller;
 
 import cs3500.pa05.Constants;
 import cs3500.pa05.model.FileReader;
-import cs3500.pa05.model.Week;
 import cs3500.pa05.view.UpdateWeekNameView;
 import java.io.File;
-import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,7 +24,7 @@ public class OpeningWindowController {
    * Initializes the opening window controller
    */
   @FXML
-  public void initialize(){
+  public void initialize() {
     newWeek.setOnAction(e -> handleNewWeek());
     //TODO: Set up the loadWeek menu button to read from a directory of saved weeks and allow
     //      the user to select one

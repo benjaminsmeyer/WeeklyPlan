@@ -18,9 +18,6 @@ import java.util.List;
  * Reads the file
  */
 public class FileReader {
-  //json file reader?
-  private File file;
-  private ObjectMapper mapper = new ObjectMapper();
   List<Day> days;
   String name;
   int maxEvents;
@@ -28,6 +25,19 @@ public class FileReader {
   String notes;
   String quotes;
   String palletName;
+  //json file reader?
+  private File file;
+  private ObjectMapper mapper = new ObjectMapper();
+
+  /**
+   * Gets all bujo files
+   *
+   * @return all bujo files
+   */
+  public static List<String> getAllBujoFiles() {
+    List<String> names = Arrays.stream(new File(Constants.weekPath).list()).toList();
+    return names;
+  }
 
   /**
    * Opens the file
@@ -53,16 +63,6 @@ public class FileReader {
       throw new IllegalStateException("Could not read from file " + file.getName());
       // Disconnected from server or parsing exception
     }
-  }
-
-  /**
-   * Gets all bujo files
-   *
-   * @return all bujo files
-   */
-  public static List<String> getAllBujoFiles() {
-    List<String> names = Arrays.stream(new File(Constants.weekPath).list()).toList();
-    return names;
   }
 
   /**

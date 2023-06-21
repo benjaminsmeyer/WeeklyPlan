@@ -4,8 +4,6 @@ import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.model.DayOfWeek;
 import cs3500.pa05.model.Event;
-import cs3500.pa05.model.Task;
-import cs3500.pa05.view.NewEventView;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -15,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 /**
@@ -76,7 +73,8 @@ public class NewEventController {
   /**
    * Initializes a new event controller.
    */
-  public NewEventController() {}
+  public NewEventController() {
+  }
 
   /**
    * Initializes a new event controller.
@@ -144,19 +142,19 @@ public class NewEventController {
       name.setText(event.getName());
       description.setText(event.getDescription());
 
-      switch(event.getDayOfWeek()){
+      switch (event.getDayOfWeek()) {
         case SUNDAY -> selectDay(sunday);
         case MONDAY -> selectDay(monday);
         case TUESDAY -> selectDay(tuesday);
         case WEDNESDAY -> selectDay(wednesday);
         case THURSDAY -> selectDay(thursday);
         case FRIDAY -> selectDay(friday);
-        case SATURDAY -> selectDay(saturday);
+        default -> selectDay(saturday);
       }
 
       String timeString = Utils.timeToString(event.getStartTime());
-      String hourString = timeString.substring(0,timeString.indexOf(":"));
-      String minuteString = timeString.substring(timeString.indexOf(":")+1, timeString.length());
+      String hourString = timeString.substring(0, timeString.indexOf(":"));
+      String minuteString = timeString.substring(timeString.indexOf(":") + 1, timeString.length());
 
       hour.setText(hourString);
       minute.setText(minuteString);

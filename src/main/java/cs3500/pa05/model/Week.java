@@ -2,9 +2,7 @@ package cs3500.pa05.model;
 
 import cs3500.pa05.Constants;
 import cs3500.pa05.controller.PalletManager;
-import cs3500.pa05.controller.WeekManager;
 import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,10 +39,10 @@ public class Week {
   /**
    * Week constructor
    *
-   * @param days the days of the week
-   * @param name the name of the week
+   * @param days      the days of the week
+   * @param name      the name of the week
    * @param maxEvents the max events
-   * @param maxTasks the max tasks
+   * @param maxTasks  the max tasks
    */
   public Week(List<Day> days, String name, int maxEvents, int maxTasks) {
     this.days = days;
@@ -59,12 +57,12 @@ public class Week {
   /**
    * Week constructor
    *
-   * @param days the days of the week
-   * @param name the name of the week
-   * @param maxEvents the max events
-   * @param maxTasks the max tasks
-   * @param notes the notes
-   * @param quotes the quotes
+   * @param days       the days of the week
+   * @param name       the name of the week
+   * @param maxEvents  the max events
+   * @param maxTasks   the max tasks
+   * @param notes      the notes
+   * @param quotes     the quotes
    * @param palletName the pallet name
    */
   public Week(List<Day> days, String name, int maxEvents, int maxTasks,
@@ -82,10 +80,10 @@ public class Week {
   /**
    * Week constructor
    *
-   * @param startDay the start of the week
-   * @param name the name of the week
+   * @param startDay  the start of the week
+   * @param name      the name of the week
    * @param maxEvents the max events
-   * @param maxTasks the max tasks
+   * @param maxTasks  the max tasks
    */
   public Week(String name, int maxEvents, int maxTasks, DayOfWeek startDay) {
     days = new ArrayList<>();
@@ -140,7 +138,7 @@ public class Week {
     DayOfWeek[] ordering = new DayOfWeek[array.size()];
     int indexOfStartingDay = array.indexOf(startingDay);
 
-    for (int i = 0; i < array.size(); i ++) {
+    for (int i = 0; i < array.size(); i++) {
       int newIndexes = i + (array.size() - indexOfStartingDay);
       ordering[newIndexes % array.size()] = array.get(i);
     }
@@ -161,7 +159,7 @@ public class Week {
     DayOfWeek[] ordering = new DayOfWeek[array.size()];
     int indexOfStartingDay = array.indexOf(startingDay);
 
-    for (int i = 0; i < array.size(); i ++) {
+    for (int i = 0; i < array.size(); i++) {
       int newIndexes = i + (array.size() - indexOfStartingDay);
       ordering[newIndexes % array.size()] = array.get(i);
     }
@@ -181,7 +179,7 @@ public class Week {
   private Day getDay(DayOfWeek dayOfWeek) {
     for (Day day : days) {
       if (day.getDayOfWeek() == dayOfWeek) {
-        return  day;
+        return day;
       }
     }
     throw new IllegalArgumentException("Invalid day given " + dayOfWeek);
@@ -189,6 +187,8 @@ public class Week {
 
   /**
    * Get the start of the week
+   *
+   * @return day of the week
    */
   public DayOfWeek getStartOfWeek() {
     return days.get(0).getDayOfWeek();
@@ -264,13 +264,20 @@ public class Week {
 
   /**
    * Clears day activities
-   *
-   * @return a clear day of activities
    */
   private void clearDayActivities() {
     for (Day day : days) {
       day.getSchedule().clear();
     }
+  }
+
+  /**
+   * Gets the name
+   *
+   * @return the name
+   */
+  public String getName() {
+    return this.name;
   }
 
   /**
@@ -285,12 +292,12 @@ public class Week {
   }
 
   /**
-   * Gets the name
+   * Gets the max events
    *
-   * @return the name
+   * @return the max events
    */
-  public String getName() {
-    return this.name;
+  public int getMaxEvents() {
+    return maxEvents;
   }
 
   /**
@@ -303,30 +310,21 @@ public class Week {
   }
 
   /**
-   * Sets max tasks
-   *
-   * @param maxTasks the max tasks
-   */
-  public void setMaxTasks(int maxTasks) {
-    this.maxTasks = maxTasks;
-  }
-
-  /**
-   * Gets the max events
-   *
-   * @return the max events
-   */
-  public int getMaxEvents() {
-    return maxEvents;
-  }
-
-  /**
    * Gets the max tasks
    *
    * @return the max tasks
    */
   public int getMaxTasks() {
     return maxTasks;
+  }
+
+  /**
+   * Sets max tasks
+   *
+   * @param maxTasks the max tasks
+   */
+  public void setMaxTasks(int maxTasks) {
+    this.maxTasks = maxTasks;
   }
 
   /**
@@ -401,7 +399,8 @@ public class Week {
     for (Day day : days) {
       count += day.countCompletedTasks();
     }
-    return count;}
+    return count;
+  }
 
   /**
    * Gets the pallet name

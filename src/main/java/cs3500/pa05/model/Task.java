@@ -12,9 +12,9 @@ public class Task extends Activity {
   /**
    * Initializes the task.
    *
-   * @param name the name of the task
+   * @param name        the name of the task
    * @param description the description of the task
-   * @param dayOfWeek the day of the week
+   * @param dayOfWeek   the day of the week
    */
   public Task(String name, String description, DayOfWeek dayOfWeek) {
     super(name, description, dayOfWeek);
@@ -22,7 +22,8 @@ public class Task extends Activity {
   }
 
   @JsonCreator
-  public Task(@JsonProperty("name") String name, @JsonProperty("description") String description, @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("done") boolean done) {
+  public Task(@JsonProperty("name") String name, @JsonProperty("description") String description,
+              @JsonProperty("dayOfWeek") DayOfWeek dayOfWeek, @JsonProperty("done") boolean done) {
     super(name, description, dayOfWeek);
     this.complete = done;
   }
