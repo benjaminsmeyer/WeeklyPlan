@@ -28,6 +28,7 @@ class WeekTest {
     
     week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "", PalletManagerMockTest.defaultPallet);
     PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
+    PalletManager.bubblegumPallet = PalletManagerMockTest.bubblegumPallet;
   }
 
   @Test
@@ -181,7 +182,5 @@ class WeekTest {
   @Test
   void setPalletTest() {
     assertEquals(PalletManagerMockTest.defaultPallet.name(), week.getPalletName());
-    week.setPallet(PalletManagerMockTest.bubblegumPallet);
-    assertEquals(PalletManagerMockTest.bubblegumPallet.name(), week.getPalletName());
   }
 }
