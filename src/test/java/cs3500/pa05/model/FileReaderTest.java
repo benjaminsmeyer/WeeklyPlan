@@ -24,7 +24,7 @@ class FileReaderTest {
   }
 
   @Test
-  void openFile() {
+  void openFileTest() {
     File file = new File("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
     fileReader.openFile(file);
   }

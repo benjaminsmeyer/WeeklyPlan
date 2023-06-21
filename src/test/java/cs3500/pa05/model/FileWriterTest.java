@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class FileWriterTest {
 
   @Test
-  void writeToFile() {
+  void writeToFileTest() {
     String filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
     FileWriter fileWriter = new FileWriter(filePath);
     fileWriter.writeToFile("hello");

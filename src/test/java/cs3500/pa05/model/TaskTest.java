@@ -24,7 +24,7 @@ class TaskTest {
    * Checks if complete works correctly
    */
   @Test
-  void complete() {
+  void completeTest() {
     assertFalse(task.isDone());
     task.complete();
     assertTrue(task.isDone());
@@ -34,7 +34,7 @@ class TaskTest {
    * Checks if incomplete works correctly
    */
   @Test
-  void incomplete() {
+  void incompleteTest() {
     assertFalse(task.isDone());
     task.incomplete();
     assertFalse(task.isDone());
@@ -44,7 +44,7 @@ class TaskTest {
    * Checks if isDone works correctly
    */
   @Test
-  void isDone() {
+  void isDoneTest() {
     assertFalse(task.isDone());
     task.incomplete();
     assertFalse(task.isDone());

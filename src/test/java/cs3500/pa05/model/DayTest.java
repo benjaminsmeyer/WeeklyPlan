@@ -24,7 +24,7 @@ class DayTest {
   }
 
   @Test
-  void getSchedule() {
+  void getScheduleTest() {
     List<Activity> schedule = emptyDay.getSchedule();
     assertEquals(0, schedule.size());
 
@@ -33,33 +33,33 @@ class DayTest {
   }
 
   @Test
-  void getTasks() {
+  void getTasksTest() {
     List<Task> tasks = day.getTasks();
     assertEquals(2, tasks.size());
     assertEquals("task", tasks.get(0).getName());
   }
 
   @Test
-  void getEvents() {
+  void getEventsTest() {
     List<Event> events = day.getEvents();
     assertEquals(1, events.size());
     assertEquals("event", events.get(0).getName());
   }
 
   @Test
-  void countEvents() {
+  void countEventsTest() {
     assertEquals(1, day.countEvents());
     assertEquals(day.getEvents().size(), day.countEvents());
   }
 
   @Test
-  void countTasks() {
+  void countTasksTest() {
     assertEquals(2, day.countTasks());
     assertEquals(day.getTasks().size(), day.countTasks());
   }
 
   @Test
-  void countCompletedTasks() {
+  void countCompletedTasksTest() {
     assertEquals(0, day.countCompletedTasks());
     List<Task> tasks = day.getTasks();
     tasks.get(0).complete();
@@ -67,21 +67,21 @@ class DayTest {
   }
 
   @Test
-  void addActivity() {
+  void addActivityTest() {
     assertEquals(1, day.countEvents());
     day.addActivity(new Event("event2", "event description2", DayOfWeek.SUNDAY, 1000, 60));
     assertEquals(2, day.countEvents());
   }
 
   @Test
-  void removeActivity() {
+  void removeActivityTest() {
     assertEquals(1, day.countEvents());
     day.removeActivity(day.getEvents().get(0));
     assertEquals(0, day.countEvents());
   }
 
   @Test
-  void getDayOfWeek() {
+  void getDayOfWeekTest() {
     assertEquals(DayOfWeek.SUNDAY, day.getDayOfWeek());
   }
 }
