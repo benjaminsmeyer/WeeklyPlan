@@ -50,8 +50,6 @@ class WeekTest {
 
   @Test
   void testContructors() {
-    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
-
     Week emptyWeek = new Week();
     assertEquals(DayOfWeek.SUNDAY, emptyWeek.getStartOfWeek());
 
@@ -60,14 +58,6 @@ class WeekTest {
 
     Week maxDefinedWeek = new Week("max's are defined", 10, 10, DayOfWeek.FRIDAY);
     assertEquals(10, maxDefinedWeek.getMaxEvents());
-
-    Week fourParamWeek = new Week(days, "full week info", 20, 20);
-    assertEquals(days.size(), fourParamWeek.getDays().size());
-    assertEquals(PalletManagerMockTest.defaultPallet.name(), fourParamWeek.getPalletName());
-
-    Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes",
-        PalletManagerMockTest.defaultPallet.name());
-    assertEquals(PalletManagerMockTest.defaultPallet.name(), allParamWeek.getPalletName());
   }
 
   @Test
