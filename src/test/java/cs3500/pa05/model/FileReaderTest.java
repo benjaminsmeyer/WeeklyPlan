@@ -46,8 +46,8 @@ class FileReaderTest {
   @Test
   void readFileTest() {
     String filePath = "src/test/testfiles/weekTest.bujo";
-    FileWrite fileWrite = new FileWrite(filePath);
-    fileWrite.writeToFile("hello");
+    FileWriter fileWriter = new FileWriter(filePath);
+    fileWriter.writeToFile("hello");
 
     try {
       assertEquals("hello", Files.readString(Path.of(filePath)));
@@ -56,8 +56,8 @@ class FileReaderTest {
     }
 
     filePath = "src/test/testfiles/weekTest.bujo";
-    fileWrite = new FileWrite(filePath);
-    fileWrite.writeToFile("test");
+    fileWriter = new FileWriter(filePath);
+    fileWriter.writeToFile("test");
 
     try {
       assertEquals("test", Files.readString(Path.of(filePath)));
