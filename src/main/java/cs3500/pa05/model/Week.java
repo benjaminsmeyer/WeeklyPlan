@@ -39,20 +39,24 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = notes;
     this.quotes = quotes;
-    this.weekTheme = PalletManager.getPalletWithName(palletName);
-    PalletManager.setCurrentPallet(weekTheme);
+    try {
+      this.weekTheme = PalletManager.getPalletWithName(palletName);
+      PalletManager.setCurrentPallet(weekTheme);
+    } catch (Exception e) {
+      this.weekTheme = null;
+    }
   }
 
   /**
    * Week constructor.
    *
-   * @param days       the days of the week
-   * @param name       the name of the week
-   * @param maxEvents  the max events
-   * @param maxTasks   the max tasks
-   * @param notes      the notes
-   * @param quotes     the quotes
-   * @param pallet     the pallet
+   * @param days      the days of the week
+   * @param name      the name of the week
+   * @param maxEvents the max events
+   * @param maxTasks  the max tasks
+   * @param notes     the notes
+   * @param quotes    the quotes
+   * @param pallet    the pallet
    */
   public Week(List<Day> days, String name, int maxEvents, int maxTasks,
               String notes, String quotes, Pallet pallet) {
@@ -81,7 +85,11 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = "";
     this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
+    try {
+      this.weekTheme = PalletManager.defaultPallet;
+    } catch (Exception e) {
+      this.weekTheme = null;
+    }
   }
 
   /**

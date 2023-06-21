@@ -24,8 +24,9 @@ class WeekTest {
     days.add(new Day(DayOfWeek.THURSDAY));
     days.add(new Day(DayOfWeek.FRIDAY));
     days.add(new Day(DayOfWeek.SATURDAY));
-    
-    week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "", PalletManagerMockTest.defaultPallet);
+
+    week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "",
+        PalletManagerMockTest.defaultPallet);
   }
 
   @Test
@@ -47,7 +48,6 @@ class WeekTest {
 
   @Test
   void testContructors() {
-
     Week maxDefinedWeek = new Week("max's are defined", 10, 10, DayOfWeek.FRIDAY);
     assertEquals(10, maxDefinedWeek.getMaxEvents());
   }

@@ -31,7 +31,8 @@ class SaveTest {
     days.add(new Day(DayOfWeek.FRIDAY));
     days.add(new Day(DayOfWeek.SATURDAY));
 
-    Week week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "", PalletManagerMockTest.defaultPallet);
+    Week week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "",
+        PalletManagerMockTest.defaultPallet);
     Save save = new Save("src/test/testfiles/weekTest.bujo");
     save.saveWeek(week);
     FileRead fileRead = new FileRead();
