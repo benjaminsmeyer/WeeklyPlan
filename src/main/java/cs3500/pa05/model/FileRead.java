@@ -26,7 +26,7 @@ public class FileRead {
   String quotes;
   String palletName;
   private File file;
-  private ObjectMapper mapper = new ObjectMapper();
+  private final ObjectMapper mapper = new ObjectMapper();
 
   /**
    * Gets all bujo files.
@@ -34,8 +34,7 @@ public class FileRead {
    * @return all bujo files
    */
   public static List<String> getAllBujoFiles() {
-    List<String> names = Arrays.stream(new File(Constants.weekPath).list()).toList();
-    return names;
+    return Arrays.stream(new File(Constants.weekPath).list()).toList();
   }
 
   /**

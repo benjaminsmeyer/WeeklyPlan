@@ -7,8 +7,8 @@ import java.util.List;
  * Create a Day.
  */
 public class Day {
-  private List<Activity> schedule;
-  private DayOfWeek dayOfWeek;
+  private final List<Activity> schedule;
+  private final DayOfWeek dayOfWeek;
 
 
   /**
@@ -33,6 +33,11 @@ public class Day {
     this.schedule = new ArrayList<>();
   }
 
+  /**
+   * Returns all activities stored in this Day.
+   *
+   * @return all activities stored in this Day
+   */
   public List<Activity> getSchedule() {
     return schedule;
   }

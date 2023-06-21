@@ -8,7 +8,7 @@ import java.nio.file.Path;
  * Writes a file.
  */
 public class FileWriter {
-  private File file;
+  private final File file;
 
   /**
    * Instantiates an instance of FileWriter with the <code>content</code> to be written.
@@ -21,6 +21,8 @@ public class FileWriter {
 
   /**
    * Writes to the file.
+   *
+   * @param content content to write to file
    */
   public void writeToFile(String content) {
     Path path;

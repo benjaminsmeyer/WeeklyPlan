@@ -102,11 +102,11 @@ public class UpdateWeekNameController {
       }
 
       if (week.getMaxEvents() != Integer.MAX_VALUE) {
-        maxEventsField.setText("" + week.getMaxEvents());
+        maxEventsField.setText(String.valueOf(week.getMaxEvents()));
       }
 
       if (week.getMaxTasks() != Integer.MAX_VALUE) {
-        maxTasksField.setText("" + week.getMaxTasks());
+        maxTasksField.setText(String.valueOf(week.getMaxTasks()));
       }
       name.setText(week.getName());
     } else {

@@ -33,7 +33,11 @@ import javafx.stage.Stage;
  * Manages the week.
  */
 public class WeekManager {
+  /**
+   * WeekManager static instance.
+   */
   public static WeekManager weekManager;
+
   private Week week;
   @FXML
   private VBox mainBox;
@@ -95,7 +99,6 @@ public class WeekManager {
   private ScrollPane fridayPane;
   @FXML
   private ScrollPane saturdayPane;
-  private WeekView weekView;
   @FXML
   private TextArea notes;
   @FXML
@@ -110,7 +113,7 @@ public class WeekManager {
   private Label quotesLabel;
   @FXML
   private Label overviewLabel;
-
+  private final WeekView weekView;
 
   /**
    * Setups week manager.
