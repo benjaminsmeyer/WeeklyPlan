@@ -9,26 +9,40 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the FileReader class.
+ */
 class FileReaderTest {
-
   private FileRead fileRead;
 
+  /**
+   * Setups the variables.
+   */
   @BeforeEach
   void setup() {
     fileRead = new FileRead();
   }
 
+  /**
+   * Tests the getAllBujoFiles function.
+   */
   @Test
   void getAllBujoFilesTest() {
     assertEquals("[MyWeek.bujo]", FileRead.getAllBujoFiles().toString());
   }
 
+  /**
+   * Tests the openFile function.
+   */
   @Test
   void openFileTest() {
     File file = new File("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
     fileRead.openFile(file);
   }
 
+  /**
+   * Tests the readFile function.
+   */
   @Test
   void readFileTest() {
     String filePath = "src/test/testfiles/weekTest.bujo";

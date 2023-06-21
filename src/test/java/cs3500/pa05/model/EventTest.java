@@ -6,13 +6,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests the event class
+ * Tests the event class.
  */
 class EventTest {
   private Event event;
 
   /**
-   * Setups the variables
+   * Setups the variables.
    */
   @BeforeEach
   void setUp() {
@@ -20,7 +20,7 @@ class EventTest {
   }
 
   /**
-   * Checks if the start time returns correctly
+   * Checks if the start time returns correctly.
    */
   @Test
   void getStartTimeTest() {
@@ -30,7 +30,7 @@ class EventTest {
   }
 
   /**
-   * Checks if the duration returns correctly
+   * Checks if the duration returns correctly.
    */
   @Test
   void getDurationTest() {
@@ -40,7 +40,7 @@ class EventTest {
   }
 
   /**
-   * Checks if the start time sets correctly
+   * Checks if the start time sets correctly.
    */
   @Test
   void setStartTimeTest() {
@@ -50,7 +50,7 @@ class EventTest {
   }
 
   /**
-   * Checks if the duration time sets correctly
+   * Checks if the duration time sets correctly.
    */
   @Test
   void setDurationTest() {
