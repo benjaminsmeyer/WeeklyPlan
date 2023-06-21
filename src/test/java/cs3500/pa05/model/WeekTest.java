@@ -1,6 +1,6 @@
 package cs3500.pa05.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import cs3500.pa05.controller.PalletManager;
 import java.util.ArrayList;
@@ -61,7 +61,8 @@ class WeekTest {
     assertEquals(days.size(), fourParamWeek.getDays().size());
     assertEquals(PalletManager.defaultPallet.name(), fourParamWeek.getPalletName());
 
-    Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes", PalletManager.bubblegumPallet.name());
+    Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes",
+        PalletManager.bubblegumPallet.name());
     assertEquals(PalletManager.bubblegumPallet.name(), allParamWeek.getPalletName());
   }
 
