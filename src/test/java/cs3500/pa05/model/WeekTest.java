@@ -168,7 +168,6 @@ class WeekTest {
   @Test
   void totalCompleteTasksTest() {
     assertEquals(0, week.totalCompleteTasks());
-    //set the first activity as complete
     week.getDays().get(0).getTasks().get(0).complete();
     assertEquals(1, week.totalCompleteTasks());
   }

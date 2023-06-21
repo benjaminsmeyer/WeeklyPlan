@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Reads the file
  */
-public class FileReader {
+public class FileRead {
   List<Day> days;
   String name;
   int maxEvents;

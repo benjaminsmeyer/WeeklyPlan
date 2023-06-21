@@ -11,29 +11,29 @@ import org.junit.jupiter.api.Test;
 
 class FileReaderTest {
 
-  private FileReader fileReader;
+  private FileRead fileRead;
 
   @BeforeEach
   void setup() {
-    fileReader = new FileReader();
+    fileRead = new FileRead();
   }
 
   @Test
   void getAllBujoFilesTest() {
-    assertEquals("[MyWeek.bujo]", FileReader.getAllBujoFiles().toString());
+    assertEquals("[MyWeek.bujo]", FileRead.getAllBujoFiles().toString());
   }
 
   @Test
   void openFileTest() {
     File file = new File("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
-    fileReader.openFile(file);
+    fileRead.openFile(file);
   }
 
   @Test
   void readFileTest() {
     String filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
-    cs3500.pa05.model.FileWriter fileWriter = new FileWriter(filePath);
-    fileWriter.writeToFile("hello");
+    FileWrite fileWrite = new FileWrite(filePath);
+    fileWrite.writeToFile("hello");
 
     try {
       assertEquals("hello", Files.readString(Path.of(filePath)));
@@ -42,8 +42,8 @@ class FileReaderTest {
     }
 
     filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
-    fileWriter = new FileWriter(filePath);
-    fileWriter.writeToFile("test");
+    fileWrite = new FileWrite(filePath);
+    fileWrite.writeToFile("test");
 
     try {
       assertEquals("test", Files.readString(Path.of(filePath)));

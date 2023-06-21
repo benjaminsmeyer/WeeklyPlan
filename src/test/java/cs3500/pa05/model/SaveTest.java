@@ -40,9 +40,9 @@ class SaveTest {
     Week week = new Week(days, "test week");
     Save save = new Save("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
     save.saveWeek(week);
-    FileReader fileReader = new FileReader();
+    FileRead fileRead = new FileRead();
     File file = new File("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
-    fileReader.openFile(file);
-    assertEquals("test week", fileReader.readFile().getName());
+    fileRead.openFile(file);
+    assertEquals("test week", fileRead.readFile().getName());
   }
 }
