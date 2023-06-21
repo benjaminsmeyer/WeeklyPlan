@@ -405,6 +405,7 @@ public class NewEventController {
    */
   private void updateTheme() {
     mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
+
     windowLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     descriptionLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
@@ -418,6 +419,19 @@ public class NewEventController {
     timeLabel.setFont(PalletManager.currentPallet.textFont());
     timeLabel.setFont(PalletManager.currentPallet.textFont());
 
+    updateWeekPallet();
+
+    am.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    am.setFont(PalletManager.currentPallet.textFont());
+
+    pm.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    pm.setFont(PalletManager.currentPallet.textFont());
+
+    createEvent.setFont(PalletManager.currentPallet.textFont());
+    createEvent.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+  }
+
+  private void updateWeekPallet() {
     sunday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     monday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     tuesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
@@ -433,13 +447,5 @@ public class NewEventController {
     thursday.setFont(PalletManager.currentPallet.textFont());
     friday.setFont(PalletManager.currentPallet.textFont());
     saturday.setFont(PalletManager.currentPallet.textFont());
-
-    am.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    pm.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    am.setFont(PalletManager.currentPallet.textFont());
-    pm.setFont(PalletManager.currentPallet.textFont());
-
-    createEvent.setFont(PalletManager.currentPallet.textFont());
-    createEvent.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
   }
 }
