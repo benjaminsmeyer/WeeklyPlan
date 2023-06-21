@@ -2,7 +2,6 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import cs3500.pa05.controller.PalletManager;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,8 +47,6 @@ class WeekTest {
 
   @Test
   void testContructors() {
-    Week dayWeek = new Week(DayOfWeek.MONDAY);
-    assertEquals(DayOfWeek.MONDAY, dayWeek.getStartOfWeek());
 
     Week maxDefinedWeek = new Week("max's are defined", 10, 10, DayOfWeek.FRIDAY);
     assertEquals(10, maxDefinedWeek.getMaxEvents());
