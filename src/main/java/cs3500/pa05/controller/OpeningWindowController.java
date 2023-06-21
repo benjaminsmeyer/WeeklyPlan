@@ -2,11 +2,14 @@ package cs3500.pa05.controller;
 
 import cs3500.pa05.Constants;
 import cs3500.pa05.model.FileRead;
+import cs3500.pa05.view.SplashView;
 import cs3500.pa05.view.UpdateWeekNameView;
 import java.io.File;
 import java.util.List;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
@@ -26,8 +29,6 @@ public class OpeningWindowController {
   @FXML
   public void initialize() {
     newWeek.setOnAction(e -> handleNewWeek());
-    //TODO: Set up the loadWeek menu button to read from a directory of saved weeks and allow
-    //      the user to select one
 
     List<String> weeks = FileRead.getAllBujoFiles();
     for (String week : weeks) {
@@ -64,11 +65,26 @@ public class OpeningWindowController {
     reader.openFile(new File(Constants.weekPath + file));
     WeekManager.setup(reader.readFile());
 
-    Stage stage = new Stage();
-    stage.setScene(WeekManager.weekManager.getScene());
-    stage.show();
+
+    //Splash screen
+    Stage splash = new Stage();
+    SplashView splashView = new SplashView();
+    splash.setScene(splashView.load());
+    splash.show();
 
     Stage thisStage = (Stage) newWeek.getScene().getWindow();
     thisStage.close();
+
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+
+    splash.close();
+
+    Stage stage = new Stage();
+    stage.setScene(WeekManager.weekManager.getScene());
+    stage.show();
   }
 }

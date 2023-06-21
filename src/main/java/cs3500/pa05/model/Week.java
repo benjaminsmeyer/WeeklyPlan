@@ -18,41 +18,6 @@ public class Week {
   private String notes;
   private String quotes;
   private Pallet weekTheme;
-  //List<String> categories;
-
-  /**
-   * Default constructor for Week.
-   *
-   * @param days the Days of this Week
-   * @param name the name of this Week
-   */
-  public Week(List<Day> days, String name) {
-    this.days = days;
-    this.name = name;
-    this.maxEvents = Integer.MAX_VALUE;
-    this.maxTasks = Integer.MAX_VALUE;
-    this.notes = "";
-    this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
-  }
-
-  /**
-   * Week constructor.
-   *
-   * @param days      the days of the week
-   * @param name      the name of the week
-   * @param maxEvents the max events
-   * @param maxTasks  the max tasks
-   */
-  public Week(List<Day> days, String name, int maxEvents, int maxTasks) {
-    this.days = days;
-    this.name = name;
-    this.maxEvents = maxEvents;
-    this.maxTasks = maxTasks;
-    this.notes = "";
-    this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
-  }
 
   /**
    * Week constructor.
@@ -91,36 +56,6 @@ public class Week {
     this.name = name;
     this.maxEvents = maxEvents;
     this.maxTasks = maxTasks;
-    this.notes = "";
-    this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
-  }
-
-
-  /**
-   * Convenience constructor for Week. Initializes a week with empty days.
-   */
-  public Week() {
-    days = new ArrayList<>();
-    setWeekStart(DayOfWeek.SUNDAY);
-    this.maxEvents = Integer.MAX_VALUE;
-    this.maxTasks = Integer.MAX_VALUE;
-    this.name = "My Week";
-    this.notes = "";
-    this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
-  }
-
-  /**
-   * Week constructor.
-   *
-   * @param startingDay the start of the week
-   */
-  public Week(DayOfWeek startingDay) {
-    setWeekStart(startingDay);
-    this.maxEvents = Integer.MAX_VALUE;
-    this.maxTasks = Integer.MAX_VALUE;
-    this.name = "Week";
     this.notes = "";
     this.quotes = "";
     this.weekTheme = PalletManager.defaultPallet;
