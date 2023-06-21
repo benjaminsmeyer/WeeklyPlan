@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * Event box.
  */
 public class EventBox extends ActivityBox {
-  private Event event;
+  private final Event event;
 
   /**
    * Constructor for EventBox that takes a name, description, time, and the Event to render.

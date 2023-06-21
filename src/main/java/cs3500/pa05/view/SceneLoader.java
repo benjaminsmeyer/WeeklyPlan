@@ -8,7 +8,7 @@ import javafx.scene.Scene;
  * Handles the scene loader.
  */
 public abstract class SceneLoader {
-  private FXMLLoader loader;
+  private final FXMLLoader loader;
 
   /**
    * Initializes the scene loader.
