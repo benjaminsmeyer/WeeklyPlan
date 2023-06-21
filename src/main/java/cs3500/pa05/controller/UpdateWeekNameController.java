@@ -74,14 +74,7 @@ public class UpdateWeekNameController {
   @FXML
   public void initialize() {
     updateTheme();
-
-    sunday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    monday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    tuesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    wednesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    thursday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    friday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    saturday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    setStyle();
 
     maxEventsField.setFont(PalletManager.currentPallet.textFont());
     maxEventsField.setStyle(
@@ -95,13 +88,7 @@ public class UpdateWeekNameController {
     name.setStyle(
         "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
 
-    sunday.setOnAction(e -> selectDay(sunday));
-    monday.setOnAction(e -> selectDay(monday));
-    tuesday.setOnAction(e -> selectDay(tuesday));
-    wednesday.setOnAction(e -> selectDay(wednesday));
-    thursday.setOnAction(e -> selectDay(thursday));
-    friday.setOnAction(e -> selectDay(friday));
-    saturday.setOnAction(e -> selectDay(saturday));
+    setAction();
 
     if (week != null) {
       switch (week.getStartOfWeek()) {
@@ -128,6 +115,32 @@ public class UpdateWeekNameController {
 
     saveButton.setOnAction(e -> updateWeekSettings());
     saveButton.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+  }
+
+  /**
+   * Set actions for Task buttons.
+   */
+  private void setAction() {
+    sunday.setOnAction(e -> selectDay(sunday));
+    monday.setOnAction(e -> selectDay(monday));
+    tuesday.setOnAction(e -> selectDay(tuesday));
+    wednesday.setOnAction(e -> selectDay(wednesday));
+    thursday.setOnAction(e -> selectDay(thursday));
+    friday.setOnAction(e -> selectDay(friday));
+    saturday.setOnAction(e -> selectDay(saturday));
+  }
+
+  /**
+   * Set styles for Task buttons.
+   */
+  private void setStyle() {
+    sunday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    monday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    tuesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    wednesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    thursday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    friday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
+    saturday.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
   }
 
   /**
@@ -243,6 +256,16 @@ public class UpdateWeekNameController {
     nameLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     nameLabel.setFont(PalletManager.currentPallet.textFont());
 
+    updateDaysTheme();
+
+    saveButton.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    saveButton.setFont(PalletManager.currentPallet.textFont());
+  }
+
+  /**
+   * Updates the GUI theme for the days of the week.
+   */
+  private void updateDaysTheme() {
     sunday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     monday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     tuesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
@@ -258,8 +281,5 @@ public class UpdateWeekNameController {
     thursday.setFont(PalletManager.currentPallet.textFont());
     friday.setFont(PalletManager.currentPallet.textFont());
     saturday.setFont(PalletManager.currentPallet.textFont());
-
-    saveButton.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    saveButton.setFont(PalletManager.currentPallet.textFont());
   }
 }
