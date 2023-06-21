@@ -10,10 +10,11 @@ import org.junit.jupiter.api.Test;
 
 class WeekTest {
   private Week week;
+  private List<Day> days;
 
   @BeforeEach
   void setUp() {
-    List<Day> days = new ArrayList<>();
+    days = new ArrayList<>();
     Day day = new Day(DayOfWeek.SUNDAY);
     day.addActivity(new Task("task", "task description", DayOfWeek.SUNDAY));
     day.addActivity(new Event("event", "event description", DayOfWeek.SUNDAY, 1000, 60));
@@ -46,6 +47,24 @@ class WeekTest {
   }
 
   @Test
+  void testContructors() {
+    Week emptyWeek = new Week();
+    assertEquals(DayOfWeek.SUNDAY, emptyWeek.getStartOfWeek());
+
+    Week dayWeek = new Week(DayOfWeek.MONDAY);
+    assertEquals(DayOfWeek.MONDAY, dayWeek.getStartOfWeek());
+
+    Week maxDefinedWeek = new Week("max's are defined", 10, 10, DayOfWeek.FRIDAY);
+    assertEquals(10, maxDefinedWeek.getMaxEvents());
+
+    Week fourParamWeek = new Week(days, "full week info", 20, 20);
+    assertEquals(days.size(), fourParamWeek.getDays().size());
+
+    Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes", PalletManager.bubblegumPallet.name());
+    assertEquals(PalletManager.bubblegumPallet.name(), allParamWeek.getPalletName());
+  }
+
+  @Test
   void addActivityTest() {
     Day day = week.getDays().get(0);
     assertEquals(2, day.getSchedule().size());
@@ -65,6 +84,7 @@ class WeekTest {
   void updateActivityDatesTest() {
     assertEquals(DayOfWeek.SUNDAY, week.getDays().get(0).getDayOfWeek());
     week.updateWeekStart(DayOfWeek.THURSDAY);
+    week.updateActivityDates();
     assertEquals(DayOfWeek.THURSDAY, week.getDays().get(0).getDayOfWeek());
   }
 
