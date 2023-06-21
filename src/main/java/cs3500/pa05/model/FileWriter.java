@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Writes a file
+ * Writes a file.
  */
 public class FileWriter {
   private File file;

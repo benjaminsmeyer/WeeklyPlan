@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Saves file
+ * Saves file.
  */
 public class Save {
   FileWriter fileWriter;
@@ -81,7 +81,7 @@ public class Save {
   }
 
   /**
-   * Converts events to json
+   * Converts events to json.
    *
    * @param day the day
    * @return the events to json
@@ -95,7 +95,7 @@ public class Save {
   }
 
   /**
-   * Converts tasks to json
+   * Converts tasks to json.
    *
    * @param day the day
    * @return the tasks to json
