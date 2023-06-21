@@ -2,126 +2,164 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import cs3500.pa05.controller.PalletManager;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class WeekTest {
-
   private Week week;
 
   @BeforeEach
-  void setup() {
-    week = new Week();
+  void setUp() {
+    List<Day> days = new ArrayList<>();
+    Day day = new Day(DayOfWeek.SUNDAY);
+    day.addActivity(new Task("task", "task description", DayOfWeek.SUNDAY));
+    day.addActivity(new Event("event", "event description", DayOfWeek.SUNDAY, 1000, 60));
+    days.add(day);
+    days.add(new Day(DayOfWeek.MONDAY));
+    days.add(new Day(DayOfWeek.TUESDAY));
+    days.add(new Day(DayOfWeek.WEDNESDAY));
+    days.add(new Day(DayOfWeek.THURSDAY));
+    days.add(new Day(DayOfWeek.FRIDAY));
+    days.add(new Day(DayOfWeek.SATURDAY));
+
+    week = new Week(days, "test week");
   }
 
   @Test
-  void updateWeekStart() {
-    week.updateWeekStart(DayOfWeek.THURSDAY);
-  }
-
-  @Test
-  void getStartOfWeek() {
+  void updateWeekStartTest() {
+    assertEquals(DayOfWeek.SUNDAY, week.getStartOfWeek());
     week.updateWeekStart(DayOfWeek.THURSDAY);
     assertEquals(DayOfWeek.THURSDAY, week.getStartOfWeek());
   }
 
   @Test
-  void getDays() {
+  void getStartOfWeekTest() {
+    assertEquals(DayOfWeek.SUNDAY, week.getStartOfWeek());
+  }
+
+  @Test
+  void getDaysTest() {
+    assertEquals(7, week.getDays().size());
+  }
+
+  @Test
+  void addActivityTest() {
+    Day day = week.getDays().get(0);
+    assertEquals(2, day.getSchedule().size());
+    week.addActivity(new Task("task", "description", DayOfWeek.SUNDAY));
+    assertEquals(3, day.getSchedule().size());
+  }
+
+  @Test
+  void removeActivityTest() {
+    Day day = week.getDays().get(0);
+    assertEquals(2, day.getSchedule().size());
+    week.removeActivity(day.getTasks().get(0));
+    assertEquals(1, day.getSchedule().size());
+  }
+
+  @Test
+  void updateActivityDatesTest() {
     assertEquals(DayOfWeek.SUNDAY, week.getDays().get(0).getDayOfWeek());
+    week.updateWeekStart(DayOfWeek.THURSDAY);
+    assertEquals(DayOfWeek.THURSDAY, week.getDays().get(0).getDayOfWeek());
   }
 
   @Test
-  void addActivity() {
-    week.addActivity(new Event("hello", "hello", DayOfWeek.THURSDAY, 100, 100));
+  void setNameTest() {
+    assertEquals("test week", week.getName());
+    week.setName("new name");
+    assertEquals("new name", week.getName());
   }
 
   @Test
-  void removeActivity() {
-    week.removeActivity(new Event("hello", "hello", DayOfWeek.THURSDAY, 100, 100));
+  void getNameTest() {
+    assertEquals("test week", week.getName());
   }
 
   @Test
-  void updateActivityDates() {
-    week.updateActivityDates();
-  }
-
-  @Test
-  void getName() {
-    assertEquals("My Week", week.getName());
-  }
-
-  @Test
-  void setName() {
-    assertEquals("My Week", week.getName());
-    week.setName("hello");
-    assertEquals("hello", week.getName());
-  }
-
-  @Test
-  void getMaxEvents() {
-    assertEquals(2147483647, week.getMaxEvents());
-  }
-
-  @Test
-  void setMaxEvents() {
-    assertEquals(2147483647, week.getMaxEvents());
+  void setMaxEventsTest() {
+    assertEquals(Integer.MAX_VALUE, week.getMaxEvents());
     week.setMaxEvents(10);
     assertEquals(10, week.getMaxEvents());
+
   }
 
   @Test
-  void getMaxTasks() {
-    assertEquals(2147483647, week.getMaxTasks());
-  }
-
-  @Test
-  void setMaxTasks() {
-    assertEquals(2147483647, week.getMaxTasks());
+  void setMaxTasksTest() {
+    assertEquals(Integer.MAX_VALUE, week.getMaxTasks());
     week.setMaxTasks(10);
     assertEquals(10, week.getMaxTasks());
   }
 
   @Test
-  void getNotes() {
+  void getMaxEventsTest() {
+    assertEquals(Integer.MAX_VALUE, week.getMaxEvents());
+  }
+
+  @Test
+  void getMaxTasksTest() {
+    assertEquals(Integer.MAX_VALUE, week.getMaxTasks());
+  }
+
+  @Test
+  void getNotesTest() {
     assertEquals("", week.getNotes());
   }
 
   @Test
-  void setNotes() {
+  void setNotesTest() {
     assertEquals("", week.getNotes());
-    week.setNotes("hello");
-    assertEquals("hello", week.getNotes());
+    week.setNotes("this is a note");
+    assertEquals("this is a note", week.getNotes());
   }
 
   @Test
-  void getQuotes() {
+  void getQuotesTest() {
     assertEquals("", week.getQuotes());
   }
 
   @Test
-  void setQuotes() {
+  void setQuotesTest() {
     assertEquals("", week.getQuotes());
-    week.setQuotes("hello");
-    assertEquals("hello", week.getQuotes());
+    week.setQuotes("this is a quote");
+    assertEquals("this is a quote", week.getQuotes());
   }
 
   @Test
-  void totalWeekEvents() {
+  void totalWeekEventsTest() {
+    assertEquals(1, week.totalWeekEvents());
+    week.addActivity(new Event("new event", "new description", DayOfWeek.MONDAY, 2000, 60));
+    assertEquals(2, week.totalWeekEvents());
   }
 
   @Test
-  void totalWeekTasks() {
+  void totalWeekTasksTest() {
+    assertEquals(1, week.totalWeekTasks());
+    week.addActivity(new Task("new task", "new description", DayOfWeek.MONDAY));
+    assertEquals(2, week.totalWeekTasks());
   }
 
   @Test
-  void totalCompleteTasks() {
+  void totalCompleteTasksTest() {
+    assertEquals(0, week.totalCompleteTasks());
+    //set the first activity as complete
+    week.getDays().get(0).getTasks().get(0).complete();
+    assertEquals(1, week.totalCompleteTasks());
   }
 
   @Test
-  void getPalletName() {
+  void getPalletNameTest() {
+    assertEquals(PalletManager.defaultPallet.name(), week.getPalletName());
   }
 
   @Test
-  void setPallet() {
+  void setPalletTest() {
+    assertEquals(PalletManager.defaultPallet.name(), week.getPalletName());
+    week.setPallet(PalletManager.bubblegumPallet);
+    assertEquals(PalletManager.bubblegumPallet.name(), week.getPalletName());
   }
 }

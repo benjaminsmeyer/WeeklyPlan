@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Handles the week
+ * Handles the week.
  */
 public class Week {
   private List<Day> days;
@@ -21,7 +21,7 @@ public class Week {
   //List<String> categories;
 
   /**
-   * Default constructor for Week
+   * Default constructor for Week.
    *
    * @param days the Days of this Week
    * @param name the name of this Week
@@ -37,7 +37,7 @@ public class Week {
   }
 
   /**
-   * Week constructor
+   * Week constructor.
    *
    * @param days      the days of the week
    * @param name      the name of the week
@@ -55,7 +55,7 @@ public class Week {
   }
 
   /**
-   * Week constructor
+   * Week constructor.
    *
    * @param days       the days of the week
    * @param name       the name of the week
@@ -78,7 +78,7 @@ public class Week {
   }
 
   /**
-   * Week constructor
+   * Week constructor.
    *
    * @param startDay  the start of the week
    * @param name      the name of the week
@@ -98,7 +98,7 @@ public class Week {
 
 
   /**
-   * Convenience constructor for Week. Initializes a week with empty days
+   * Convenience constructor for Week. Initializes a week with empty days.
    */
   public Week() {
     days = new ArrayList<>();
@@ -112,7 +112,7 @@ public class Week {
   }
 
   /**
-   * Week constructor
+   * Week constructor.
    *
    * @param startingDay the start of the week
    */
@@ -127,7 +127,7 @@ public class Week {
   }
 
   /**
-   * Sets the week start
+   * Sets the week start.
    *
    * @param startingDay the start of the week
    */
@@ -149,7 +149,7 @@ public class Week {
   }
 
   /**
-   * Updates the week start
+   * Updates the week start.
    *
    * @param startingDay the start of the week
    */
@@ -172,7 +172,7 @@ public class Week {
   }
 
   /**
-   * Get the day
+   * Get the day.
    *
    * @param dayOfWeek the day of the week
    */
@@ -186,7 +186,7 @@ public class Week {
   }
 
   /**
-   * Get the start of the week
+   * Get the start of the week.
    *
    * @return day of the week
    */
@@ -196,7 +196,7 @@ public class Week {
 
 
   /**
-   * Returns the Days stored in this week
+   * Returns the Days stored in this week.
    *
    * @return the Days stored in this week
    */
@@ -205,7 +205,7 @@ public class Week {
   }
 
   /**
-   * Adds activity
+   * Adds activity.
    *
    * @param activity the activity
    */
@@ -218,7 +218,7 @@ public class Week {
   }
 
   /**
-   * Removes activity
+   * Removes activity.
    *
    * @param activity the activity
    */
@@ -231,7 +231,7 @@ public class Week {
   }
 
   /**
-   * Updates activity dates
+   * Updates order of the schedule according to week start date.
    */
   public void updateActivityDates() {
     List<Activity> activities = getAllActivities();
@@ -244,7 +244,6 @@ public class Week {
         }
       }
     }
-
   }
 
   /**
