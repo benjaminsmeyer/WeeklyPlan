@@ -4,7 +4,7 @@ import cs3500.pa05.controller.PalletManager;
 import javafx.scene.paint.Paint;
 
 /**
- * Constant variables to use throughout the class
+ * Constant variables to use throughout the class.
  */
 public final class Constants {
   public static final int activityWidth = 120;

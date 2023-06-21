@@ -7,11 +7,11 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * Runs the weekly planner
+ * Runs the weekly planner.
  */
 public class Driver extends Application {
   /**
-   * Runs the program
+   * Runs the program.
    *
    * @param args the arguments
    */
