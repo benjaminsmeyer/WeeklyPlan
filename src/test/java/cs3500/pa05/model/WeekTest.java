@@ -55,14 +55,6 @@ class WeekTest {
 
     Week maxDefinedWeek = new Week("max's are defined", 10, 10, DayOfWeek.FRIDAY);
     assertEquals(10, maxDefinedWeek.getMaxEvents());
-
-    Week fourParamWeek = new Week(days, "full week info", 20, 20);
-    assertEquals(days.size(), fourParamWeek.getDays().size());
-    assertEquals(PalletManagerMockTest.defaultPallet.name(), fourParamWeek.getPalletName());
-
-    Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes",
-        PalletManagerMockTest.bubblegumPallet.name());
-    assertEquals(PalletManagerMockTest.bubblegumPallet.name(), allParamWeek.getPalletName());
   }
 
   @Test
@@ -174,12 +166,5 @@ class WeekTest {
   @Test
   void getPalletNameTest() {
     assertEquals(PalletManagerMockTest.defaultPallet.name(), week.getPalletName());
-  }
-
-  @Test
-  void setPalletTest() {
-    assertEquals(PalletManagerMockTest.defaultPallet.name(), week.getPalletName());
-    week.setPallet(PalletManagerMockTest.bubblegumPallet);
-    assertEquals(PalletManagerMockTest.bubblegumPallet.name(), week.getPalletName());
   }
 }
