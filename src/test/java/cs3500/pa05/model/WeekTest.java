@@ -2,6 +2,7 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cs3500.pa05.controller.PalletManager;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +27,7 @@ class WeekTest {
     days.add(new Day(DayOfWeek.SATURDAY));
     
     week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "", PalletManagerMockTest.defaultPallet);
+    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
   }
 
   @Test
@@ -55,6 +57,14 @@ class WeekTest {
 
     Week maxDefinedWeek = new Week("max's are defined", 10, 10, DayOfWeek.FRIDAY);
     assertEquals(10, maxDefinedWeek.getMaxEvents());
+
+    Week fourParamWeek = new Week(days, "full week info", 20, 20);
+    assertEquals(days.size(), fourParamWeek.getDays().size());
+    assertEquals(PalletManagerMockTest.defaultPallet.name(), fourParamWeek.getPalletName());
+
+    Week allParamWeek = new Week(days, "full week info", 20, 20, "notes", "quotes",
+        PalletManagerMockTest.defaultPallet.name());
+    assertEquals(PalletManagerMockTest.defaultPallet.name(), allParamWeek.getPalletName());
   }
 
   @Test
@@ -166,5 +176,12 @@ class WeekTest {
   @Test
   void getPalletNameTest() {
     assertEquals(PalletManagerMockTest.defaultPallet.name(), week.getPalletName());
+  }
+
+  @Test
+  void setPalletTest() {
+    assertEquals(PalletManagerMockTest.defaultPallet.name(), week.getPalletName());
+    week.setPallet(PalletManagerMockTest.bubblegumPallet);
+    assertEquals(PalletManagerMockTest.bubblegumPallet.name(), week.getPalletName());
   }
 }
