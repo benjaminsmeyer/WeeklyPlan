@@ -7,8 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for Save class.
+ */
 class SaveTest {
 
+  /**
+   * Tests function saveWeek.
+   */
   @Test
   void saveWeekTest() {
     List<Day> days = new ArrayList<>();
