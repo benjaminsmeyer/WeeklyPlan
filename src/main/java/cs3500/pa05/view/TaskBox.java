@@ -6,13 +6,13 @@ import cs3500.pa05.model.Task;
 import javafx.stage.Stage;
 
 /**
- * A custom VBox to TaskBoxes
+ * A custom VBox to TaskBoxes.
  */
 public class TaskBox extends ActivityBox {
   Task task;
 
   /**
-   * Constructor for TaskBox that takes only a name and task
+   * Constructor for TaskBox that takes only a name and task.
    *
    * @param name the name of the Task
    * @param task the Task to be rendered
@@ -25,7 +25,7 @@ public class TaskBox extends ActivityBox {
   }
 
   /**
-   * Constructor for TaskBox that takes a name, description, and the task to be rendered
+   * Constructor for TaskBox that takes a name, description, and the task to be rendered.
    *
    * @param name        the name of the Task
    * @param description a description of the Task
