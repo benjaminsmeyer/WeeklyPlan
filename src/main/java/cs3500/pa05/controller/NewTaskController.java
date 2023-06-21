@@ -36,26 +36,31 @@ public class NewTaskController {
   private Button saturday;
   @FXML
   private Button createTask;
-  private Button deleteTask;
+
   @FXML
   private HBox buttonBox;
   @FXML
-  private Label nameLabel;
+  private VBox mainBox;
   @FXML
-  private TextField name;
+  private CheckBox complete;
+
+  @FXML
+  private Label nameLabel;
   @FXML
   private Label descriptionLabel;
   @FXML
-  private TextArea description;
-  @FXML
   private Label dayLabel;
   @FXML
-  private CheckBox complete;
-  @FXML
   private Label windowLabel;
+
   @FXML
-  private VBox mainBox;
+  private TextArea description;
+  @FXML
+  private TextField name;
+
+
   private Button selectedButton;
+  private Button deleteTask;
   private Task task;
 
   /**
@@ -83,30 +88,9 @@ public class NewTaskController {
     windowLabel.setTextFill(Paint.valueOf(PalletManager.currentPallet.validTextColor()));
     windowLabel.setTextFill(Paint.valueOf(PalletManager.currentPallet.validTextColor()));
 
-    sunday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    monday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    tuesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    wednesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    thursday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    friday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    saturday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-
-    sunday.setOnAction(e -> selectDay(sunday));
-    monday.setOnAction(e -> selectDay(monday));
-    tuesday.setOnAction(e -> selectDay(tuesday));
-    wednesday.setOnAction(e -> selectDay(wednesday));
-    thursday.setOnAction(e -> selectDay(thursday));
-    friday.setOnAction(e -> selectDay(friday));
-    saturday.setOnAction(e -> selectDay(saturday));
-
-
-    name.setFont(PalletManager.currentPallet.textFont());
-    name.setStyle(
-        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
-
-    description.setFont(PalletManager.currentPallet.textFont());
-    description.setStyle(
-        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+    setStyle();
+    setAction();
+    setTextSpecifications();
 
     createTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
     createTask.setOnAction(e -> createTask());
@@ -126,18 +110,64 @@ public class NewTaskController {
       }
 
       complete.setSelected(task.isDone());
-
-      deleteTask = new Button("Delete Event");
-      deleteTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-      deleteTask.setFont(PalletManager.currentPallet.textFont());
-      deleteTask.setOnAction(e -> removeTask());
-      deleteTask.setCursor(Cursor.HAND);
-      buttonBox.getChildren().add(deleteTask);
+      deleteTaskSpecifications();
 
       windowLabel.setText("Edit Task");
       deleteTask.setText("Delete Event");
       createTask.setText("Save Edits");
     }
+  }
+
+
+  /**
+   * Set actions for Task buttons.
+   */
+  private void setAction() {
+    sunday.setOnAction(e -> selectDay(sunday));
+    monday.setOnAction(e -> selectDay(monday));
+    tuesday.setOnAction(e -> selectDay(tuesday));
+    wednesday.setOnAction(e -> selectDay(wednesday));
+    thursday.setOnAction(e -> selectDay(thursday));
+    friday.setOnAction(e -> selectDay(friday));
+    saturday.setOnAction(e -> selectDay(saturday));
+  }
+
+  /**
+   * Set styles for Task buttons.
+   */
+  private void setStyle() {
+    sunday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    monday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    tuesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    wednesday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    thursday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    friday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    saturday.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+  }
+
+  /**
+   * Set text specifications for Text Fields.
+   */
+  private void setTextSpecifications() {
+    name.setFont(PalletManager.currentPallet.textFont());
+    name.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+
+    description.setFont(PalletManager.currentPallet.textFont());
+    description.setStyle(
+        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+  }
+
+  /**
+   * Set specifications for delete button.
+   */
+  private void deleteTaskSpecifications() {
+    deleteTask = new Button("Delete Event");
+    deleteTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    deleteTask.setFont(PalletManager.currentPallet.textFont());
+    deleteTask.setOnAction(e -> removeTask());
+    deleteTask.setCursor(Cursor.HAND);
+    buttonBox.getChildren().add(deleteTask);
   }
 
   /**
@@ -167,6 +197,7 @@ public class NewTaskController {
    */
   private void createTask() {
     boolean validInput = true;
+
     String nameText = name.getText();
     if (nameText.equals("")) {
       nameLabel.setTextFill(Color.web(PalletManager.currentPallet.invalidTextColor()));
@@ -186,7 +217,6 @@ public class NewTaskController {
       validInput = false;
     }
 
-
     if (validInput) {
       if (task == null) {
         Task newTask = new Task(nameText, descriptionText, dayOfWeek, complete.isSelected());
@@ -203,12 +233,14 @@ public class NewTaskController {
         WeekManager.weekManager.run();
       }
 
-
       Stage thisStage = (Stage) createTask.getScene().getWindow();
       thisStage.close();
     }
   }
 
+  /**
+   * Removes task from GUI.
+   */
   private void removeTask() {
     WeekManager.weekManager.removeActivity(task);
     WeekManager.weekManager.run();
@@ -230,6 +262,16 @@ public class NewTaskController {
     descriptionLabel.setFont(PalletManager.currentPallet.textFont());
     dayLabel.setFont(PalletManager.currentPallet.textFont());
 
+    updateDaysTheme();
+
+    createTask.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    createTask.setFont(PalletManager.currentPallet.textFont());
+  }
+
+  /**
+   * Updates the GUI theme for the days of the week.
+   */
+  private void updateDaysTheme() {
     sunday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     monday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     tuesday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
@@ -246,8 +288,5 @@ public class NewTaskController {
     thursday.setFont(PalletManager.currentPallet.textFont());
     friday.setFont(PalletManager.currentPallet.textFont());
     saturday.setFont(PalletManager.currentPallet.textFont());
-
-    createTask.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    createTask.setFont(PalletManager.currentPallet.textFont());
   }
 }

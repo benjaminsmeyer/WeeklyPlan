@@ -379,7 +379,7 @@ public class NewEventController {
   }
 
   /**
-   * Removes the event.
+   * Removes event from GUI.
    */
   private void removeEvent() {
     WeekManager.weekManager.removeActivity(event);
@@ -431,6 +431,9 @@ public class NewEventController {
     createEvent.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
   }
 
+  /**
+   * Updates the GUI theme for the days of the week.
+   */
   private void updateDaysTheme() {
     sunday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
     monday.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
