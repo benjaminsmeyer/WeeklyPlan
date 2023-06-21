@@ -14,6 +14,8 @@ class WeekTest {
 
   @BeforeEach
   void setUp() {
+    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
+    PalletManager.bubblegumPallet = PalletManagerMockTest.bubblegumPallet;
     days = new ArrayList<>();
     Day day = new Day(DayOfWeek.SUNDAY);
     day.addActivity(new Task("task", "task description", DayOfWeek.SUNDAY));
@@ -27,8 +29,6 @@ class WeekTest {
     days.add(new Day(DayOfWeek.SATURDAY));
     
     week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "", PalletManagerMockTest.defaultPallet);
-    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
-    PalletManager.bubblegumPallet = PalletManagerMockTest.bubblegumPallet;
   }
 
   @Test
@@ -50,6 +50,8 @@ class WeekTest {
 
   @Test
   void testContructors() {
+    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
+
     Week emptyWeek = new Week();
     assertEquals(DayOfWeek.SUNDAY, emptyWeek.getStartOfWeek());
 

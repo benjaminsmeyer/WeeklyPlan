@@ -2,6 +2,7 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cs3500.pa05.controller.PalletManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,9 @@ class SaveTest {
    */
   @Test
   void saveWeekTest() {
+    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
+    PalletManager.bubblegumPallet = PalletManagerMockTest.bubblegumPallet;
+
     List<Day> days = new ArrayList<>();
 
     Day day = new Day(DayOfWeek.SUNDAY);
