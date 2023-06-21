@@ -31,7 +31,7 @@ class FileReaderTest {
 
   @Test
   void readFileTest() {
-    String filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
+    String filePath = "src/test/testfiles/weekTest.bujo";
     FileWrite fileWrite = new FileWrite(filePath);
     fileWrite.writeToFile("hello");
 
@@ -41,7 +41,7 @@ class FileReaderTest {
       e.printStackTrace();
     }
 
-    filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
+    filePath = "src/test/testfiles/weekTest.bujo";
     fileWrite = new FileWrite(filePath);
     fileWrite.writeToFile("test");
 

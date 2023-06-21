@@ -11,7 +11,7 @@ class FileWriteTest {
 
   @Test
   void writeToFileTest() {
-    String filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
+    String filePath = "src/test/testfiles/weekTest.bujo";
     FileWrite fileWrite = new FileWrite(filePath);
     fileWrite.writeToFile("hello");
 

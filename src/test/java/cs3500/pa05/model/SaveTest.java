@@ -38,10 +38,10 @@ class SaveTest {
         "invalidTextColor");
 
     Week week = new Week(days, "test week");
-    Save save = new Save("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
+    Save save = new Save("src/test/testfiles/weekTest.bujo");
     save.saveWeek(week);
     FileRead fileRead = new FileRead();
-    File file = new File("src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo");
+    File file = new File("src/test/testfiles/weekTest.bujo");
     fileRead.openFile(file);
     assertEquals("test week", fileRead.readFile().getName());
   }
