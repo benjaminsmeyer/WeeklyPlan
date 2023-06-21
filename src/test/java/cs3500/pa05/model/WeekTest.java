@@ -14,8 +14,6 @@ class WeekTest {
 
   @BeforeEach
   void setUp() {
-    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
-    PalletManager.bubblegumPallet = PalletManagerMockTest.bubblegumPallet;
     days = new ArrayList<>();
     Day day = new Day(DayOfWeek.SUNDAY);
     day.addActivity(new Task("task", "task description", DayOfWeek.SUNDAY));

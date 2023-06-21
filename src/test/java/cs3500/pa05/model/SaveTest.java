@@ -18,9 +18,6 @@ class SaveTest {
    */
   @Test
   void saveWeekTest() {
-    PalletManager.defaultPallet = PalletManagerMockTest.defaultPallet;
-    PalletManager.bubblegumPallet = PalletManagerMockTest.bubblegumPallet;
-
     List<Day> days = new ArrayList<>();
 
     Day day = new Day(DayOfWeek.SUNDAY);
