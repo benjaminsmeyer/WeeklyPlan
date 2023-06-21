@@ -16,7 +16,7 @@ import java.util.List;
  * Saves file
  */
 public class Save {
-  FileWrite fileWrite;
+  FileWriter fileWriter;
   ObjectMapper mapper;
 
   /**
@@ -25,7 +25,7 @@ public class Save {
    * @param fileName the name the week .bujo file
    */
   public Save(String fileName) {
-    fileWrite = new FileWrite(fileName);
+    fileWriter = new FileWriter(fileName);
     mapper = new ObjectMapper();
   }
 
@@ -38,7 +38,7 @@ public class Save {
     JsonNode jsonResponse = JsonUtils.serializeRecord(weekToJson(week));
     try {
       String str = mapper.writeValueAsString(jsonResponse);
-      fileWrite.writeToFile(str);
+      fileWriter.writeToFile(str);
     } catch (JsonProcessingException e) {
       System.out.println(e.getMessage());
     }

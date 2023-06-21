@@ -7,7 +7,7 @@ import java.nio.file.Path;
 /**
  * Writes a file
  */
-public class FileWrite {
+public class FileWriter {
   private File file;
 
   /**
@@ -15,7 +15,7 @@ public class FileWrite {
    *
    * @param pathName where to write the contents
    */
-  public FileWrite(String pathName) {
+  public FileWriter(String pathName) {
     file = new File(pathName);
   }
 

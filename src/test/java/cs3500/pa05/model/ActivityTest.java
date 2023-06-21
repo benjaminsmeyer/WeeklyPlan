@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 class ActivityTest {
   private Activity activity;
 
+  /**
+   * Set up Activity instance for tests.
+   */
   @BeforeEach
   void setUp() {
     activity = new Task("task", "description", DayOfWeek.MONDAY);

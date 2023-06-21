@@ -7,13 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests the task class
+ * Tests the task class.
  */
 class TaskTest {
   private Task task;
 
   /**
-   * Sets up the tests
+   * Sets up the tests.
    */
   @BeforeEach
   void setUp() {
@@ -21,7 +21,7 @@ class TaskTest {
   }
 
   /**
-   * Checks if complete works correctly
+   * Checks if complete works correctly.
    */
   @Test
   void completeTest() {
@@ -31,7 +31,7 @@ class TaskTest {
   }
 
   /**
-   * Checks if incomplete works correctly
+   * Checks if incomplete works correctly.
    */
   @Test
   void incompleteTest() {
@@ -41,7 +41,7 @@ class TaskTest {
   }
 
   /**
-   * Checks if isDone works correctly
+   * Checks if isDone works correctly.
    */
   @Test
   void isDoneTest() {
