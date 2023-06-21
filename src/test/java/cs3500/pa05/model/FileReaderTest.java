@@ -41,7 +41,7 @@ class FileReaderTest {
       e.printStackTrace();
     }
 
-    filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest";
+    filePath = "src/test/java/cs3500/pa05/model/testfiles/weekTest.bujo";
     fileWriter = new FileWriter(filePath);
     fileWriter.writeToFile("test");
 
