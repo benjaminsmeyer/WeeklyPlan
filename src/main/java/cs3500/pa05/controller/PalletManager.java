@@ -92,6 +92,7 @@ public class PalletManager {
   }
 
   public static void setupTestPalletManager() {
+    /*
     palletManager = new PalletManager();
     palletManager.defaultPallet = new Pallet(
         "Default",
@@ -109,7 +110,7 @@ public class PalletManager {
     palletManager.themes = new ArrayList<>(Arrays.stream(new Pallet[] {palletManager.defaultPallet}).toList());
 
     palletManager.currentPallet = palletManager.defaultPallet;
-
+*/
   }
 
   /**
