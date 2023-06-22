@@ -101,8 +101,8 @@ public class PalletManager {
         "#8EAF9D",
         "#A6D8D4",
         "#B9CDDA",
-        new Font(15),
-        new Font( 12),
+        null,
+        null,
         "#000000",
         "#FF0000"
     );
