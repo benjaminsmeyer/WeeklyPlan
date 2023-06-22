@@ -46,7 +46,8 @@ public class EventBox extends ActivityBox {
   @Override
   protected void setup() {
     super.setup();
-    setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().eventColor());
+    setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().eventColor());
   }
 
   @Override

@@ -38,7 +38,7 @@ public class WeekManager {
    */
   public static WeekManager weekManager;
 
-  private Week week;
+  private final Week week;
   @FXML
   private VBox mainBox;
   @FXML
@@ -142,7 +142,6 @@ public class WeekManager {
     updateWeekNameDisplay();
     initWeek();
     save();
-    System.out.println(PalletManager.class.getClassLoader().getResource("fonts/verdana.ttf").toExternalForm());
   }
 
   /**
@@ -179,6 +178,15 @@ public class WeekManager {
     this.week.setPallet(pallet);
     updateTheme();
     run();
+  }
+
+  /**
+   * Sets all Node color/font values to be those of the current Pallet.
+   */
+  private void updateTheme() {
+    updateTaskbarTheme();
+    updateWeekViewTheme();
+    updateNotesTheme();
   }
 
   /**
@@ -241,13 +249,14 @@ public class WeekManager {
         week.totalWeekEvents(), week.totalWeekTasks(), totalTaskCompletePercent())
         + "%";
     overview.getChildren().clear();
-    Label overviewLabel = new Label(weeklyStats);
-    overviewLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    Label overviewLabel = Utils.defaultLabel(weeklyStats);
+    overviewLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     overviewLabel.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
-    overviewLabel.setWrapText(true);
     overviewLabel.setPrefWidth(240);
     overview.getChildren().add(overviewLabel);
-    overview.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    overview.setStyle(
+        "-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
   }
 
   /**
@@ -277,13 +286,13 @@ public class WeekManager {
       if (days.get(i).getEvents().size() > week.getMaxEvents()) {
         dayLayouts.get(i).getChildren().add(Utils.defaultLabel(
             "Max number of events (" + week.getMaxEvents() + ") exceeded!",
-            Constants.invalidInputLabelColor));
+            Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor())));
       }
 
       if (days.get(i).getTasks().size() > week.getMaxTasks()) {
         dayLayouts.get(i).getChildren().add(Utils.defaultLabel(
             "Max number of tasks (" + week.getMaxTasks() + ") exceeded!",
-            Constants.invalidInputLabelColor));
+            Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor())));
       }
 
       List<Activity> schedule = days.get(i).getSchedule();
@@ -298,49 +307,82 @@ public class WeekManager {
     }
   }
 
+
   /**
-   * Sets all Node color/font values to be those of the current Pallet.
+   * Updated the theme of the UI elements in the task bar
    */
-  private void updateTheme() {
-    mainBox.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().backgroundColor());
-    newEvent.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().eventColor());
-    newTask.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().taskColor());
-    save.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    newEvent.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+  private void updateTaskbarTheme() {
+    mainBox.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().backgroundColor());
+    newEvent.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().eventColor());
+    newTask.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().taskColor());
+    save.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+
+    newEvent.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     newTask.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     save.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    weekName.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    weekName.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
+    themeDropDown.setCursor(Cursor.HAND);
+    themeDropDown.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+    themeDropDown.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+  }
+
+  /**
+   * Updates the theme of the UI in the Week View
+   */
+  private void updateWeekViewTheme() {
     for (Label name : dayNames) {
       name.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     }
-    tasksName.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    tasksName.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
-    taskPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-    mondayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-    tuesdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-    wednesdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-    thursdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-    fridayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-    saturdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-    sundayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    taskPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    mondayPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    tuesdayPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    wednesdayPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    thursdayPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    fridayPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    saturdayPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    sundayPane.setStyle("-fx-background: "
+        + PalletManager.palletManager.getCurrentPallet().overlayColor());
+  }
 
-    notesLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    quotesLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    overviewLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-
-    themeDropDown.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    themeDropDown.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+  /**
+   * Updates the theme of the UI elements in the Notes and Quotes section
+   */
+  private void updateNotesTheme() {
+    notesLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    quotesLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    overviewLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
     quotes.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     quotes.setStyle(
-        "-fx-control-inner-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+        "-fx-control-inner-background: "
+            + PalletManager.palletManager.getCurrentPallet().overlayColor());
 
     notes.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     notes.setStyle(
-        "-fx-control-inner-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-
-    themeDropDown.setCursor(Cursor.HAND);
+        "-fx-control-inner-background: "
+            + PalletManager.palletManager.getCurrentPallet().overlayColor());
   }
 
   /**

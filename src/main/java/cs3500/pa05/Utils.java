@@ -14,6 +14,9 @@ import javafx.scene.text.FontWeight;
  * A utilities class.
  */
 public class Utils {
+  private static final String activityNameColor = "#000000";
+  private static final String weekFont = "Verdana";
+
   /**
    * Given a time in minutes, converts it to a string in the form "12:00".
    *
@@ -68,9 +71,9 @@ public class Utils {
    */
   public static Label defaultLabel(String text) {
     Label label = new Label(text);
-    label.setFont(Font.font(Constants.weekFont, FontWeight.NORMAL,
+    label.setFont(Font.font(weekFont, FontWeight.NORMAL,
         FontPosture.REGULAR, 10));
-    label.setTextFill(Color.web(Constants.activityNameColor));
+    label.setTextFill(Color.web(activityNameColor));
     label.setWrapText(true);
     return label;
   }

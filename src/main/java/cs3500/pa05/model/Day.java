@@ -83,7 +83,7 @@ public class Day {
    */
   public int countEvents() {
     int count = 0;
-    for (Event event : getEvents()) {
+    for (Event ignored : getEvents()) {
       count++;
     }
     return count;
@@ -96,7 +96,7 @@ public class Day {
    */
   public int countTasks() {
     int count = 0;
-    for (Task task : getTasks()) {
+    for (Task ignored : getTasks()) {
       count++;
     }
     return count;

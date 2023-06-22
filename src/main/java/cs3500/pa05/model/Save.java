@@ -51,9 +51,8 @@ public class Save {
    * @return the WeekJson of the given week
    */
   private WeekJson weekToJson(Week week) {
-    WeekJson response = new WeekJson(daysToJson(week.getDays()), week.getName(),
+    return new WeekJson(daysToJson(week.getDays()), week.getName(),
         week.getMaxEvents(), week.getMaxTasks(), textToJson(week), week.getPalletName());
-    return response;
   }
 
   /**

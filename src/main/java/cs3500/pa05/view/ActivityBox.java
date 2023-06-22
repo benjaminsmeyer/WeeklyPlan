@@ -1,6 +1,5 @@
 package cs3500.pa05.view;
 
-import cs3500.pa05.Constants;
 import cs3500.pa05.Utils;
 import cs3500.pa05.controller.PalletManager;
 import javafx.geometry.Insets;
@@ -14,13 +13,16 @@ import javafx.scene.paint.Color;
  */
 public abstract class ActivityBox extends VBox {
 
+  private final double descriptionOpacity = .7;
+  private final double activityWidth = 120;
+
   /**
    * Initializes the settings on this ActivityBox.
    */
   protected void setup() {
     setPadding(new Insets(5, 5, 5, 5));
     setAlignment(Pos.TOP_CENTER);
-    setMaxWidth(Constants.activityWidth);
+    setMaxWidth(activityWidth);
 
     setSpacing(10);
     setOnMouseClicked(e -> edit());
@@ -55,7 +57,7 @@ public abstract class ActivityBox extends VBox {
     label.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     label.setWrapText(true);
     label.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
-    label.setOpacity(Constants.descriptionOpacity);
+    label.setOpacity(descriptionOpacity);
     getChildren().add(label);
   }
 }

@@ -77,8 +77,8 @@ public class PalletManagerMockTest {
 
   public static List<Pallet> themes
       = new ArrayList<>(Arrays.stream(new Pallet[] {defaultPallet,
-      darkPallet, violetPallet, bubblegumPallet,
-      monoPallet}).toList());
+        darkPallet, violetPallet, bubblegumPallet,
+        monoPallet}).toList());
 
   /**
    * Gets the pallet with name.

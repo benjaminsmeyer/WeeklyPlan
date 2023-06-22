@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Reads the file.
@@ -34,7 +35,7 @@ public class FileRead {
    * @return all bujo files
    */
   public static List<String> getAllBujoFiles() {
-    return Arrays.stream(new File(Constants.weekPath).list()).toList();
+    return Arrays.stream(Objects.requireNonNull(new File(Constants.weekPath).list())).toList();
   }
 
   /**
@@ -59,7 +60,6 @@ public class FileRead {
       return new Week(days, name, maxEvents, maxTasks, notes, quotes, palletName);
     } catch (IOException e) {
       throw new IllegalStateException("Could not read from file " + file.getName());
-      // Disconnected from server or parsing exception
     }
   }
 

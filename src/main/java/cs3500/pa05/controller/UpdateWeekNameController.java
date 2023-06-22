@@ -75,46 +75,41 @@ public class UpdateWeekNameController {
   public void initialize() {
     updateTheme();
     setStyle();
-
-    maxEventsField.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
-    maxEventsField.setStyle(
-        "-fx-control-inner-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-
-    maxTasksField.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
-    maxTasksField.setStyle(
-        "-fx-control-inner-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-
-    name.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
-    name.setStyle(
-        "-fx-control-inner-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
-
     setAction();
 
     if (week != null) {
-      switch (week.getStartOfWeek()) {
-        case SUNDAY -> selectDay(sunday);
-        case MONDAY -> selectDay(monday);
-        case TUESDAY -> selectDay(tuesday);
-        case WEDNESDAY -> selectDay(wednesday);
-        case THURSDAY -> selectDay(thursday);
-        case FRIDAY -> selectDay(friday);
-        default -> selectDay(saturday);
-      }
-
-      if (week.getMaxEvents() != Integer.MAX_VALUE) {
-        maxEventsField.setText(String.valueOf(week.getMaxEvents()));
-      }
-
-      if (week.getMaxTasks() != Integer.MAX_VALUE) {
-        maxTasksField.setText(String.valueOf(week.getMaxTasks()));
-      }
-      name.setText(week.getName());
+      readWeek();
     } else {
       selectDay(sunday);
     }
 
     saveButton.setOnAction(e -> updateWeekSettings());
-    saveButton.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
+    saveButton.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+  }
+
+  /**
+   * Updates the UI with the values of the local variable week
+   */
+  private void readWeek() {
+    switch (week.getStartOfWeek()) {
+      case SUNDAY -> selectDay(sunday);
+      case MONDAY -> selectDay(monday);
+      case TUESDAY -> selectDay(tuesday);
+      case WEDNESDAY -> selectDay(wednesday);
+      case THURSDAY -> selectDay(thursday);
+      case FRIDAY -> selectDay(friday);
+      default -> selectDay(saturday);
+    }
+
+    if (week.getMaxEvents() != Integer.MAX_VALUE) {
+      maxEventsField.setText(String.valueOf(week.getMaxEvents()));
+    }
+
+    if (week.getMaxTasks() != Integer.MAX_VALUE) {
+      maxTasksField.setText(String.valueOf(week.getMaxTasks()));
+    }
+    name.setText(week.getName());
   }
 
   /**
@@ -134,13 +129,20 @@ public class UpdateWeekNameController {
    * Set styles for Task buttons.
    */
   private void setStyle() {
-    sunday.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    monday.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    tuesday.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    wednesday.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    thursday.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    friday.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
-    saturday.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
+    sunday.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+    monday.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+    tuesday.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+    wednesday.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+    thursday.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+    friday.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
+    saturday.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().saveColor());
   }
 
   /**
@@ -150,19 +152,11 @@ public class UpdateWeekNameController {
    */
   private void selectDay(Button button) {
     if (selectedButton != null) {
-      selectedButton.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
+      selectedButton.setStyle("-fx-background-color: "
+          + PalletManager.palletManager.getCurrentPallet().saveColor());
     }
     selectedButton = button;
-    selectedButton.setStyle("-fx-background-color: " + Constants.taskSelectedColor);
-
-
-    // If you can select multiple days, uncomment this
-    /*
-    if (isButtonSelected(button)) {
-      button.setStyle("-fx-background-color: " + Constants.taskColor);
-    } else {
-      button.setStyle("-fx-background-color: " + Constants.taskSelectedColor);
-    } */
+    selectedButton.setStyle("-fx-background-color: " + Constants.selectedColor);
   }
 
   /**
@@ -179,7 +173,8 @@ public class UpdateWeekNameController {
       }
     } else {
       validInput = false;
-      nameLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor()));
+      nameLabel.setTextFill(
+          Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor()));
     }
 
     int maxEvents = readMax(maxEventsField, maxEventsLabel);
@@ -196,23 +191,47 @@ public class UpdateWeekNameController {
 
     if (validInput) {
       if (week != null) {
-        week.updateWeekStart(selectedDay);
-        week.setMaxEvents(maxEvents);
-        week.setMaxTasks(maxTasks);
-        WeekManager.weekManager.run();
+        updateWeek(selectedDay, maxEvents, maxTasks);
       } else {
-        week = new Week(newWeekName, maxEvents, maxTasks, selectedDay);
-
-        WeekManager.setup(week);
-        Stage stage = new Stage();
-        stage.setScene(WeekManager.weekManager.getScene());
-        stage.show();
+        newWeek(newWeekName, maxEvents, maxTasks, selectedDay);
       }
 
       Stage stage = (Stage) name.getScene().getWindow();
       stage.close();
     }
   }
+
+  /**
+   * Updates the week currently being viewed with the given information
+   *
+   * @param selectedDay the day the week should start on
+   * @param maxEvents maximum number of events per day
+   * @param maxTasks maximum number of tasks per day
+   */
+  private void updateWeek(DayOfWeek selectedDay, int maxEvents, int maxTasks) {
+    week.updateWeekStart(selectedDay);
+    week.setMaxEvents(maxEvents);
+    week.setMaxTasks(maxTasks);
+    WeekManager.weekManager.run();
+  }
+
+  /**
+   * Creates and displays a new week with the given information
+   *
+   * @param newWeekName The name of the new week to create
+   * @param maxEvents the max number of events for each day
+   * @param maxTasks the max number of tasks for each day
+   * @param selectedDay the first day of the week
+   */
+  private void newWeek(String newWeekName, int maxEvents, int maxTasks, DayOfWeek selectedDay) {
+    week = new Week(newWeekName, maxEvents, maxTasks, selectedDay);
+
+    WeekManager.setup(week);
+    Stage stage = new Stage();
+    stage.setScene(WeekManager.weekManager.getScene());
+    stage.show();
+  }
+
 
   /**
    * Reads max.
@@ -229,10 +248,12 @@ public class UpdateWeekNameController {
       try {
         max = Integer.parseInt(field.getText());
         if (max < 0) {
-          label.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor()));
+          label.setTextFill(
+              Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor()));
         }
       } catch (Exception ex) {
-        label.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor()));
+        label.setTextFill(
+            Color.web(PalletManager.palletManager.getCurrentPallet().invalidTextColor()));
       }
     }
 
@@ -243,23 +264,51 @@ public class UpdateWeekNameController {
    * Update the theme.
    */
   private void updateTheme() {
-    mainBox.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().backgroundColor());
-    windowLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    maxEventsLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    maxTasksLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    dayLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    mainBox.setStyle("-fx-background-color: "
+        + PalletManager.palletManager.getCurrentPallet().backgroundColor());
+    windowLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    maxEventsLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    maxTasksLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    dayLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
     maxEventsLabel.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     maxTasksLabel.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     dayLabel.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
 
-    nameLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    nameLabel.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     nameLabel.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
 
-    updateDaysTheme();
-
-    saveButton.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    saveButton.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     saveButton.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
+
+    updateFieldTheme();
+    updateDaysTheme();
+  }
+
+  /**
+   * Updates the theme of field events
+   */
+  private void updateFieldTheme() {
+    maxEventsField.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
+    maxEventsField.setStyle(
+        "-fx-control-inner-background: "
+            + PalletManager.palletManager.getCurrentPallet().overlayColor());
+
+    maxTasksField.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
+    maxTasksField.setStyle(
+        "-fx-control-inner-background: "
+            + PalletManager.palletManager.getCurrentPallet().overlayColor());
+
+    name.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
+    name.setStyle(
+        "-fx-control-inner-background: "
+            + PalletManager.palletManager.getCurrentPallet().overlayColor());
   }
 
   /**
@@ -269,10 +318,13 @@ public class UpdateWeekNameController {
     sunday.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     monday.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     tuesday.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    wednesday.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    thursday.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    wednesday.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    thursday.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     friday.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
-    saturday.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    saturday.setTextFill(
+        Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
     sunday.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     monday.setFont(PalletManager.palletManager.getCurrentPallet().textFont());

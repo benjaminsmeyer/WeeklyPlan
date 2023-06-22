@@ -1,7 +1,6 @@
 package cs3500.pa05;
 
 import cs3500.pa05.controller.OpeningWindowController;
-import cs3500.pa05.controller.PalletManager;
 import cs3500.pa05.view.OpeningWindowViewer;
 import javafx.application.Application;
 import javafx.stage.Stage;
