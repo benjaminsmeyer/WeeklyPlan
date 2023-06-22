@@ -93,7 +93,7 @@ public class PalletManager {
 
   public static void setupTestPalletManager() {
     palletManager = new PalletManager();
-    /*
+
     palletManager.defaultPallet = new Pallet(
         "Default",
         "#D7DAE5",
@@ -106,7 +106,7 @@ public class PalletManager {
         "#000000",
         "#FF0000"
     );
-
+/*
     palletManager.themes = new ArrayList<>(Arrays.stream(new Pallet[] {palletManager.defaultPallet}).toList());
 
     palletManager.currentPallet = palletManager.defaultPallet;
