@@ -2,15 +2,25 @@ package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import cs3500.pa05.controller.PalletManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
  * Tests for Save class.
  */
 class SaveTest {
+
+  /**
+   * Sets up a test Pallet manager
+   */
+  @BeforeEach
+  void setup() {
+    PalletManager.setupTestPalletManager();
+  }
 
   /**
    * Tests function saveWeek.

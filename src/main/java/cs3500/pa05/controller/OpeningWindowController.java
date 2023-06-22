@@ -42,7 +42,7 @@ public class OpeningWindowController {
    * Handles new week.
    */
   private void handleNewWeek() {
-    PalletManager.setCurrentPallet(PalletManager.defaultPallet);
+    PalletManager.setupPalletManager();
     UpdateWeekNameController updateWeekNameController = new UpdateWeekNameController();
     UpdateWeekNameView updateWeekNameView = new UpdateWeekNameView(updateWeekNameController);
 
@@ -60,7 +60,7 @@ public class OpeningWindowController {
    * @param file the file to load
    */
   private void handleLoadWeek(String file) {
-    PalletManager.setCurrentPallet(PalletManager.defaultPallet);
+    PalletManager.setupPalletManager();
     FileRead reader = new FileRead();
     reader.openFile(new File(Constants.weekPath + file));
     WeekManager.setup(reader.readFile());

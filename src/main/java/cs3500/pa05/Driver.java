@@ -32,7 +32,6 @@ public class Driver extends Application {
     OpeningWindowController updateWeekNameController = new OpeningWindowController();
     OpeningWindowViewer updateWeekNameView = new OpeningWindowViewer(updateWeekNameController);
 
-    PalletManager.setCurrentPallet(PalletManager.defaultPallet);
     primaryStage.setTitle("Week Journal");
     primaryStage.setScene(updateWeekNameView.load());
     primaryStage.show();

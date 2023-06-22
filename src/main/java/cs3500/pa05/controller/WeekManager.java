@@ -142,6 +142,7 @@ public class WeekManager {
     updateWeekNameDisplay();
     initWeek();
     save();
+    System.out.println(PalletManager.class.getClassLoader().getResource("fonts/verdana.ttf").toExternalForm());
   }
 
   /**
@@ -160,11 +161,11 @@ public class WeekManager {
    * that updates the pallet to the selected pallet.
    */
   private void setupPalletDropdown() {
-    for (int i = 0; i < PalletManager.themes.size(); i++) {
+    for (int i = 0; i < PalletManager.palletManager.getThemes().size(); i++) {
       int finalI = i;
-      MenuItem nextItem = new MenuItem(PalletManager.themes.get(finalI).name());
+      MenuItem nextItem = new MenuItem(PalletManager.palletManager.getThemes().get(finalI).name());
       nextItem.setOnAction(e ->
-          updateTheme(PalletManager.themes.get(finalI)));
+          updateTheme(PalletManager.palletManager.getThemes().get(finalI)));
       themeDropDown.getItems().add(nextItem);
     }
   }
@@ -241,12 +242,12 @@ public class WeekManager {
         + "%";
     overview.getChildren().clear();
     Label overviewLabel = new Label(weeklyStats);
-    overviewLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    overviewLabel.setFont(PalletManager.currentPallet.textFont());
+    overviewLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    overviewLabel.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     overviewLabel.setWrapText(true);
     overviewLabel.setPrefWidth(240);
     overview.getChildren().add(overviewLabel);
-    overview.setStyle("-fx-background-color: " + PalletManager.currentPallet.overlayColor());
+    overview.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
   }
 
   /**
@@ -301,43 +302,43 @@ public class WeekManager {
    * Sets all Node color/font values to be those of the current Pallet.
    */
   private void updateTheme() {
-    mainBox.setStyle("-fx-background-color: " + PalletManager.currentPallet.backgroundColor());
-    newEvent.setStyle("-fx-background-color: " + PalletManager.currentPallet.eventColor());
-    newTask.setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
-    save.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    newEvent.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    newTask.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    save.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    weekName.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    mainBox.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().backgroundColor());
+    newEvent.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().eventColor());
+    newTask.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().taskColor());
+    save.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
+    newEvent.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    newTask.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    save.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    weekName.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
     for (Label name : dayNames) {
-      name.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+      name.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     }
-    tasksName.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    tasksName.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
-    taskPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
-    mondayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
-    tuesdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
-    wednesdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
-    thursdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
-    fridayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
-    saturdayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
-    sundayPane.setStyle("-fx-background: " + PalletManager.currentPallet.overlayColor());
+    taskPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    mondayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    tuesdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    wednesdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    thursdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    fridayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    saturdayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
+    sundayPane.setStyle("-fx-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
 
-    notesLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    quotesLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
-    overviewLabel.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    notesLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    quotesLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
+    overviewLabel.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
-    themeDropDown.setStyle("-fx-background-color: " + PalletManager.currentPallet.saveColor());
-    themeDropDown.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    themeDropDown.setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().saveColor());
+    themeDropDown.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
 
-    quotes.setFont(PalletManager.currentPallet.textFont());
+    quotes.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     quotes.setStyle(
-        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+        "-fx-control-inner-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
 
-    notes.setFont(PalletManager.currentPallet.textFont());
+    notes.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     notes.setStyle(
-        "-fx-control-inner-background: " + PalletManager.currentPallet.overlayColor());
+        "-fx-control-inner-background: " + PalletManager.palletManager.getCurrentPallet().overlayColor());
 
     themeDropDown.setCursor(Cursor.HAND);
   }

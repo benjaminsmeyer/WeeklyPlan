@@ -42,7 +42,7 @@ public class TaskBox extends ActivityBox {
   @Override
   protected void setup() {
     super.setup();
-    setStyle("-fx-background-color: " + PalletManager.currentPallet.taskColor());
+    setStyle("-fx-background-color: " + PalletManager.palletManager.getCurrentPallet().taskColor());
 
     if (task.isDone()) {
       setOpacity(.6);

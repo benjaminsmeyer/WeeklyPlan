@@ -39,12 +39,8 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = notes;
     this.quotes = quotes;
-    try {
-      this.weekTheme = PalletManager.getPalletWithName(palletName);
-      PalletManager.setCurrentPallet(weekTheme);
-    } catch (Exception e) {
-      this.weekTheme = null;
-    }
+    this.weekTheme = PalletManager.palletManager.getPalletWithName(palletName);
+    PalletManager.palletManager.setCurrentPallet(weekTheme);
   }
 
   /**
@@ -85,7 +81,7 @@ public class Week {
     this.maxTasks = maxTasks;
     this.notes = "";
     this.quotes = "";
-    this.weekTheme = PalletManager.defaultPallet;
+    this.weekTheme = PalletManager.palletManager.getDefault();
   }
 
   /**
@@ -378,7 +374,7 @@ public class Week {
    * @param pallet the pallet
    */
   public void setPallet(Pallet pallet) {
-    PalletManager.setCurrentPallet(pallet);
+    PalletManager.palletManager.setCurrentPallet(pallet);
     this.weekTheme = pallet;
   }
 

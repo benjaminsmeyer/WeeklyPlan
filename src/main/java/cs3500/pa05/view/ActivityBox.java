@@ -39,8 +39,8 @@ public abstract class ActivityBox extends VBox {
    */
   protected void createHeader(String text) {
     Label label = new Label(text);
-    label.setFont(PalletManager.currentPallet.headerFont());
-    label.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    label.setFont(PalletManager.palletManager.getCurrentPallet().headerFont());
+    label.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     label.setWrapText(true);
     getChildren().add(label);
   }
@@ -52,9 +52,9 @@ public abstract class ActivityBox extends VBox {
    */
   protected void createSubtext(String text) {
     Label label = new Label(text);
-    label.setTextFill(Color.web(PalletManager.currentPallet.validTextColor()));
+    label.setTextFill(Color.web(PalletManager.palletManager.getCurrentPallet().validTextColor()));
     label.setWrapText(true);
-    label.setFont(PalletManager.currentPallet.textFont());
+    label.setFont(PalletManager.palletManager.getCurrentPallet().textFont());
     label.setOpacity(Constants.descriptionOpacity);
     getChildren().add(label);
   }

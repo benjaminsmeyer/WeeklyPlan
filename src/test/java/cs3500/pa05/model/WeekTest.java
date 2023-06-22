@@ -1,8 +1,12 @@
 package cs3500.pa05.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import cs3500.pa05.controller.PalletManager;
+import cs3500.pa05.controller.WeekManager;
+import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.text.Font;
@@ -32,22 +36,26 @@ class WeekTest {
     days.add(new Day(DayOfWeek.THURSDAY));
     days.add(new Day(DayOfWeek.FRIDAY));
     days.add(new Day(DayOfWeek.SATURDAY));
+    //System.out.println("HELP " + getClass().getClassLoader().getResource(".").getPath());
+    File testFile = new File(Path.of("C:\\Users\\super\\OneDrive\\Documents\\School\\OOD\\pa05-superplanner\\src\\main\\resources\\fonts\\verdana.ttf").toUri());
+    assertEquals(testFile.getName(), "verdana.ttf");
+    PalletManager.setupTestPalletManager();
 
-    week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "",
-        PalletManagerMockTest.defaultPallet);
-
-    PalletManager.defaultPallet = new Pallet(
+    Pallet test = new Pallet(
         "Default",
         "#D7DAE5",
         "#F7F7F2",
         "#8EAF9D",
         "#A6D8D4",
         "#B9CDDA",
-        Font.loadFont(PalletManager.class.getClassLoader().getResource("fonts/verdana.ttf").toExternalForm(), 15),
-        Font.loadFont(PalletManager.class.getClassLoader().getResource("fonts/verdana.ttf").toExternalForm(), 12),
+        Font.loadFont("file:/C:/Users/super/OneDrive/Documents/School/OOD/pa05-superplanner/build/resources/main/fonts/verdana.ttf", 15),
+        Font.loadFont("file:/C:/Users/super/OneDrive/Documents/School/OOD/pa05-superplanner/build/resources/main/fonts/verdana.ttf", 12),
         "#000000",
         "#FF0000"
     );
+
+    week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "",
+        PalletManager.palletManager.getDefault());
   }
 
   /**
