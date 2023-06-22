@@ -106,7 +106,7 @@ public class PalletManager {
         "#000000",
         "#FF0000"
     );
-/*
+    /*
     palletManager.themes = new ArrayList<>(Arrays.stream(new Pallet[] {palletManager.defaultPallet}).toList());
 
     palletManager.currentPallet = palletManager.defaultPallet;
