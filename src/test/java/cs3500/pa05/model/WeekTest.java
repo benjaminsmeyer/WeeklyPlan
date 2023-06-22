@@ -37,22 +37,7 @@ class WeekTest {
     days.add(new Day(DayOfWeek.FRIDAY));
     days.add(new Day(DayOfWeek.SATURDAY));
     //System.out.println("HELP " + getClass().getClassLoader().getResource(".").getPath());
-    File testFile = new File(Path.of("C:\\Users\\super\\OneDrive\\Documents\\School\\OOD\\pa05-superplanner\\src\\main\\resources\\fonts\\verdana.ttf").toUri());
-    assertEquals(testFile.getName(), "verdana.ttf");
     PalletManager.setupTestPalletManager();
-
-    Pallet test = new Pallet(
-        "Default",
-        "#D7DAE5",
-        "#F7F7F2",
-        "#8EAF9D",
-        "#A6D8D4",
-        "#B9CDDA",
-        Font.loadFont("file:/C:/Users/super/OneDrive/Documents/School/OOD/pa05-superplanner/build/resources/main/fonts/verdana.ttf", 15),
-        Font.loadFont("file:/C:/Users/super/OneDrive/Documents/School/OOD/pa05-superplanner/build/resources/main/fonts/verdana.ttf", 12),
-        "#000000",
-        "#FF0000"
-    );
 
     week = new Week(days, "test week", Integer.MAX_VALUE, Integer.MAX_VALUE, "", "",
         PalletManager.palletManager.getDefault());

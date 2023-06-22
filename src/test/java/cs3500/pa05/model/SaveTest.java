@@ -13,20 +13,12 @@ import org.junit.jupiter.api.Test;
  * Tests for Save class.
  */
 class SaveTest {
-
-  /**
-   * Sets up a test Pallet manager
-   */
-  @BeforeEach
-  void setup() {
-    PalletManager.setupTestPalletManager();
-  }
-
   /**
    * Tests function saveWeek.
    */
   @Test
   void saveWeekTest() {
+    PalletManager.setupTestPalletManager();
     List<Day> days = new ArrayList<>();
 
     Day day = new Day(DayOfWeek.SUNDAY);
