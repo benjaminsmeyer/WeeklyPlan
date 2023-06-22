@@ -28,7 +28,7 @@ class FileReaderTest {
    */
   @Test
   void getAllBujoFilesTest() {
-    assertEquals("[MyWeek.bujo]", FileRead.getAllBujoFiles().toString());
+    assertEquals("[Demo Week.bujo, MyWeek.bujo]", FileRead.getAllBujoFiles().toString());
   }
 
   /**

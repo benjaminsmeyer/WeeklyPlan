@@ -1,4 +1,4 @@
-![img_1.png](img.png)
+![img_1.png](img_1.png)
 
 Streamline your weekly planning with our comprehensive toolkit. Enjoy a user-friendly week view, effortless event and
 task creation, handy commitment warnings, reliable persistence, efficient task queue, customizable themes, inspirational

@@ -2,8 +2,13 @@ package cs3500.pa05;
 
 import cs3500.pa05.controller.OpeningWindowController;
 import cs3500.pa05.view.OpeningWindowViewer;
+import cs3500.pa05.view.SplashView;
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.concurrent.Task;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * Runs the weekly planner.
@@ -35,4 +40,5 @@ public class Driver extends Application {
     primaryStage.setScene(updateWeekNameView.load());
     primaryStage.show();
   }
+
 }

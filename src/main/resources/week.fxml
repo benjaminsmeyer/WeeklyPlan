@@ -1,200 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.Scene?>
 <?import javafx.scene.text.Font?>
-<Scene xmlns:fx="http://javafx.com/fxml/1" fill="#2d2d2d" xmlns="http://javafx.com/javafx/20.0.1">
+
+<Scene fill="#2d2d2d" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <root>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <children>
-                <VBox fx:id="mainBox" prefHeight="700.0" prefWidth="1100.0" spacing="20.0"
-                      style="-fx-background-color: D7DAE5;">
+                <VBox fx:id="mainBox" prefHeight="700.0" prefWidth="1100.0" spacing="20.0" style="-fx-background-color: D7DAE5;">
                     <children>
                         <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                             <children>
                                 <Label fx:id="weekName" text="Week Name">
                                     <font>
-                                        <Font name="SWItalc" size="33.0"/>
+                                        <Font name="SWItalc" size="33.0" />
                                     </font>
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Label>
-                                <Button fx:id="newEvent" mnemonicParsing="false" style="-fx-background-color: #A6D8D4;"
-                                        text="New Event">
+                                <Button fx:id="newEvent" mnemonicParsing="false" style="-fx-background-color: #A6D8D4;" text="New Event">
                                     <font>
-                                        <Font name="SWItalc" size="14.0"/>
+                                        <Font name="SWItalc" size="14.0" />
                                     </font>
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button fx:id="newTask" mnemonicParsing="false" style="-fx-background-color: #8EAF9D;"
-                                        text="New Task">
+                                <Button fx:id="newTask" mnemonicParsing="false" style="-fx-background-color: #8EAF9D;" text="New Task">
                                     <font>
-                                        <Font name="SWItalc" size="14.0"/>
+                                        <Font name="SWItalc" size="14.0" />
                                     </font>
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button fx:id="save" mnemonicParsing="false" style="-fx-background-color: #B9CDDA;"
-                                        text="Save">
+                                <Button fx:id="save" mnemonicParsing="false" style="-fx-background-color: #B9CDDA;" text="Save">
                                     <font>
-                                        <Font name="SWItalc" size="14.0"/>
+                                        <Font name="SWItalc" size="14.0" />
                                     </font>
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <MenuButton fx:id="themeDropDown" mnemonicParsing="false"
-                                            style="-fx-background-color: #B9CDDA;" text="Theme">
+                                <MenuButton fx:id="themeDropDown" mnemonicParsing="false" style="-fx-background-color: #B9CDDA;" text="Theme">
                                     <font>
-                                        <Font name="SWItalc" size="14.0"/>
+                                        <Font name="SWItalc" size="14.0" />
                                     </font>
                                 </MenuButton>
                             </children>
                             <opaqueInsets>
-                                <Insets/>
+                                <Insets />
                             </opaqueInsets>
                             <padding>
-                                <Insets left="20.0"/>
+                                <Insets left="20.0" />
                             </padding>
                         </HBox>
                         <HBox prefHeight="457.0" prefWidth="232.0" spacing="10.0">
                             <VBox.margin>
-                                <Insets left="20.0" right="20.0"/>
+                                <Insets left="20.0" right="20.0" />
                             </VBox.margin>
                             <children>
-                                <ScrollPane fx:id="taskPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0"
-                                            style="-fx-background: #F7F7F2;">
+                                <ScrollPane fx:id="taskPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background: #F7F7F2;" vbarPolicy="NEVER">
                                     <content>
-                                        <VBox fx:id="tasksLayout" alignment="TOP_CENTER" prefWidth="124.0"
-                                              spacing="10.0">
+                                        <VBox fx:id="tasksLayout" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="tasksName" alignment="CENTER" prefHeight="25.0"
-                                                       prefWidth="124.0" text="Tasks">
+                                                <Label fx:id="tasksName" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Tasks">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
                                         </VBox>
                                     </content>
                                 </ScrollPane>
-                                <ScrollPane fx:id="sundayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                                <ScrollPane fx:id="sundayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                     <content>
-                                        <VBox fx:id="dayLayout1" alignment="TOP_CENTER" prefWidth="124.0"
-                                              spacing="10.0">
+                                        <VBox fx:id="dayLayout1" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="dayName1" alignment="CENTER" prefHeight="25.0"
-                                                       prefWidth="124.0" text="Monday">
+                                                <Label fx:id="dayName1" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
                                         </VBox>
                                     </content>
                                 </ScrollPane>
-                                <ScrollPane fx:id="mondayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                                <ScrollPane fx:id="mondayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                     <content>
-                                        <VBox fx:id="dayLayout2" alignment="TOP_CENTER" prefWidth="124.0"
-                                              spacing="10.0">
+                                        <VBox fx:id="dayLayout2" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="dayName2" alignment="CENTER" prefHeight="25.0"
-                                                       prefWidth="123.0" text="Monday">
+                                                <Label fx:id="dayName2" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
                                         </VBox>
                                     </content>
                                 </ScrollPane>
-                                <ScrollPane fx:id="tuesdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                                <ScrollPane fx:id="tuesdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                     <content>
                                         <VBox fx:id="dayLayout3" alignment="CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="dayName3" alignment="CENTER" contentDisplay="CENTER"
-                                                       prefHeight="25.0" prefWidth="124.0" text="Monday">
+                                                <Label fx:id="dayName3" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
                                         </VBox>
                                     </content>
                                 </ScrollPane>
-                                <ScrollPane fx:id="wednesdayPane" hbarPolicy="NEVER" prefHeight="200.0"
-                                            prefWidth="200.0">
+                                <ScrollPane fx:id="wednesdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                     <content>
-                                        <VBox fx:id="dayLayout4" alignment="TOP_CENTER" prefWidth="124.0"
-                                              spacing="10.0">
+                                        <VBox fx:id="dayLayout4" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="dayName4" alignment="CENTER" prefHeight="25.0"
-                                                       prefWidth="123.0" text="Monday">
+                                                <Label fx:id="dayName4" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
                                             <opaqueInsets>
-                                                <Insets/>
+                                                <Insets />
                                             </opaqueInsets>
                                         </VBox>
                                     </content>
                                 </ScrollPane>
-                                <ScrollPane fx:id="thursdayPane" hbarPolicy="NEVER" prefHeight="200.0"
-                                            prefWidth="200.0">
+                                <ScrollPane fx:id="thursdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                     <content>
-                                        <VBox fx:id="dayLayout5" alignment="TOP_CENTER" prefWidth="124.0"
-                                              spacing="10.0">
+                                        <VBox fx:id="dayLayout5" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="dayName5" alignment="CENTER" prefHeight="25.0"
-                                                       prefWidth="124.0" text="Monday">
+                                                <Label fx:id="dayName5" alignment="CENTER" prefHeight="25.0" prefWidth="124.0" text="Monday">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
                                         </VBox>
                                     </content>
                                 </ScrollPane>
-                                <ScrollPane fx:id="fridayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+                                <ScrollPane fx:id="fridayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                     <content>
-                                        <VBox fx:id="dayLayout6" alignment="TOP_CENTER" prefWidth="124.0"
-                                              spacing="10.0">
+                                        <VBox fx:id="dayLayout6" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="dayName6" alignment="CENTER" prefHeight="25.0"
-                                                       prefWidth="126.0" text="Monday">
+                                                <Label fx:id="dayName6" alignment="CENTER" prefHeight="25.0" prefWidth="126.0" text="Monday">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
                                         </VBox>
                                     </content>
                                 </ScrollPane>
-                                <ScrollPane fx:id="saturdayPane" hbarPolicy="NEVER" prefHeight="200.0"
-                                            prefWidth="200.0">
+                                <ScrollPane fx:id="saturdayPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
                                     <content>
-                                        <VBox fx:id="dayLayout7" alignment="TOP_CENTER" prefWidth="124.0"
-                                              spacing="10.0">
+                                        <VBox fx:id="dayLayout7" alignment="TOP_CENTER" prefWidth="124.0" spacing="10.0">
                                             <children>
-                                                <Label fx:id="dayName7" alignment="CENTER" prefHeight="25.0"
-                                                       prefWidth="123.0" text="Monday">
+                                                <Label fx:id="dayName7" alignment="CENTER" prefHeight="25.0" prefWidth="123.0" text="Monday">
                                                     <font>
-                                                        <Font name="SWItalc" size="17.0"/>
+                                                        <Font name="SWItalc" size="17.0" />
                                                     </font>
                                                 </Label>
                                             </children>
@@ -209,55 +186,52 @@
                                     <children>
                                         <Label fx:id="notesLabel" text="Notes">
                                             <font>
-                                                <Font name="SWItalc" size="33.0"/>
+                                                <Font name="SWItalc" size="33.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="quotesLabel" text="Quotes">
                                             <font>
-                                                <Font name="SWItalc" size="33.0"/>
+                                                <Font name="SWItalc" size="33.0" />
                                             </font>
                                             <padding>
-                                                <Insets right="50.0"/>
+                                                <Insets right="50.0" />
                                             </padding>
                                         </Label>
                                         <Label fx:id="overviewLabel" text="Overview">
                                             <font>
-                                                <Font name="SWItalc" size="33.0"/>
+                                                <Font name="SWItalc" size="33.0" />
                                             </font>
                                             <padding>
-                                                <Insets left="-90.0"/>
+                                                <Insets left="-90.0" />
                                             </padding>
                                         </Label>
                                     </children>
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </HBox>
                                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                                     <children>
-                                        <TextArea fx:id="notes" prefHeight="79.0" prefWidth="300.0"
-                                                  promptText="Enter notes here..."/>
-                                        <TextArea fx:id="quotes" prefHeight="200.0" prefWidth="300.0"
-                                                  promptText="Enter quotes here..."/>
-                                        <VBox fx:id="overview" prefHeight="124.0" prefWidth="300.0" spacing="10.0"
-                                              style="-fx-background-color: #FFFF;">
+                                        <TextArea fx:id="notes" prefHeight="79.0" prefWidth="300.0" promptText="Enter notes here..." />
+                                        <TextArea fx:id="quotes" prefHeight="200.0" prefWidth="300.0" promptText="Enter quotes here..." />
+                                        <VBox fx:id="overview" prefHeight="124.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: #FFFF;">
                                             <padding>
-                                                <Insets left="5.0" top="5.0"/>
+                                                <Insets left="5.0" top="5.0" />
                                             </padding>
                                         </VBox>
                                     </children>
                                     <padding>
-                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                     </padding>
                                 </HBox>
                             </children>
                             <padding>
-                                <Insets left="20.0"/>
+                                <Insets left="20.0" />
                             </padding>
                         </VBox>
                     </children>
                     <padding>
-                        <Insets bottom="20.0" top="20.0"/>
+                        <Insets bottom="20.0" top="20.0" />
                     </padding>
                 </VBox>
             </children>
